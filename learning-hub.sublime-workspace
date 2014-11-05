@@ -1,0 +1,311 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"creat",
+				"createPrediction"
+			],
+			[
+				"ren",
+				"rendered"
+			],
+			[
+				"sort",
+				"sortBy"
+			],
+			[
+				"or",
+				"orderedByNewest"
+			],
+			[
+				"trans",
+				"transposed"
+			],
+			[
+				"backgoun",
+				"background"
+			],
+			[
+				"block",
+				"inline-block"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"Snippet: for",
+				"Snippet: for (…) {…}"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/jimmy/workspace/predictionary/src/client/templates/header.html",
+		"/home/jimmy/workspace/predictionary/src/client/templates/footer.html",
+		"/home/jimmy/workspace/predictionary/src/client/templates/mainPage.html",
+		"/home/jimmy/workspace/predictionary/src/client/index.html",
+		"/home/jimmy/workspace/predictionary/src/client/templates/addPrediction.html",
+		"/home/jimmy/workspace/predictionary/src/client/templates/addPrediction.js",
+		"/home/jimmy/workspace/predictionary/src/routes.js",
+		"/home/jimmy/workspace/predictionary/src/client/templates/authenticate.html",
+		"/home/jimmy/workspace/predictionary/src/client/templates/listPredictions.html",
+		"/home/jimmy/workspace/predictionary/src/data/lib.js",
+		"/home/jimmy/workspace/predictionary/src/data/predictions.js",
+		"/home/jimmy/workspace/predictionary/src/client/styles.css",
+		"/home/jimmy/workspace/predictionary/src/client/templates/listPredictions.js",
+		"/home/jimmy/workspace/predictionary/src/basic.js",
+		"/home/jimmy/workspace/predictionary/src/client/templates/header.js",
+		"/home/jimmy/workspace/predictionary/src/client/templates/footer.js",
+		"/home/jimmy/workspace/predictionary/designs/index.html",
+		"/home/jimmy/workspace/predictionary/src/src.html",
+		"/home/jimmy/workspace/predictionary/index.html",
+		"/home/jimmy/workspace/predictionary/html/content/predictions.html",
+		"/home/jimmy/workspace/predictionary/temp.html",
+		"/home/jimmy/workspace/ticket-master/src/main.html",
+		"/home/jimmy/workspace/ticket-master/src/js/controllers/main.html",
+		"/home/jimmy/workspace/ticket-master/src/js/controllers/login/template.html",
+		"/home/jimmy/workspace/ticket-master/src/js/directives/checkUserIsAuthenticated.js",
+		"/home/jimmy/workspace/ticket-master/src/js/controllers/login/controller.js",
+		"/home/jimmy/workspace/ticket-master/src/js/controllers/second.html",
+		"/home/jimmy/workspace/ticket-master/src/js/controllers/main.js",
+		"/home/jimmy/workspace/ticket-master/src/js/module.js",
+		"/home/jimmy/workspace/ticket-master/src/js/services/authService.js",
+		"/home/jimmy/workspace/ticket-master/src/js/background.js",
+		"/home/jimmy/workspace/ticket-master/src/components/tasklists/controller.js",
+		"/home/jimmy/workspace/ticket-master/src/components/tasklists/template.html",
+		"/home/jimmy/workspace/ticket-master/src/module.js",
+		"/home/jimmy/workspace/ticket-master/src/manifest.json",
+		"/home/jimmy/workspace/ticket-master/src/js/google-api.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/server/rules.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/views/viewFails.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/models/likes.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/server/publications.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/models/fails.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/style.css",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/talk.txt",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/index.html",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/index.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/views/viewSingleFail.html",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/models/lib.js",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/views/viewFails.html",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/lib/bootstrap/css/bootstrap.min.css",
+		"/home/jimmy/workspace/fail-ricketts-fail/src/client/lib/bootstrap/css/bootstrap.css",
+		"/C/projects/dotmailer/dotMailerV4/Database/dotMailer_ClientsDB/Tables/dbo.ObjectTags.sql",
+		"/C/workspace/fail-rickets-fail/src/client/lib/currentPage.js",
+		"/C/workspace/fail-rickets-fail/src/models/fails.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/addFail.html",
+		"/C/workspace/fail-rickets-fail/src/client/views/viewSingleFail.html",
+		"/C/workspace/fail-rickets-fail/src/client/views/addFail.js",
+		"/C/workspace/fail-rickets-fail/src/client/index.html",
+		"/C/workspace/fail-rickets-fail/src/client/views/viewFails.html",
+		"/C/workspace/fail-rickets-fail/src/client/index.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/viewFails.js",
+		"/C/workspace/fail-rickets-fail/src/client/style.css",
+		"/C/workspace/fail-rickets-fail/src/models/comments.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/viewSingleFail.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/currentPage",
+		"/C/workspace/fail-rickets-fail/src/client/views/currentPage.js",
+		"/C/workspace/fail-rickets-fail/src/talk.txt",
+		"/C/workspace/fail-rickets-fail/src/server/publications.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/add-fail.html",
+		"/C/workspace/fail-rickets-fail/src/client/views/add-fail.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/fail-rickets-fail.js",
+		"/C/workspace/fail-rickets-fail/src/client/menu.js",
+		"/C/workspace/fail-rickets-fail/src/client/views/index.html",
+		"/C/dmstream/2014-03-04/4UQA82BMYQ8920140304112032149dotmailercom.eml",
+		"/C/dmstream/2014-03-04/4UQF52BMYP8020140304112032079dotmailercom.eml",
+		"/C/workspace/fail-rickets-fail/fail-rickets-fail.html",
+		"/C/workspace/fail-rickets-fail/fail-rickets-fail.css",
+		"/C/workspace/fail-rickets-fail/fail-ricketts-fail.sublime-project",
+		"/C/Users/james.luck/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/james.luck/Desktop/test.js",
+		"/C/projects/dotmailer/dotMailerV4/dotMailerV4.vsmdi",
+		"/C/Users/james.luck/Downloads/backup.sql",
+		"/C/projects/dotmailer/dotMailerV4/dotMailerV4.vssscc",
+		"/C/Users/james.luck/Downloads/wp-config.php",
+		"/C/projects/dotmailer/dotMailerV4/dotMailerV42.vsmdi",
+		"/C/projects/dotmailer/dotMailerV4/dotMailerV4.v11.suo",
+		"/C/Users/james.luck/AppData/Roaming/JetBrains/PermanentUserId",
+		"/C/Users/james.luck/AppData/Roaming/JetBrains/ReSharper/vAny/GlobalSettingsStorage.DotSettings",
+		"/C/tools/git_tfs/git-tfs.exe.config",
+		"//CRO-DSK-068/c$/BuildAgent/work/374ccdfe8a879c61/Core/dotMailer.UnitTests.NUnit/App.Staging-TeamCity.config",
+		"/C/projects/dotmailer/dotMailerV4/Core/dotMailer.Core/LINQ/MainDB.dbml",
+		"/C/projects/dotmailer/dotMailerV4/Core/dotMailer.Core/LINQ/ClientDB.dbml",
+		"/C/Users/james.luck/Desktop/template/12 Days For £10 E-shot/code/email.html",
+		"/C/Users/james.luck/Downloads/email.html",
+		"/C/Users/james.luck/Downloads/OpenLayers.js",
+		"/C/Users/james.luck/Desktop/devconfig",
+		"/C/Users/james.luck/Desktop/stagingconfig.txt",
+		"//CRO-DSK-068/c$/BuildAgent/work/556dbcb1f0382b82/dotmailer/dotMailerV4/Core/dotMailer.UnitTests.NUnit/bin/Staging-TeamCity/dotMailer.UnitTests.NUnit.dll.config",
+		"//CRO-DSK-068/c$/BuildAgent/work/374ccdfe8a879c61/Core/dotMailer.UnitTests.NUnit/app.config",
+		"/C/projects/dotmailer/dotMailer-2012.4.4.1/Core/dotMailer.Core/dotMailer.Core.csproj",
+		"/C/logs/u_ex12111923.log",
+		"/C/logs/u_ex12112001.log",
+		"/C/projects/dotmailer/dotMailerV4/BuildScripts/MSBuild/dotMailerLocalDev.proj",
+		"/C/AppFabric/ClusterConfig.xml"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			" =========== ",
+			"====== ",
+			"======",
+			"\\\\/",
+			"\\/",
+			"updateVotes",
+			"})",
+			"fonts/",
+			"icon",
+			"};\n",
+			"debug-trac",
+			"open",
+			"o.aspx",
+			"o.",
+			"function",
+			"external",
+			"ScheduleExternalContent",
+			"DroidChunks",
+			"stored",
+			"#> .*$",
+			"<#",
+			"\\<",
+			"<",
+			"^",
+			" #> \\{[0-9]+\\}",
+			"\" ",
+			"<#=",
+			"\\{[^}]+\\}",
+			"public string ",
+			"<img",
+			"GetInstance",
+			"transaction",
+			"oauth",
+			"click.ashx"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"updateVotes",
+			"#>\",",
+			"\"<#",
+			"\"<",
+			"\"",
+			"\",",
+			"\"",
+			"#> {}",
+			"<#= "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 160.0,
+	"status_bar_visible": true
+}
