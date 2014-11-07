@@ -1,0 +1,76 @@
+<template name="addCourse">
+
+		<h2>Course Details <small>Sell it to us!</small></h2>
+		{{#autoForm schema="Schemas.Courses" id="addCourse" role="form"}}
+			{{>afQuickField name='title'}}
+			{{>afQuickField name='objectives' rows=3}}
+			{{>afQuickField name='intendedLearnings' rows=3}}
+			{{>afQuickField name='suitableFor'}}
+			{{>afQuickField name='numberOfSpaces' }}
+			{{>afQuickField name='formatType' options=courseFormats firstOption="Please Select.." }}
+		{{/autoForm}}
+		<h2>Session details <small>When will it happen?</small></h2>
+
+		
+		{{>addSessions}}
+		
+		<p>
+			<button class="center-block btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"> </span> Submit Course</button>
+		</p>
+		
+		
+
+</template>
+
+<template name="inputField">
+	<div class="form-group">
+		{{> Template.dynamic template="afQuickField" data=data  }}
+		{{> afQuickField  id=field name=field template='plain' class="form-control" rows=rows}} 
+	</div>
+</template>
+
+<template name="addSessions">
+	<div class="container">
+		{{> sessionDetails id="addSession1" isFirst=true}}
+		{{> sessionDetails id="addSession2"}}
+		<div class="row">
+
+			<div class="col-md-11">
+			</div>
+			<div class="col-md-1">
+				<p>
+					<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+				</p>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="sessionDetails">
+	{{#autoForm schema="Schemas.Sessions" id=id }}
+	<div class="row">
+		<div class="col-md-3">
+			<p>
+				{{>afFieldInput name='startsAt' type="datetime-local" placeholder='schemaLabel'}}
+			</p>
+		</div>
+		<div class="col-md-3">
+			<p>
+				{{>afFieldInput name='durationMinutes' placeholder='schemaLabel'}}
+			</p>
+		</div>
+		<div class="col-md-5">
+			<p>
+				{{>afFieldInput name='locationName' options=locations firstOption="Please Select Location.." }}
+			</p>
+		</div>
+		<div class="col-md-1">
+			<p>
+				{{#if canBeRemoved}}
+				<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+				{{/if}}
+			</p>
+		</div>
+	</div>
+	{{/autoForm}}
+</template>
