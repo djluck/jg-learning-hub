@@ -28,9 +28,6 @@ initCollectionAndSchema("Sessions", {
     locationName: {
         type: String
     },
-    teacherUserIds: {
-        type: [String]
-    },
     durationMinutes: {
         type: Number,
         min: 1,

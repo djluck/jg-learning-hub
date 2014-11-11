@@ -1,0 +1,23 @@
+<template name="addCourse">
+
+		<h2>Course Details <small>Sell it to us!</small></h2>
+		{{#autoForm schema="Schemas.Courses" id="addCourse" role="form"}}
+			{{>afQuickField name='title'}}
+			{{>afQuickField name='objectives' rows=3}}
+			{{>afQuickField name='intendedLearnings' rows=3}}
+			{{>afQuickField name='suitableFor'}}
+			{{>afQuickField name='numberOfSpaces' }}
+			{{>afQuickField name='formatType' options=courseFormats firstOption="Please Select.." }}
+		{{/autoForm}}
+		<h2>Session details <small>When will it happen?</small></h2>
+
+		
+		{{>addSessions}}
+		
+		<p>
+			<button id="btnAddCourse" class="center-block btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"> </span> Submit Course</button>
+		</p>
+		
+</template>
+
+

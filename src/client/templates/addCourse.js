@@ -8,6 +8,13 @@ Template.addCourse.courseFormats = function(){
 			};
 		}
 	);
+};
+
+Template.addCourse.events = {
+	"click #btnAddCourse" : function(event, template){
+		autoform.validateForm(formId)
+		autoform.validateForm(formId)
+	}
 }
 
 Template.sessionDetails.locations = function(){

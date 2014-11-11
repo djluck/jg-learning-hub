@@ -1,0 +1,31 @@
+<template name="sessionDetails">
+	{{#autoForm schema="Schemas.Sessions" id=formId role="form" doc=this}}
+	<div class="row">
+		<div class="col-md-3">
+			<p>
+				{{startsAt}}
+				{{>afFieldInput name='startsAt' type="datetime-local" placeholder='schemaLabel'}}
+			</p>
+		</div>
+		<div class="col-md-3">
+			<p>	
+				{{durationMinutes}}
+				{{>afFieldInput name='durationMinutes' placeholder='schemaLabel'}}
+			</p>
+		</div>
+		<div class="col-md-5">
+			<p>
+				{{locationName}}
+				{{>afFieldInput name='locationName' options=locations firstOption="Please Select Location.." }}
+			</p>
+		</div>
+		<div class="col-md-1">
+			<p>
+				{{#if canBeRemoved}}
+				<button type="button" class="btn btn-danger btn-remove-session"><span class="glyphicon glyphicon-remove"></span></button>{{tempId}}
+				{{/if}}
+			</p>
+		</div>
+	</div>
+	{{/autoForm}}
+</template>
