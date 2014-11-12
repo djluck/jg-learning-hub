@@ -4,7 +4,7 @@ Template.addCourse.courseFormats = function(){
 		function(e){
 			return { 
 				label: e.type, 
-				value: e._id
+				value: e.type
 			};
 		}
 	);
@@ -12,8 +12,15 @@ Template.addCourse.courseFormats = function(){
 
 Template.addCourse.events = {
 	"click #btnAddCourse" : function(event, template){
-		autoform.validateForm(formId)
-		autoform.validateForm(formId)
+		
+		var isValid = AutoForm.validateForm("addCourse")
+		_.each(Sessions.getSessions(), function(e){
+			isValid = isValid && AutoForm.validateForm(e.formId)	
+		});
+		
+		if (isValid){
+			//insert course and session
+		}
 	}
 }
 
@@ -23,7 +30,7 @@ Template.sessionDetails.locations = function(){
 		function(e){
 			return {
 				label : e.name,
-				value : e._id
+				value : e.name
 			};
 		}
 	);

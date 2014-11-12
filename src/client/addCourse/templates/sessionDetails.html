@@ -2,20 +2,18 @@
 	{{#autoForm schema="Schemas.Sessions" id=formId role="form" doc=this}}
 	<div class="row">
 		<div class="col-md-3">
-			<p>
+			<p class="fieldset {{#if afFieldIsInvalid name='startsAt'}}has-error{{/if}}">
 				{{startsAt}}
 				{{>afFieldInput name='startsAt' type="datetime-local" placeholder='schemaLabel'}}
 			</p>
 		</div>
 		<div class="col-md-3">
-			<p>	
-				{{durationMinutes}}
+			<p class="fieldset {{#if afFieldIsInvalid name='durationMinutes'}}has-error{{/if}}">
 				{{>afFieldInput name='durationMinutes' placeholder='schemaLabel'}}
 			</p>
 		</div>
 		<div class="col-md-5">
-			<p>
-				{{locationName}}
+			<p class="{{#if afFieldIsInvalid name='locationName'}}has-error{{/if}}">
 				{{>afFieldInput name='locationName' options=locations firstOption="Please Select Location.." }}
 			</p>
 		</div>
