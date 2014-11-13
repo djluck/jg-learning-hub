@@ -1,7 +1,7 @@
 <template name="addCourse">
 
 		<h2>Course Details <small>Sell it to us!</small></h2>
-		{{#autoForm schema="Schemas.Courses" id="addCourse" role="form"}}
+		{{#autoForm schema="Schemas.CourseDetails" id=formId role="form"}}
 			{{>afQuickField name='title'}}
 			{{>afQuickField name='objectives' rows=3}}
 			{{>afQuickField name='intendedLearnings' rows=3}}

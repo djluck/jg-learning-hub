@@ -11,7 +11,7 @@
 
 		{{> addCourse}}
 
-
+		{{> viewCourses}}
 <!--
 		{{>sortBy}}
 
@@ -26,71 +26,9 @@
 
 </template>
 
-<template name="panels">
-	<div class="row">
-		{{> panel}}
-	</div>
-</template>
 
 
-<template name="panel">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="page-header" style="margin-top:0px">
-				<h3 style="margin-top:5px">Everything you wanted to know about charities</h3>
-			</div>
-			<div class="row">
 
-				<div class="col-md-9">
-					<p>
-						<strong>Objectives:</strong>
-						A walk through of our core consumer demographic mix on JustGiving: who uses JG? Why? What do they care about? How do they use JG? How do use tools like mosaic to classify our userbase?
-					</p>
-					<p>
-						<strong>Intended Learnings:</strong>
-						Understanding all the different ways we use analytics to track different things across JG. What to bear in mind when working on analyitcs and detailed run through of all the custom uses of analytics tracking
-
-					</p>
-				</div>
-				<div class="col-md-3">
-					{{> progress}}
-					<div class="text-right">
-						<small class="small"> Finance Team</small>
-						<span class="glyphicon glyphicon-briefcase"></span>
-
-					</div>
-					<div class="text-right">
-						<small class="small"> Workshop</small>	
-						<span class="glyphicon glyphicon-bullhorn"></span>
-
-					</div>
-					<div class="text-right">
-						<small class="small"> James Luck / Ann Other</small>	
-						<span class="glyphicon glyphicon-user"></span>
-
-					</div>
-				</div>
-			</div>
-			
-
-
-			<!--{{> progress}}-->
-			<p>
-				<a href="#" class="btn btn-default" role="button" data-toggle="collapse" data-target="#demo" aria-expanded="false" aria-controls="demo">
-					<span class="glyphicon glyphicon-list-alt"> </span>
-					Details
-				</a> 
-				<a href="#" class="btn btn-primary" role="button">
-					<span class="glyphicon glyphicon-ok"> </span>
-					Sign up
-				</a>
-			</p>
-
-			{{> accordian}}
-
-		</div>
-	</div>
-</template>
 
 
 <template name="sortBy">
@@ -198,7 +136,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 	
 
 </template>

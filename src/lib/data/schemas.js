@@ -35,7 +35,7 @@ initCollectionAndSchema("Sessions", {
     }
 });
 
-initCollectionAndSchema("Courses", {
+Schemas.CourseDetails = new SimpleSchema({
     title: {
         type: String,
         min: 1
@@ -58,10 +58,8 @@ initCollectionAndSchema("Courses", {
         max: 100
     },
     formatType: {
-        type: String
-    },
-    departmentName: {
-        type: String
+        type: String,
+        min: 1
     },
     dateCreated: {
         type: Date,
@@ -71,13 +69,26 @@ initCollectionAndSchema("Courses", {
     dateModified: {
         type: Date,
         autoValue: DefaultValues.currentDate
+    }
+});
+
+initCollectionAndSchema("Courses", {
+    details: {
+        type: Schemas.CourseDetails,
+        min: 1
     },
     createdByUser: {
         type: String,
         autoValue: DefaultValues.userId,
         denyUpdate: true
     },
-    sessionsIds: {
+    signedUpUserIds: {
+        type: [String],
+        autoValue: function(){
+            return [];
+        }
+    },
+    sessionIds: {
         type: [String]
     }
 });

@@ -7,7 +7,8 @@ Sessions = {
 	initSessions : initSessions,
 	removeSession : removeSession,
 	updateSession : updateSession,
-	getSessionsForStorage : getSessionsForStorage
+	getSessionsForStorage : getSessionsForStorage,
+	getSessionsReadyForStorage : getSessionsReadyForStorage
 };
 
 
@@ -68,4 +69,17 @@ function removeSession(session){
 
 function getSessionsForStorage(){
 	return null;
+}
+
+function getSessionsReadyForStorage(course){
+	var sessions = getSessions();
+
+	var cleanedSessions = _.map(sessions, function(session){
+		delete session["tempId"];
+		delete session["formId"];
+		delete session["isFirst"];
+
+		return session;
+	});
+	return cleanedSessions;
 }

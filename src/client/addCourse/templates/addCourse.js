@@ -1,3 +1,5 @@
+var formId = "addCourse";
+
 Template.addCourse.helpers({
 	courseFormats : function(){
 		return _.map(
@@ -9,20 +11,36 @@ Template.addCourse.helpers({
 				};
 			}
 		);
-	}
+	},
+	formId : formId
 });
 
 Template.addCourse.events = {
 	"click #btnAddCourse" : function(event, template){
-		
-		var isValid = AutoForm.validateForm("addCourse")
-		_.each(Sessions.getSessions(), function(e){
-			console.log(e);
-			isValid = AutoForm.validateForm(e.formId) && isValid;
-		});
-		
-		if (isValid){
-			//insert course and session
+		if (!validateCourseAndSessions()){
+			return false;
 		}
+
+		createCourseAndSession();
+
+		return true;
 	}
+}
+
+function validateCourseAndSessions(){
+	var isValid = AutoForm.validateForm("addCourse")
+	_.each(Sessions.getSessions(), function(e){
+		isValid = AutoForm.validateForm(e.formId) && isValid;
+		return console.log(isValid);
+	});
+
+	return isValid;
+}
+
+function createCourseAndSession(){
+	var course = AutoForm.getFormValues("addCourse").insertDoc;
+	var sessions = Sessions.getSessionsReadyForStorage();
+	console.log("Sesssopns");
+	console.log(sessions);
+	Service.addCourseAndSessions(course, sessions);
 }

@@ -9,8 +9,8 @@ initCollectionAndSchema = function (collectionName, schema){
 
 handleError = function(err){
 	if (err){
-		alert("Failed to sync");
 		console.log(err);
+		throw "Failed to sync";
 	}
 	else{
 		console.log("Sync'd");

@@ -1,0 +1,62 @@
+<template name="viewCourse">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			{{#with details}}
+			<div class="page-header" style="margin-top:0px">
+				<h3 style="margin-top:5px">{{title}}</h3>
+			</div>
+			<div class="row">
+
+				<div class="col-md-9">
+					<p>
+						<strong>Objectives:</strong>
+						{{objectives}}
+					</p>
+					<p>
+						<strong>Intended Learnings:</strong>
+						{{intendedLearnings}}
+
+					</p>
+				</div>
+				<div class="col-md-3">
+					{{> progress}}
+					<!--
+					<div class="text-right">
+						<small class="small"> Finance Team</small>
+						<span class="glyphicon glyphicon-briefcase"></span>
+
+					</div>-->
+					<div class="text-right">
+						<small class="small"> {{formatType}}</small>	
+						<span class="glyphicon glyphicon-bullhorn"></span>
+
+					</div>
+					<!--
+					<div class="text-right">
+						<small class="small"> James Luck / Ann Other</small>	
+						<span class="glyphicon glyphicon-user"></span>
+
+					</div>-->
+				</div>
+			</div>
+			{{/with}}			
+
+
+			<!--{{> progress}}-->
+			<p>
+				<a href="#" class="btn btn-default" role="button" data-toggle="collapse" data-target="#sessionDetails_{{_id}}" aria-expanded="false" aria-controls="sessionDetails_{{_id}}">
+					<span class="glyphicon glyphicon-list-alt"> </span>
+					Details
+				</a> 
+				<a href="#" class="btn btn-primary" role="button">
+					<span class="glyphicon glyphicon-ok"> </span>
+					Sign up
+				</a>
+			</p>
+			<div id="sessionDetails_{{_id}}" class="collapse">
+				{{> viewSessionDetails}}
+			</div>
+			
+		</div>
+	</div>
+</template>
