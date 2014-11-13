@@ -11,10 +11,10 @@
 		<tbody>	
 			{{#each sessions}}
 			<tr>
-				<td>{{startsAt}}</td>
-				<td>{{startsAt}}</td>
+				<td>{{>date startsAt}}</td>
+				<td>{{>time startsAt}}</td>
 				<td>{{durationMinutes}}</td>
-				<td>{{location}}</td>
+				<td>{{locationName}}</td>
 			</tr>
 			{{/each}}
 		</tbody>

@@ -42,5 +42,9 @@ function createCourseAndSession(){
 	var sessions = Sessions.getSessionsReadyForStorage();
 	console.log("Sesssopns");
 	console.log(sessions);
-	Service.addCourseAndSessions(course, sessions);
+	Service.addCourseAndSessions(course, sessions)
+		.then(function(course){
+			 	Router.go('/');
+		})
+		.done();;
 }

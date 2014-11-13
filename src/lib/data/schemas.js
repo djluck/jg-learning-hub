@@ -63,7 +63,12 @@ Schemas.CourseDetails = new SimpleSchema({
     },
     dateCreated: {
         type: Date,
-        autoValue: DefaultValues.currentDate,
+        autoValue: function(){
+            if (this.isInsert)
+                return DefaultValues.currentDate;
+            else
+                this.unset();
+        },
         denyUpdate: true
     },
     dateModified: {
@@ -79,7 +84,12 @@ initCollectionAndSchema("Courses", {
     },
     createdByUser: {
         type: String,
-        autoValue: DefaultValues.userId,
+        autoValue: function(){
+            if (this.isInsert)
+                return DefaultValues.userId;
+            else
+                this.unset();
+        },
         denyUpdate: true
     },
     signedUpUserIds: {

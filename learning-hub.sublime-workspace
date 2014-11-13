@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"addS",
+				"addSessions"
+			],
+			[
+				"tb",
+				"tbody	Tag"
+			],
+			[
 				"creat",
 				"createPrediction"
 			],
@@ -36,34 +44,73 @@
 	"buffers":
 	[
 		{
-			"file": "src/client/addCourse/templates/addCourse.js",
-			"settings":
-			{
-				"buffer_size": 656,
-				"line_ending": "Windows"
-			}
-		},
-		{
+			"file": "src/client/templates/addCourse.html",
 			"settings":
 			{
 				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Template.addCourse.courseFormats = function(){\n	return _.map(\n		Collections.CourseFormats.find().fetch(),\n		function(e){\n			return { \n				label: e.type, \n				value: e._id\n			};\n		}\n	);\n};\n\nTemplate.addCourse.events = {\n	\"click #btnAddCourse\" : function(event, template){\n		autoform.validateForm(formId)\n		autoform.validateForm(formId)\n	}\n}\n\n",
+			"file": "src/client/templates/addCourse.js",
+			"file_size": 635,
+			"file_write_time": 1415739747000000,
+			"settings":
+			{
+				"buffer_size": 341,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/lib/data/lib.js",
+			"file": "src/client/templates/sessionDetails.html",
 			"settings":
 			{
-				"buffer_size": 639,
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "src/client/templates/sessionDetails.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/client/templates/addSessions.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/client/viewCourses/viewSessionDetails.html",
+			"settings":
+			{
+				"buffer_size": 406,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/client/addCourse/lib/sessions.js",
+			"file": "src/client/lib/spacebarHelpers.html",
 			"settings":
 			{
-				"buffer_size": 1763,
-				"line_ending": "Windows"
+				"buffer_size": 81,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/client/lib/spacebarHelpers.js",
+			"settings":
+			{
+				"buffer_size": 65,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -82,10 +129,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -96,26 +140,12 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"//192.168.4.42/workspace/jg-learning-hub/src",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data",
-		"//192.168.4.42/workspace/jg-learning-hub/src/server"
-	],
 	"file_history":
 	[
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/mains.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/mains.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/server/main.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/src.html",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/schemas.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/packages/meteor-accounts-ldap/ldap-client.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/createForm.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/createForm.html",
-		"//192.168.0.8/workspace/jg-learning-hub/src/templates/createForm.html",
-		"//192.168.4.198/workspace/jg-learning-hub/src/templates/createForm.html",
-		"//192.168.4.198/workspace/jg-learning-hub/src/templates/create/createForm.html",
+		"/home/jimmy/workspace/jg-learning-hub/src/client/lib/spacebarHelpers.js",
+		"/home/jimmy/workspace/jg-learning-hub/src/client/templates/addSessions.html",
+		"/home/jimmy/workspace/jg-learning-hub/src/lib/schemas.js",
+		"/home/jimmy/workspace/jg-learning-hub/src/src.html",
 		"/home/jimmy/workspace/predictionary/src/client/templates/header.html",
 		"/home/jimmy/workspace/predictionary/src/client/templates/footer.html",
 		"/home/jimmy/workspace/predictionary/src/client/templates/mainPage.html",
@@ -222,11 +252,11 @@
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -237,6 +267,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"keys",
+			"object.key",
+			"inputField",
 			" =========== ",
 			"====== ",
 			"======",
@@ -297,41 +330,12 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/client/addCourse/templates/addCourse.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 656,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								654,
-								654
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"semi_transient": false,
+					"file": "src/client/templates/addCourse.html",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -347,23 +351,75 @@
 						],
 						"settings":
 						{
-							"default_dir": "\\\\192.168.4.42\\workspace\\jg-learning-hub\\src\\lib\\data",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/client/templates/addCourse.js",
+					"settings":
+					{
+						"buffer_size": 341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								334,
+								334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/lib/data/lib.js",
-					"semi_transient": true,
+					"file": "src/client/templates/sessionDetails.html",
 					"settings":
 					{
-						"buffer_size": 639,
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/client/templates/sessionDetails.js",
+					"settings":
+					{
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -383,36 +439,111 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/client/addCourse/lib/sessions.js",
-					"semi_transient": false,
+					"buffer": 4,
+					"file": "src/client/templates/addSessions.js",
 					"settings":
 					{
-						"buffer_size": 1763,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								338,
-								338
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 483.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/client/viewCourses/viewSessionDetails.html",
+					"settings":
+					{
+						"buffer_size": 406,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								229,
+								229
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/client/lib/spacebarHelpers.html",
+					"settings":
+					{
+						"buffer_size": 81,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/client/lib/spacebarHelpers.js",
+					"settings":
+					{
+						"buffer_size": 65,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								58
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				}
 			]
@@ -420,7 +551,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 0.0
 	},
 	"input":
 	{
@@ -449,14 +580,9 @@
 		]
 	},
 	"menu_visible": true,
-	"output.find_results":
-	{
-		"height": 0.0
-	},
-	"project": "learning-hub.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -475,25 +601,10 @@
 		],
 		"width": 0.0
 	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
-	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 419.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"side_bar_width": 206.0,
+	"status_bar_visible": true
 }

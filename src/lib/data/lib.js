@@ -4,7 +4,7 @@ Schemas = {};
 initCollectionAndSchema = function (collectionName, schema){
 	Schemas[collectionName] = new SimpleSchema(schema);
 	Collections[collectionName] = new Meteor.Collection(collectionName);
-	Collections[collectionName].attachSchema(Schemas[collectionName]);
+	//Collections[collectionName].attachSchema(Schemas[collectionName]);
 }
 
 handleError = function(err){
@@ -31,3 +31,14 @@ DefaultValues.currentDate = function(){
 
 DefaultValues.userId = Meteor.userId;
 
+ErrorPromise = function(message){
+	return Q.fcall(function () {
+	    throw new Error(message);
+	});
+}
+
+ValuePromise = function(value){
+	return Q.fcall(function(){
+		return value;
+	})
+}

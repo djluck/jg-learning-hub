@@ -5,25 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<template name="defaultLayout">
 	<div class="container">
 		{{> nav}}
-
-		{{> addCourse}}
-
-		{{> viewCourses}}
-<!--
-		{{>sortBy}}
-
-		{{>panels}}
-		{{>panels}}
-		{{>panels}}
-		{{>panels}}-->
+		{{> yield}}
 	</div>
-</body>
-
-<template name="create">
-
 </template>
 
 
@@ -89,15 +75,6 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
-</template>
-
-
-<template name="progress">
-	<div class="progress">
-		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-			4 / 10
-		</div>
 	</div>
 </template>
 
@@ -184,13 +161,17 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">JG Learning Hub</a>
+					<a class="navbar-brand" href="/">JG Learning Hub</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-plus"></span> Run a course</a></li>
+						<li>
+							{{#if currentUser}}
+							<a href="/add-course"><span class="glyphicon glyphicon-plus"></span> Run a course</a>
+							{{/if}}
+						</li>
 						{{> loginButtons }} <!-- here -->
 					</ul>
 				</div><!-- /.navbar-collapse -->
