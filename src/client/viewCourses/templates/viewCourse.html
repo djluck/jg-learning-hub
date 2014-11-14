@@ -41,16 +41,16 @@
 
 			<p>
 				<a href="#" class="btn btn-default" role="button" data-toggle="collapse" data-target="#sessionDetails_{{_id}}" aria-expanded="false" aria-controls="sessionDetails_{{_id}}">
-					<span class="glyphicon glyphicon-list-alt"> </span>
+					<span class="glyphicon glyphicon-calendar"> </span>
 					Times / Places
 				</a> 
-				<button class="btn btn-primary btn-sign-up" role="button" disabled="{{#if noUser}}disabled{{/if}}" >
-					<span class="glyphicon glyphicon-ok"> </span>
+				<button class="btn btn-primary btn-sign-up {{#if isSignedUp}}btn-danger{{/if}}" role="button" disabled="{{#if noUser}}disabled{{/if}}" >
+					<span class="glyphicon  {{#if isSignedUp}} glyphicon-remove {{else}} glyphicon-ok {{/if}}"> </span>
 					{{#if isSignedUp}}Resign{{else}}Sign Up{{/if}}
 				</button>
 			</p>
 			<div id="sessionDetails_{{_id}}" class="collapse">
-				{{> viewSessionDetails}}
+				{{> viewSessions sessions=getSessions}}
 			</div>
 			
 		</div>

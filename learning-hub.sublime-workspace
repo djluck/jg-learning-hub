@@ -4,12 +4,12 @@
 		"selected_items":
 		[
 			[
-				"addS",
-				"addSessions"
+				"is",
+				"isVisible"
 			],
 			[
-				"tb",
-				"tbody	Tag"
+				"sessi",
+				"sessionIds"
 			],
 			[
 				"creat",
@@ -43,76 +43,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/client/templates/addCourse.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Template.addCourse.courseFormats = function(){\n	return _.map(\n		Collections.CourseFormats.find().fetch(),\n		function(e){\n			return { \n				label: e.type, \n				value: e._id\n			};\n		}\n	);\n};\n\nTemplate.addCourse.events = {\n	\"click #btnAddCourse\" : function(event, template){\n		autoform.validateForm(formId)\n		autoform.validateForm(formId)\n	}\n}\n\n",
-			"file": "src/client/templates/addCourse.js",
-			"file_size": 635,
-			"file_write_time": 1415739747000000,
-			"settings":
-			{
-				"buffer_size": 341,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/client/templates/sessionDetails.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "",
-			"file": "src/client/templates/sessionDetails.js",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/client/templates/addSessions.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/client/viewCourses/viewSessionDetails.html",
-			"settings":
-			{
-				"buffer_size": 406,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/client/lib/spacebarHelpers.html",
-			"settings":
-			{
-				"buffer_size": 81,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/client/lib/spacebarHelpers.js",
-			"settings":
-			{
-				"buffer_size": 65,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -129,7 +59,10 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 0.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -140,12 +73,73 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"//192.168.4.42/workspace/jg-learning-hub/src",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/templates",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/lib",
+		"//192.168.4.42/workspace/jg-learning-hub/src/server"
+	],
 	"file_history":
 	[
-		"/home/jimmy/workspace/jg-learning-hub/src/client/lib/spacebarHelpers.js",
-		"/home/jimmy/workspace/jg-learning-hub/src/client/templates/addSessions.html",
-		"/home/jimmy/workspace/jg-learning-hub/src/lib/schemas.js",
-		"/home/jimmy/workspace/jg-learning-hub/src/src.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/src.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/routes.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/nav.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/myCourses.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/viewSessions.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/templates/viewCourse.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/viewSessions.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/main.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/SessionService.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/lib/spacebarHelpers.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/lib/DateTimeHelpers.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/viewMySessions.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/myCourses.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewCourse.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/viewMySessions.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/viewMySessions.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/viewMyCourses.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/viewMyCourses.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/myCourses.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/lib/DateTimeHelpers",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/CourseService.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/addCourse.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewCourses.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewSessionDetails.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/UserCourseService.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/signUpProgress.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/nav.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewCourse.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/web.browser/app/client/nav.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/web.browser/app/client/viewCourses/viewCourse.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/signUpProgress.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/server/program.json",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/web.browser/program.json",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/schemas.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/collections.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewCourses.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewSessionDetails.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/sessionDetails.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/server/app/lib/data/lib.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/lib.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/lib/sessions.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/addCourse.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/mains.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/mains.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/server/main.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/schemas.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/packages/meteor-accounts-ldap/ldap-client.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/createForm.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/createForm.html",
+		"//192.168.0.8/workspace/jg-learning-hub/src/templates/createForm.html",
+		"//192.168.4.198/workspace/jg-learning-hub/src/templates/createForm.html",
+		"//192.168.4.198/workspace/jg-learning-hub/src/templates/create/createForm.html",
 		"/home/jimmy/workspace/predictionary/src/client/templates/header.html",
 		"/home/jimmy/workspace/predictionary/src/client/templates/footer.html",
 		"/home/jimmy/workspace/predictionary/src/client/templates/mainPage.html",
@@ -221,55 +215,36 @@
 		"/C/dmstream/2014-03-04/4UQA82BMYQ8920140304112032149dotmailercom.eml",
 		"/C/dmstream/2014-03-04/4UQF52BMYP8020140304112032079dotmailercom.eml",
 		"/C/workspace/fail-rickets-fail/fail-rickets-fail.html",
-		"/C/workspace/fail-rickets-fail/fail-rickets-fail.css",
-		"/C/workspace/fail-rickets-fail/fail-ricketts-fail.sublime-project",
-		"/C/Users/james.luck/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/james.luck/Desktop/test.js",
-		"/C/projects/dotmailer/dotMailerV4/dotMailerV4.vsmdi",
-		"/C/Users/james.luck/Downloads/backup.sql",
-		"/C/projects/dotmailer/dotMailerV4/dotMailerV4.vssscc",
-		"/C/Users/james.luck/Downloads/wp-config.php",
-		"/C/projects/dotmailer/dotMailerV4/dotMailerV42.vsmdi",
-		"/C/projects/dotmailer/dotMailerV4/dotMailerV4.v11.suo",
-		"/C/Users/james.luck/AppData/Roaming/JetBrains/PermanentUserId",
-		"/C/Users/james.luck/AppData/Roaming/JetBrains/ReSharper/vAny/GlobalSettingsStorage.DotSettings",
-		"/C/tools/git_tfs/git-tfs.exe.config",
-		"//CRO-DSK-068/c$/BuildAgent/work/374ccdfe8a879c61/Core/dotMailer.UnitTests.NUnit/App.Staging-TeamCity.config",
-		"/C/projects/dotmailer/dotMailerV4/Core/dotMailer.Core/LINQ/MainDB.dbml",
-		"/C/projects/dotmailer/dotMailerV4/Core/dotMailer.Core/LINQ/ClientDB.dbml",
-		"/C/Users/james.luck/Desktop/template/12 Days For £10 E-shot/code/email.html",
-		"/C/Users/james.luck/Downloads/email.html",
-		"/C/Users/james.luck/Downloads/OpenLayers.js",
-		"/C/Users/james.luck/Desktop/devconfig",
-		"/C/Users/james.luck/Desktop/stagingconfig.txt",
-		"//CRO-DSK-068/c$/BuildAgent/work/556dbcb1f0382b82/dotmailer/dotMailerV4/Core/dotMailer.UnitTests.NUnit/bin/Staging-TeamCity/dotMailer.UnitTests.NUnit.dll.config",
-		"//CRO-DSK-068/c$/BuildAgent/work/374ccdfe8a879c61/Core/dotMailer.UnitTests.NUnit/app.config",
-		"/C/projects/dotmailer/dotMailer-2012.4.4.1/Core/dotMailer.Core/dotMailer.Core.csproj",
-		"/C/logs/u_ex12111923.log",
-		"/C/logs/u_ex12112001.log",
-		"/C/projects/dotmailer/dotMailerV4/BuildScripts/MSBuild/dotMailerLocalDev.proj",
-		"/C/AppFabric/ClusterConfig.xml"
+		"/C/workspace/fail-rickets-fail/fail-rickets-fail.css"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"\\\\192.168.4.42\\workspace\\jg-learning-hub\\src",
 			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
-			"keys",
-			"object.key",
-			"inputField",
+			"$in",
+			"SignUpService",
+			"CourseService",
+			"SignUpService",
+			"numberOfCoursesSignedUpTo",
+			"<template name=\"nav",
+			"<template name=\"",
+			"<template name=\"nav",
+			"});\n",
+			"spacesTaken ",
 			" =========== ",
 			"====== ",
 			"======",
@@ -308,9 +283,11 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"UserCourseService",
+			"countCoursesSignedUpTo",
 			"updateVotes",
 			"#>\",",
 			"\"<#",
@@ -330,228 +307,14 @@
 	"groups":
 	[
 		{
-			"selected": 6,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/client/templates/addCourse.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/client/templates/addCourse.js",
-					"settings":
-					{
-						"buffer_size": 341,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								334,
-								334
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/client/templates/sessionDetails.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/client/templates/sessionDetails.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/client/templates/addSessions.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 483.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/client/viewCourses/viewSessionDetails.html",
-					"settings":
-					{
-						"buffer_size": 406,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								229,
-								229
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/client/lib/spacebarHelpers.html",
-					"settings":
-					{
-						"buffer_size": 81,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								81,
-								81
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/client/lib/spacebarHelpers.js",
-					"settings":
-					{
-						"buffer_size": 65,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								58,
-								58
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -580,9 +343,14 @@
 		]
 	},
 	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "learning-hub.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -601,10 +369,25 @@
 		],
 		"width": 0.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 206.0,
-	"status_bar_visible": true
+	"side_bar_width": 419.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

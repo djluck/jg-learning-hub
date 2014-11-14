@@ -1,16 +1,22 @@
-<template name="viewSessionDetails">
+<template name="viewSessions">
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				{{#if showCourseName}}
+				<th>Course</th>
+				{{/if}}
 				<th>Date</th>
-				<th>Time</th>
-				<th>Duration</th>
+				<th>Starts At</th>
+				<th>Duration (minutes)</th>
 				<th>Place</th>
 			</tr>
 		</thead>
 		<tbody>	
 			{{#each sessions}}
 			<tr>
+				{{#if courseName}}
+				<td>{{courseName}}</td>
+				{{/if}}
 				<td>{{>date startsAt}}</td>
 				<td>{{>time startsAt}}</td>
 				<td>{{durationMinutes}}</td>

@@ -33,8 +33,9 @@ function deferUntilFinished(mongoFn, transformResultFn){
 	    } 
 	    else {
 	    	var resolvedValue = id;
-	    	if (transformResultFn !== undefined)
+	    	if (transformResultFn !== undefined){
 	    		resolvedValue = transformResultFn(id);
+	    	}
         	deferred.resolve(resolvedValue);
 	    }
 	});

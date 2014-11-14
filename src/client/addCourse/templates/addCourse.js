@@ -29,10 +29,13 @@ Template.addCourse.events = {
 
 function validateCourseAndSessions(){
 	var isValid = AutoForm.validateForm("addCourse")
+	console.log(AutoForm.getValidationContext("addCourse"));
 	_.each(Sessions.getSessions(), function(e){
 		isValid = AutoForm.validateForm(e.formId) && isValid;
-		return console.log(isValid);
+		console.log(AutoForm.getValidationContext(e.formId));
 	});
+
+	
 
 	return isValid;
 }
@@ -40,11 +43,10 @@ function validateCourseAndSessions(){
 function createCourseAndSession(){
 	var course = AutoForm.getFormValues("addCourse").insertDoc;
 	var sessions = Sessions.getSessionsReadyForStorage();
-	console.log("Sesssopns");
-	console.log(sessions);
-	Service.addCourseAndSessions(course, sessions)
+
+	CourseService.addCourseAndSessions(course, sessions)
 		.then(function(course){
-			 	Router.go('/');
+		 	Router.go('/');
 		})
 		.done();;
 }

@@ -9,17 +9,21 @@ Template.viewCourse.helpers({
 		return Meteor.user() === null;
 	},
 	isSignedUp: function(){
-		return SignUpService.isSignedUp(this._id);
+		return UserCourseService.isSignedUp(this._id);
+	},
+	getSessions: function(){
+		return CourseService.getSessions(this.sessionIds);
 	}
 });
 
 Template.viewCourse.events = {
 	"click .btn-sign-up" : function(event, template){
-		if (SignUpService.isSignedUp(this._id)){
-			SignUpService.resignFromCourse(this._id);
+		if (UserCourseService.isSignedUp(this._id)){
+			UserCourseService.resignFromCourse(this._id);
 		}
 		else{
-			SignUpService.signUpToCourse(this._id);
+			UserCourseService.signUpToCourse(this._id);
 		}
 	}
 }
+

@@ -1,11 +1,11 @@
 Template.time.helpers({
 	time : function(){
-		return this.getHours() + ":" + this.getMinutes();
+		return DateTimeHelpers.time(this);
 	}
 });
 
 Template.date.helpers({
-	date : function(){
-		return this.toDateString();
+	date : function() {
+		return DateTimeHelpers.date(this);
 	}
 });

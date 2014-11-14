@@ -1,13 +1,15 @@
-Service = {
-	addCourseAndSessions : addCourseAndSessions,
-	getCourses : getCourses,
-	getSessions : getSessions
-};
-
-SignUpService = {
+UserCourseService = {
 	isSignedUp : isSignedUp,
 	signUpToCourse : signUpToCourse,
-	resignFromCourse : resignFromCourse
+	resignFromCourse : resignFromCourse,
+	countCoursesSignedUpTo :  function(){
+		if (!Meteor.user() || !Meteor.user().profile.takingCourseIds)
+			return 0;
+
+		return Meteor.user().profile.takingCourseIds.length;
+	},
+	getCoursesSignedUpTo : getCoursesSignedUpTo,
+	getSessionsSignedUpTo : getSessionsSignedUpTo
 }
 
 function isSignedUp(courseId){
@@ -60,50 +62,29 @@ function resignFromCourse(courseId){
 		});
 }
 
-function getCourses(){
-	return Collections.Courses.find();
+function getCoursesSignedUpTo(){
+	if (!Meteor.user() || !Meteor.user().profile.takingCourseIds)
+		return [];
+
+	return Collections.Courses.find({ _id: {$in: Meteor.user().profile.takingCourseIds }});
 }
 
-function getSessions(sessionIds){
-	return Collections.Sessions.find(
-		{
-			_id : {$in: sessionIds}
-		},
-		{ sort: {startsAt: 1} }
-	);
-};
+function getSessionsSignedUpTo(){
+	var coursesSignedUpTo = getCoursesSignedUpTo();
+	if (coursesSignedUpTo instanceof Array)
+		return coursesSignedUpTo;
 
-function addCourseAndSessions(courseDetails, sessions){
-	var promise = Q.fcall(function(){
-		return {
-			details : courseDetails,
-			sessionIds : []
-		};
-	});
+	var sessionsWithCourseName = _.flatten(
+		coursesSignedUpTo.map(function(course) { 
+			var sessions = Collections.Sessions.find({ _id: {$in: course.sessionIds }});
 
-	var promise = insertSessions(promise, sessions)
-		.then(function(course){
-			return Collections.Courses.q.insert(course);
-		});
-
-	return promise;
-}
-
-
-function insertSessions(promise, sessions){
-	var promisesChained = _.reduce(
-		sessions, 
-		function(promiseChain, session){
-			return promiseChain.then(function(course){
-				var addSessionIdToCourse = function(id){
-					course.sessionIds.push(id);
-					return course;
-				};
-				return Collections.Sessions.q.insert(session, addSessionIdToCourse);
-			})
-		}, 
-		promise
+			return sessions.map(function(session){
+				session.courseName = course.details.title;
+				return session;
+			});
+		})
 	);
 
-	return promisesChained;
+	console.log(sessionsWithCourseName);
+	return _.sortBy(sessionsWithCourseName, "startsAt");
 }

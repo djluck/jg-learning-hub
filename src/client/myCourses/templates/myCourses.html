@@ -1,0 +1,26 @@
+<template name="myCourses">
+	<div class="row">
+		<div class="pull-right">
+			<p>
+				<div class="btn-toolbar" role="toolbar">
+					<!-- Single button -->
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-list-alt"></span> View <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							{{#each viewOptions}}
+							<li class="{{#if isActive}}active{{/if}}">
+								<a class="{{#if isActive}}active{{/if}}" href="{{url}}">
+									{{name}}
+								</a>
+							</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			</p>
+		</div>
+	</div>
+	{{> yield "courseView"}}
+</template>

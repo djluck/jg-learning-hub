@@ -1,0 +1,45 @@
+<head>
+	<title>src</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<template name="defaultLayout">
+	<div class="container">
+		{{> nav}}
+		{{> yield}}
+	</div>
+</template>
+
+
+
+<template name="sortBy">
+	<div class="row">
+		<div class="pull-right">
+		<p>
+		<div class="btn-toolbar" role="toolbar">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-filter"></span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#">Hide courses not subscribed to</a></li>
+					<li><a href="#">Hide full courses</a></li>
+				</ul>
+			</div>
+			<!-- Single button -->
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-sort"></span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li class="active"><a class="active" href="#"><span class="glyphicon glyphicon-sort-by-attributes-alt"></span> Created At </a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-sort-by-attributes-alt"></span> Starts At </a></li>
+				</ul>
+			</div>
+		</div>
+</p>
+</div>
+	</div>
+</template>

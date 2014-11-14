@@ -64,8 +64,9 @@ Schemas.CourseDetails = new SimpleSchema({
     dateCreated: {
         type: Date,
         autoValue: function(){
+            console.log(this);
             if (this.isInsert)
-                return DefaultValues.currentDate;
+                return DefaultValues.currentDate();
             else
                 this.unset();
         },
