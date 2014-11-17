@@ -1,5 +1,15 @@
 var formId = "addCourse";
 
+Template.addCourse.rendered = function(){
+	console.log(this.data.course);
+	if (this.data.course){
+		Sessions.initSessions(CourseService.getSessions(this.data.course.sessionIds));
+	}
+	else{
+		Sessions.initSessions();
+	}
+}
+
 Template.addCourse.helpers({
 	courseFormats : function(){
 		return _.map(
@@ -12,7 +22,8 @@ Template.addCourse.helpers({
 			}
 		);
 	},
-	formId : formId
+	formId : formId,
+	sessions : Sessions.getSessions
 });
 
 Template.addCourse.events = {
@@ -20,10 +31,13 @@ Template.addCourse.events = {
 		if (!validateCourseAndSessions()){
 			return false;
 		}
-
+		
 		createCourseAndSession();
 
 		return true;
+	},
+	"click #btnAddSession" : function(event, template){
+		Sessions.addNewEmptySession();
 	}
 }
 

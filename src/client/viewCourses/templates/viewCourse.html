@@ -48,6 +48,12 @@
 					<span class="glyphicon  {{#if isSignedUp}} glyphicon-remove {{else}} glyphicon-ok {{/if}}"> </span>
 					{{#if isSignedUp}}Resign{{else}}Sign Up{{/if}}
 				</button>
+				{{#if canEdit}}
+				<button class="btn btn-warning btn-edit" role="button">
+					<span class="glyphicon glyphicon-edit"> </span>
+					Edit
+				</button>
+				{{/if}}
 			</p>
 			<div id="sessionDetails_{{_id}}" class="collapse">
 				{{> viewSessions sessions=getSessions}}
