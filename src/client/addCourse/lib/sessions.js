@@ -19,14 +19,24 @@ function addNewEmptySession(){
 	Session.set(sessionsKey, sessions);
 }
 
-function initSessions(){
-	var sessions = Session.get(sessionsKey);
-	if (!sessions){
+function initSessions(sessionsToInitWith){
+	console.log(sessionsToInitWith);
+	var dict = {};
+	if (!sessionsToInitWith){
 		var defaultSession = createNextSession();
-		var dict = {};
 		dict[defaultSession.tempId] = defaultSession;
 		Session.set(sessionsKey, dict);
 	}
+	else {
+		var initdSessions = sessionsToInitWith.forEach(function(session){
+			var tempSession = createNextSession();
+			tempSession = _.extend(tempSession, session);
+			dict[tempSession.tempId] = tempSession;
+			Session.set(sessionsKey, dict);
+		});
+	}
+
+	
 }
 
 function createNextSession(){

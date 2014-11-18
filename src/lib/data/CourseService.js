@@ -1,6 +1,7 @@
 CourseService = {
 	addCourseAndSessions : addCourseAndSessions,
 	getCourses : getCourses,
+	getCourse : getCourse,
 	getCourseCount : getCourseCount,
 	getSessions : getSessions
 };
@@ -8,6 +9,10 @@ CourseService = {
 
 function getCourseCount(){
 	return Collections.Courses.find().count();
+}
+
+function getCourse(courseId){
+	return Collections.Courses.findOne(courseId);
 }
 
 function getCourses(){

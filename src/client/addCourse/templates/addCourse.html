@@ -9,8 +9,23 @@
 			{{>afQuickField name='numberOfSpaces' }}
 			{{>afQuickField name='formatType' options=courseFormats firstOption="Please Select.." }}
 		{{/autoForm}}
-
-		{{>addSessions}}
+		<h2>Session details <small>When will it happen?</small></h2>
+		<div class="container">
+			{{#each sessions}}
+				{{> sessionDetails}}
+			{{/each}}
+			
+			<div class="row">
+				<div class="col-md-11">
+				</div>
+				<div class="col-md-1">
+					<p>
+						<button id="btnAddSession" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+					</p>
+				</div>
+			</div>
+		</div>
+		
 		<p>
 			<button id="btnAddCourse" class="center-block btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"> </span> Submit Course</button>
 		</p>
