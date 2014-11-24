@@ -1,5 +1,3 @@
-//need a type for departments + format + session
-
 initCollectionAndSchema("Departments", {
     name : {
         type: String,
@@ -21,7 +19,7 @@ initCollectionAndSchema("Locations", {
 });
 
 
-initCollectionAndSchema("Sessions", {
+Schemas.Sessions = new SimpleSchema({
     startsAt: {
         type: Date
     },
@@ -31,7 +29,7 @@ initCollectionAndSchema("Sessions", {
     durationMinutes: {
         type: Number,
         min: 1,
-        max: 900
+        max: 900 //lulz
     }
 });
 
@@ -60,15 +58,53 @@ Schemas.CourseDetails = new SimpleSchema({
     formatType: {
         type: String,
         min: 1
+    }
+});
+
+initCollectionAndSchema("Courses", {
+    _id: {
+        type: String,
+        optional: true
+    },
+    details: {
+        type: Schemas.CourseDetails
+    },
+    createdByUser: {
+        type: String,
+        autoValue: function(){
+            if (this.isInsert){
+                return DefaultValues.userId();
+            }
+            else {
+                this.unset();
+            }
+        },
+        denyUpdate: true
+    },
+    signedUpUserIds: {
+        type: [String],
+        autoValue: function(){
+            if (this.isInsert) {
+                return [];
+            }
+            else{
+                this.unset();
+            }
+        }
+    },
+    sessions: {
+        type: [Schemas.Sessions],
+        min: 1
     },
     dateCreated: {
         type: Date,
-        autoValue: function(){
-            console.log(this);
-            if (this.isInsert)
+        autoValue: function(){;
+            if (this.isInsert){
                 return DefaultValues.currentDate();
-            else
+            }
+            else{
                 this.unset();
+            }
         },
         denyUpdate: true
     },
@@ -77,44 +113,3 @@ Schemas.CourseDetails = new SimpleSchema({
         autoValue: DefaultValues.currentDate
     }
 });
-
-initCollectionAndSchema("Courses", {
-    details: {
-        type: Schemas.CourseDetails,
-        min: 1
-    },
-    createdByUser: {
-        type: String,
-        autoValue: function(){
-            if (this.isInsert)
-                return DefaultValues.userId;
-            else
-                this.unset();
-        },
-        denyUpdate: true
-    },
-    signedUpUserIds: {
-        type: [String],
-        autoValue: function(){
-            return [];
-        }
-    },
-    sessionIds: {
-        type: [String]
-    }
-});
-
-// Collections.Courses.addPrediction = function(prediction){
-// 	Schemas.Predictions.clean(prediction);
-// 	Collections.Predictions.insert(prediction, handleError);
-// };
-
-// Collections.Predictions.orderedByNewest = function(){
-// 	return _.map(
-// 		Collections.Predictions.find({}, {sort: { dateCreated : -1 }}).fetch(),
-// 		function(p){
-// 			p.user = Meteor.users.findOne({_id: p.userId});
-// 			return p;
-// 		}
-// 	);
-// };

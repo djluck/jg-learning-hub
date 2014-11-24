@@ -5,19 +5,19 @@ function definePromiseMutators(collection){
 	collection.q = {
 		insert : function(doc, transformResultFn){
 			return deferUntilFinished(
-				collection.insert.bind(collection, doc), 
+				collection.insert.bind(collection, doc),
 				transformResultFn
 			);
 		},
 		update : function(selector, modifier, options, transformResultFn){
 			return deferUntilFinished(
-				collection.update.bind(collection, selector, modifier, options), 
+				collection.update.bind(collection, selector, modifier, options),
 				transformResultFn
 			);
 		},
 		remove : function(selector, transformResultFn){
 			return deferUntilFinished(
-				collection.remove.bind(collection, selector), 
+				collection.remove.bind(collection, selector),
 				transformResultFn
 			);
 		}
@@ -29,8 +29,9 @@ function deferUntilFinished(mongoFn, transformResultFn){
 
 	mongoFn(function(error, id){
 		if (error) {
+			console.log("MongoDB operation failed: " + error);
 	        deferred.reject(new Error(error));
-	    } 
+	    }
 	    else {
 	    	var resolvedValue = id;
 	    	if (transformResultFn !== undefined){

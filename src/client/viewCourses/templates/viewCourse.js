@@ -11,12 +11,8 @@ Template.viewCourse.helpers({
 	isSignedUp: function(){
 		return UserCourseService.isSignedUp(this._id);
 	},
-	getSessions: function(){
-		return CourseService.getSessions(this.sessionIds);
-	},
 	canEdit: function(){
-		//return this.createdByUser === Meteor.userId();
-		return true;
+		return this.createdByUser === Meteor.userId();
 	}
 });
 
@@ -33,4 +29,3 @@ Template.viewCourse.events = {
 		Router.go("/edit-course/" + this._id);
 	}
 }
-

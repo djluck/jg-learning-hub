@@ -43,6 +43,86 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/client/routes.js",
+			"settings":
+			{
+				"buffer_size": 767,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/client/addCourse/templates/addCourse.html",
+			"settings":
+			{
+				"buffer_size": 1133,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/client/viewCourses/templates/viewCourse.js",
+			"settings":
+			{
+				"buffer_size": 811,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/client/addCourse/templates/addCourse.js",
+			"settings":
+			{
+				"buffer_size": 1382,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/client/addCourse/lib/sessions.js",
+			"settings":
+			{
+				"buffer_size": 2298,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/lib/data/lib/lib.js",
+			"settings":
+			{
+				"buffer_size": 908,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/lib/data/UserCourseService.js",
+			"settings":
+			{
+				"buffer_size": 2358,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/lib/data/main.js",
+			"settings":
+			{
+				"buffer_size": 1074,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/lib/data/CourseService.js",
+			"settings":
+			{
+				"buffer_size": 1348,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/lib/data/lib/schemas.js",
+			"settings":
+			{
+				"buffer_size": 2037,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -77,9 +157,12 @@
 	[
 		"//192.168.4.42/workspace/jg-learning-hub/src",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/lib",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/templates",
 		"//192.168.4.42/workspace/jg-learning-hub/src/lib",
 		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data",
@@ -88,15 +171,34 @@
 	],
 	"file_history":
 	[
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/server/app/lib/data/lib/lib.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/addSessions.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/addSessions.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/server/packages/iron_dynamic-template.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/server/packages/iron_middleware-stack.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/.finished-upgraders",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/server/packages/insecure.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/.meteor/local/build/programs/web.browser/app/client/addCourse/lib/sessions.js",
+		"/D/aspnetoptimization/Local.testsettings",
+		"/D/PerformanceTests/Tests/MemcacheSinglePageLoadTest.jmx",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/CourseService.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/UserCourseService.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/addCourse.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/lib/schemas.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/SessionService.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/viewSessions.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/templates/viewCourse.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/templates/viewCourse.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/viewSessions.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/nav.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/nav.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/myCourses.html",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/myCourses.js",
+		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/viewMyCourses.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/src.html",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/routes.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/nav.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/myCourses.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/viewSessions.html",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/templates/viewCourse.html",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/templates/viewSessions.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/main.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/SessionService.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/lib/spacebarHelpers.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/lib/DateTimeHelpers.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/templates/viewMySessions.html",
@@ -108,11 +210,8 @@
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/viewMyCourses.html",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/myCourses/myCourses.html",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/lib/DateTimeHelpers",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/CourseService.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/client/addCourse/templates/addCourse.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewCourses.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewSessionDetails.js",
-		"//192.168.4.42/workspace/jg-learning-hub/src/lib/data/UserCourseService.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/signUpProgress.js",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/nav.html",
 		"//192.168.4.42/workspace/jg-learning-hub/src/client/viewCourses/viewCourse.js",
@@ -199,27 +298,11 @@
 		"/C/workspace/fail-rickets-fail/src/client/index.html",
 		"/C/workspace/fail-rickets-fail/src/client/views/viewFails.html",
 		"/C/workspace/fail-rickets-fail/src/client/index.js",
-		"/C/workspace/fail-rickets-fail/src/client/views/viewFails.js",
-		"/C/workspace/fail-rickets-fail/src/client/style.css",
-		"/C/workspace/fail-rickets-fail/src/models/comments.js",
-		"/C/workspace/fail-rickets-fail/src/client/views/viewSingleFail.js",
-		"/C/workspace/fail-rickets-fail/src/client/views/currentPage",
-		"/C/workspace/fail-rickets-fail/src/client/views/currentPage.js",
-		"/C/workspace/fail-rickets-fail/src/talk.txt",
-		"/C/workspace/fail-rickets-fail/src/server/publications.js",
-		"/C/workspace/fail-rickets-fail/src/client/views/add-fail.html",
-		"/C/workspace/fail-rickets-fail/src/client/views/add-fail.js",
-		"/C/workspace/fail-rickets-fail/src/client/views/fail-rickets-fail.js",
-		"/C/workspace/fail-rickets-fail/src/client/menu.js",
-		"/C/workspace/fail-rickets-fail/src/client/views/index.html",
-		"/C/dmstream/2014-03-04/4UQA82BMYQ8920140304112032149dotmailercom.eml",
-		"/C/dmstream/2014-03-04/4UQF52BMYP8020140304112032079dotmailercom.eml",
-		"/C/workspace/fail-rickets-fail/fail-rickets-fail.html",
-		"/C/workspace/fail-rickets-fail/fail-rickets-fail.css"
+		"/C/workspace/fail-rickets-fail/src/client/views/viewFails.js"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -307,8 +390,300 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/client/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								355,
+								355
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/client/addCourse/templates/addCourse.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								856,
+								856
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/client/viewCourses/templates/viewCourse.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 811,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								413,
+								413
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/client/addCourse/templates/addCourse.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1091,
+								1091
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/client/addCourse/lib/sessions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								957,
+								957
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/lib/data/lib/lib.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								497,
+								497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/lib/data/UserCourseService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								808,
+								808
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/lib/data/main.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/lib/data/CourseService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								147
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/lib/data/lib/schemas.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2037,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								266,
+								266
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1728.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],

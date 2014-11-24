@@ -22,30 +22,30 @@
 					{{>label label="Finance Team" icon="briefcase"}}
 					{{>label label=details.formatType icon="bullhorn"}}
 					{{>label label="James Luck" icon="user"}}
-					{{#if isSignedUp}} 
+					{{#if isSignedUp}}
 						<span class="label label-success">
-							<span class="glyphicon glyphicon-ok"> </span> 
-							Subscribed 
-							
+							<span class="glyphicon glyphicon-ok"> </span>
+							Subscribed
+
 						</span>
 					{{/if}}
-	
-						
-			
+
+
+
 
 					<!--
 					<div class="text-right">
-						<small class="small"> James Luck / Ann Other</small>	
+						<small class="small"> James Luck / Ann Other</small>
 						<span class="glyphicon glyphicon-user"></span>
 
 					</div>-->
 				</div>
-			</div>			
+			</div>
 			<p>
 				<a href="#" class="btn btn-default" role="button" data-toggle="collapse" data-target="#sessionDetails_{{_id}}" aria-expanded="false" aria-controls="sessionDetails_{{_id}}">
 					<span class="glyphicon glyphicon-calendar"> </span>
 					Times / Places
-				</a> 
+				</a>
 				<button class="btn btn-primary btn-sign-up {{#if isSignedUp}}btn-danger{{/if}}" role="button" disabled="{{#if noUser}}disabled{{/if}}" >
 					<span class="glyphicon  {{#if isSignedUp}} glyphicon-remove {{else}} glyphicon-ok {{/if}}"> </span>
 					{{#if isSignedUp}}Resign{{else}}Sign Up{{/if}}
@@ -58,9 +58,9 @@
 				{{/if}}
 			</p>
 			<div id="sessionDetails_{{_id}}" class="collapse">
-				{{> viewSessions sessions=getSessions}}
+				{{> viewSessions sessions=sessions}}
 			</div>
-			
+
 		</div>
 	</div>
 </template>

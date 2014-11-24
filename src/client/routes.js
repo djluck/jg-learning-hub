@@ -18,7 +18,7 @@ Router.route("/my-courses", function(){
 Router.route("/my-sessions", function(){
 	this.render("myCourses");
 	this.render('viewSessions', {
-		to: 'courseView', 
+		to: 'courseView',
 		data: function(){
 			return {
 				showCourseName : true,
@@ -29,11 +29,15 @@ Router.route("/my-sessions", function(){
 });
 
 Router.route("/edit-course/:_id", function(){
-	var course = CourseService.getCourse(this.params._id);
-	console.log(course);
 	this.render("addCourse",  {
-		data: {
-			course : course
-		}
+		data: function(){
+			return {
+				course : CourseService.getCourse(this.params._id)
+			}
+		},
+		waitOn: function () {
+			// return one handle, a function, or an array
+			return Meteor.subscribe('Courses', this.params._id);
+		},
 	});
 });

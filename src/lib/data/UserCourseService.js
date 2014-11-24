@@ -32,7 +32,7 @@ function signUpToCourse(courseId){
 	//validate: false, removeEmptyStrings: false, filter: false, autoConvert: false,
 	var updateCoursePromise = Collections.Courses.q.update(
 		courseId,
-		{  $push : { "signedUpUserIds" : Meteor.userId() } }
+		{ $push : { "signedUpUserIds" : Meteor.userId() } }
 	);
 
 	return Q.all([userUpdatePromise, updateCoursePromise])
@@ -75,7 +75,7 @@ function getSessionsSignedUpTo(){
 		return coursesSignedUpTo;
 
 	var sessionsWithCourseName = _.flatten(
-		coursesSignedUpTo.map(function(course) { 
+		coursesSignedUpTo.map(function(course) {
 			var sessions = Collections.Sessions.find({ _id: {$in: course.sessionIds }});
 
 			return sessions.map(function(session){

@@ -20,15 +20,16 @@ function addNewEmptySession(){
 }
 
 function initSessions(sessionsToInitWith){
-	console.log(sessionsToInitWith);
 	var dict = {};
+	Session.set(sessionsKey, dict);
+
 	if (!sessionsToInitWith){
 		var defaultSession = createNextSession();
 		dict[defaultSession.tempId] = defaultSession;
 		Session.set(sessionsKey, dict);
 	}
 	else {
-		var initdSessions = sessionsToInitWith.forEach(function(session){
+		sessionsToInitWith.forEach(function(session){
 			var tempSession = createNextSession();
 			tempSession = _.extend(tempSession, session);
 			dict[tempSession.tempId] = tempSession;
@@ -52,7 +53,11 @@ function createNextSession(){
 }
 
 function getSessions(){
-	var idsAndSessions = _.pairs(Session.get(sessionsKey));
+	var sessions = Session.get(sessionsKey);
+	if (!sessions)
+		return [];
+
+	var idsAndSessions = _.pairs(sessions);
 	var sorted = _.sortBy(idsAndSessions, function (kv){
 		return parseInt(kv[0]);
 	});
