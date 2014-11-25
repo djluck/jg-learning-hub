@@ -21,7 +21,10 @@ initCollectionAndSchema("Locations", {
 
 Schemas.Sessions = new SimpleSchema({
     startsAt: {
-        type: Date
+        type: Date,
+        min: function(){
+            return new Date();
+        }
     },
     locationName: {
         type: String
@@ -71,45 +74,43 @@ initCollectionAndSchema("Courses", {
     },
     createdByUser: {
         type: String,
-        autoValue: function(){
-            if (this.isInsert){
-                return DefaultValues.userId();
-            }
-            else {
-                this.unset();
-            }
-        },
+        defaultValue: DefaultValues.userId,
         denyUpdate: true
     },
     signedUpUserIds: {
         type: [String],
-        autoValue: function(){
-            if (this.isInsert) {
-                return [];
-            }
-            else{
-                this.unset();
-            }
+        defaultValue: function(){
+            return [];
         }
     },
     sessions: {
         type: [Schemas.Sessions],
-        min: 1
+        min: 1,
+        custom: function(){
+            //return true if all sessions do not overlap
+            return true;
+        }
     },
     dateCreated: {
         type: Date,
-        autoValue: function(){;
-            if (this.isInsert){
-                return DefaultValues.currentDate();
-            }
-            else{
-                this.unset();
-            }
-        },
+        defaultValue: DefaultValues.currentDate,
         denyUpdate: true
     },
     dateModified: {
         type: Date,
         autoValue: DefaultValues.currentDate
+    },
+    expiresAt: {
+        type: Date,
+        autoValue: function(){
+            var sessions = this.field("sessions");
+            var lastSession = _.chain(sessions)
+                .sortBy(function(s){ return s.startsAt})
+                .last();
+
+            var expiresAt = new Date(lastSession.startsAt);
+            expiresAt.setMinutes(expiresAt.getMinutes() + lastSession.durationMinutes);
+            return expiresAt;
+        }
     }
 });
