@@ -1,4 +1,4 @@
-CourseService = {
+CourseDataService = {
 	createCourse : createCourse,
 	updateCourse : updateCourse,
 	getCourses : getCourses,

@@ -4,7 +4,7 @@ Schemas = {};
 initCollectionAndSchema = function (collectionName, schema){
 	Schemas[collectionName] = new SimpleSchema(schema);
 	Collections[collectionName] = new Meteor.Collection(collectionName);
-	//Collections[collectionName].attachSchema(Schemas[collectionName]);
+	Collections[collectionName].attachSchema(Schemas[collectionName]);
 }
 
 handleError = function(err){

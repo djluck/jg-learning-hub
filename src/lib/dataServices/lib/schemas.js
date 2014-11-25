@@ -33,6 +33,16 @@ Schemas.Sessions = new SimpleSchema({
         type: Number,
         min: 1,
         max: 900 //lulz
+    },
+    finishesAt: {
+        type: Date,
+        autoValue: function(){
+            var startsAt = new Date(this.siblingField("startsAt").value);
+            var durationMinutes = this.siblingField("durationMinutes").value;
+            startsAt.setMinutes(startsAt.getMinutes() + durationMinutes);
+
+            return startsAt;
+        }
     }
 });
 
@@ -74,13 +84,23 @@ initCollectionAndSchema("Courses", {
     },
     createdByUser: {
         type: String,
-        defaultValue: DefaultValues.userId,
+        autoValue: function(){
+            if (this.isInsert){
+                return Meteor.userId();
+            }
+            else{
+                this.unset();
+            }
+        },
         denyUpdate: true
     },
     signedUpUserIds: {
         type: [String],
-        defaultValue: function(){
-            return [];
+        autoValue: function(){
+            if (this.isInsert)
+                return [];
+            else
+                this.unset();
         }
     },
     sessions: {
@@ -93,7 +113,12 @@ initCollectionAndSchema("Courses", {
     },
     dateCreated: {
         type: Date,
-        defaultValue: DefaultValues.currentDate,
+        autoValue: function(){
+            if (this.isInsert)
+                return new Date();
+            else
+                this.unset();
+        },
         denyUpdate: true
     },
     dateModified: {
@@ -103,11 +128,12 @@ initCollectionAndSchema("Courses", {
     expiresAt: {
         type: Date,
         autoValue: function(){
-            var sessions = this.field("sessions");
+            var sessions = this.field("sessions").value;
             var lastSession = _.chain(sessions)
                 .sortBy(function(s){ return s.startsAt})
                 .last();
-
+            console.log("FINISHES AT");
+            console.log(sessions)
             var expiresAt = new Date(lastSession.startsAt);
             expiresAt.setMinutes(expiresAt.getMinutes() + lastSession.durationMinutes);
             return expiresAt;

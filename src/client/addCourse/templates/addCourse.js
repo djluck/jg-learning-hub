@@ -61,12 +61,9 @@ function validateCourseDetailsAndSessions(){
 function createCourse(){
 	var courseDetails = AutoForm.getFormValues(formId).insertDoc;
 	var sessions = Sessions.getSessionsReadyForStorage();
-	var course = {
-		details : courseDetails,
-		sessions : sessions
-	}
 
-	CourseService.createCourse(course)
+	CourseDataService
+		.createCourse(courseDetails, sessions)
 		.then(function(course){
 		 	Router.go('/');
 		})
@@ -75,14 +72,10 @@ function createCourse(){
 
 function updateCourse(course){
 	var courseDetails = AutoForm.getFormValues(formId).insertDoc;
-	console.log(AutoForm.getFormValues(formId));
 	var sessions = Sessions.getSessionsReadyForStorage();
 
-	course.sessions = sessions;
-	course.details = courseDetails;
-	console.log("UPDATING");
-	console.log(course);
-	CourseService.updateCourse(course)
+	CourseDataService
+		.updateCourse(course._id, courseDetails, sessions)
 		.then(function(course){
 			Router.go('/');
 		})

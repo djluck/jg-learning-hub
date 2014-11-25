@@ -1,4 +1,4 @@
-UserCourseService = {
+UserCourseDataService = {
 	isSignedUp : isSignedUp,
 	signUpToCourse : signUpToCourse,
 	resignFromCourse : resignFromCourse,
@@ -35,10 +35,7 @@ function signUpToCourse(courseId){
 		{ $push : { "signedUpUserIds" : Meteor.userId() } }
 	);
 
-	return Q.all([userUpdatePromise, updateCoursePromise])
-		.fail(function (error) {
-	     	console.log(error);
-		});
+	return Promises.waitAll([userUpdatePromise, updateCoursePromise]);
 }
 
 function resignFromCourse(courseId){
@@ -56,10 +53,7 @@ function resignFromCourse(courseId){
 		{ $pull : { "signedUpUserIds" : Meteor.userId() } }
 	);
 
-	return Q.all([userUpdatePromise, updateCoursePromise])
-		.fail(function (error) {
-	     	console.log(error);
-		});
+	return Promises.waitAll([userUpdatePromise, updateCoursePromise]);
 }
 
 function getCoursesSignedUpTo(){

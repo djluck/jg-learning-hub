@@ -22,7 +22,7 @@ Router.route("/my-sessions", function(){
 		data: function(){
 			return {
 				showCourseName : true,
-				sessions : UserCourseService.getSessionsSignedUpTo()
+				sessions : UserCourseDataService.getSessionsSignedUpTo()
 			};
 	 	}
  	});
@@ -32,7 +32,7 @@ Router.route("/edit-course/:_id", function(){
 	this.render("addCourse",  {
 		data: function(){
 			return {
-				course : CourseService.getCourse(this.params._id)
+				course : CourseDataService.getCourse(this.params._id)
 			}
 		},
 		waitOn: function () {

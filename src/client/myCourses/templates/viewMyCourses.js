@@ -1,5 +1,5 @@
 Template.viewMyCourses.helpers({
-	courses : UserCourseService.getCoursesSignedUpTo,
+	courses : UserCourseDataService.getCoursesSignedUpTo,
 	getNextSessionDateForCourse : function(){
 		var nextSession = _.chain(this.sessions)
 			.sortBy(function(){
