@@ -79,6 +79,15 @@ initCollectionAndSchema("Courses", {
         type: String,
         optional: true
     },
+    approved: {
+        type: Boolean,
+        autoValue: function(){
+            if (!this.isSet && this.isInsert){
+                console.log("Setting default for approved");
+                return false;
+            }
+        }
+    },
     details: {
         type: Schemas.CourseDetails
     },
@@ -86,7 +95,8 @@ initCollectionAndSchema("Courses", {
         type: String,
         autoValue: function(){
             if (this.isInsert){
-                return Meteor.userId();
+                if (!this.isSet)
+                    return Meteor.userId();
             }
             else{
                 this.unset();
@@ -97,7 +107,7 @@ initCollectionAndSchema("Courses", {
     signedUpUserIds: {
         type: [String],
         autoValue: function(){
-            if (this.isInsert)
+            if (!this.isSet && this.isInsert)
                 return [];
             else
                 this.unset();
@@ -125,17 +135,31 @@ initCollectionAndSchema("Courses", {
         type: Date,
         autoValue: DefaultValues.currentDate
     },
+    startsAt: {
+        type: Date,
+        autoValue: function(){
+            var sessions = this.field("sessions").value;
+            var firstSession = _.chain(sessions)
+                .sortBy(function(s){ return s.startsAt})
+                .first()
+                .value();
+
+            return firstSession.startsAt;
+        }
+    },
     expiresAt: {
         type: Date,
         autoValue: function(){
             var sessions = this.field("sessions").value;
             var lastSession = _.chain(sessions)
                 .sortBy(function(s){ return s.startsAt})
-                .last();
-            console.log("FINISHES AT");
-            console.log(sessions)
-            var expiresAt = new Date(lastSession.startsAt);
-            expiresAt.setMinutes(expiresAt.getMinutes() + lastSession.durationMinutes);
+                .last()
+                .value();
+
+            var expiresAt = moment(lastSession.startsAt)
+                .add(lastSession.durationMinutes, "minutes")
+                .toDate();
+
             return expiresAt;
         }
     }

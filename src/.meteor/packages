@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 mizzao:bootstrap-3
 accounts-password
@@ -13,4 +12,5 @@ aldeed:collection2
 aldeed:autoform
 iron:router
 mrt:q
-
+mrt:moment
+alanning:roles

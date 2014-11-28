@@ -1,3 +1,4 @@
 //setup promises on all collections
-_.each(Collections, Promises.setupPromises);
-Promises.setupPromises(Meteor.users);
+_.each(Collections, Promises.setupPromisesOnMongoCollection);
+Promises.setupPromisesOnMongoCollection(Meteor.users);
+Promises.setupPromisesOnAccounts();

@@ -3,7 +3,7 @@ UserCourseDataService = {
 	signUpToCourse : signUpToCourse,
 	resignFromCourse : resignFromCourse,
 	countCoursesSignedUpTo :  function(){
-		if (!Meteor.user() || !Meteor.user().profile.takingCourseIds)
+		if (!Meteor.user() || !Meteor.user().profile || !Meteor.user().profile.takingCourseIds)
 			return 0;
 
 		return Meteor.user().profile.takingCourseIds.length;
@@ -22,7 +22,7 @@ function isSignedUp(courseId){
 
 function signUpToCourse(courseId){
 	if (isSignedUp(courseId)){
-		return ErrorPromise("User is already signed up");
+		return Promises.errorPromise("User is already signed up");
 	}
 
 	var userUpdatePromise = Meteor.users.q.update(
@@ -40,7 +40,7 @@ function signUpToCourse(courseId){
 
 function resignFromCourse(courseId){
 	if (!isSignedUp(courseId)){
-		return ErrorPromise("User is not signed up to course");
+		return Promises.errorPromise("User is not signed up to course");
 	}
 
 	var userUpdatePromise = Meteor.users.q.update(

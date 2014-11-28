@@ -16,7 +16,10 @@ function getCourse(courseId){
 }
 
 function getCourses(){
-	return Collections.Courses.find();
+	return Collections.Courses.find(
+		{},
+		{ sort : { startsAt : 1 } }
+	);
 }
 
 function createCourse(details, sessions){
@@ -27,7 +30,6 @@ function createCourse(details, sessions){
 }
 
 function updateCourse(id, details, sessions){
-	console.log(sessions);
 	return Collections.Courses.q.update(
 		id,
 		{
