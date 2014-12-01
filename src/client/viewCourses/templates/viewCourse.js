@@ -27,5 +27,8 @@ Template.viewCourse.events = {
 	},
 	"click .btn-edit" : function(event, template){
 		Router.go("/edit-course/" + this._id);
+	},
+	"click .lnk-approve-course" : function(){
+		Dialogs.approveCourseDialog.show(this._id);
 	}
 }

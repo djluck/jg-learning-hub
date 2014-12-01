@@ -3,7 +3,8 @@ CourseDataService = {
 	updateCourse : updateCourse,
 	getCourses : getCourses,
 	getCourse : getCourse,
-	getCourseCount : getCourseCount
+	getCourseCount : getCourseCount,
+	approveCourse : approveCourse
 };
 
 
@@ -35,5 +36,12 @@ function updateCourse(id, details, sessions){
 		{
 			$set: { details : details,  sessions : sessions }
 		}
+	);
+}
+
+function approveCourse(id){
+	Collections.Courses.q.update(
+		id,
+		{ $set : { "approved" : true }}
 	);
 }
