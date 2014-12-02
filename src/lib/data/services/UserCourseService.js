@@ -36,7 +36,7 @@ function signUpToCourse(user, courseId){
 }
 
 function resignFromCourse(user, courseId){
-	if (!isSignedUp(courseId)){
+	if (!isSignedUp(user, courseId)){
 		return Promises.errorPromise("User is not signed up to course");
 	}
 

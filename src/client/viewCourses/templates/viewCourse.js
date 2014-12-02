@@ -1,25 +1,22 @@
 Template.viewCourse.helpers({
-	sessionIdentifiers : function(){
-		console.log(this.sessionIds);
-		return _.map(this.sessionIds, function(id){
-			return { id : id}
-		});
-	},
-	noUser: function(){
-		return Meteor.user() === null;
-	},
 	isSignedUp: function(){
 		return UserCourseDataService.isSignedUp(Meteor.user(), this._id);
 	},
 	canEdit: function(){
-		return this.createdByUser === Meteor.userId();
+		return this.createdByUser === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
+	},
+	canCourseBeSignedUpTo: function(){
+		return Rules.Courses.canCourseBeSignedUpTo(this);
+	},
+	courseIsFull: function(){
+		return Rules.Courses.isCourseFull(this);
 	}
 });
 
 Template.viewCourse.events = {
 	"click .btn-sign-up" : function(event, template){
 		if (UserCourseDataService.isSignedUp(Meteor.user(), this._id)){
-			UserCourseDataService.resignFromCourse(this._id);
+			UserCourseDataService.resignFromCourse(Meteor.user(), this._id);
 		}
 		else{
 			UserCourseDataService.signUpToCourse(Meteor.user(), this._id);

@@ -1,7 +1,11 @@
 <template name="signUpProgress">
 	<div class="progress">
-		<div class="progress-bar {{progressClass}}" role="progressbar" aria-valuenow="{{percentagePlacesFree}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentagePlacesFree}}%">
-			{{numberUsersSignedUp}} / {{details.numberOfSpaces}}
+		<div class="progress-bar {{progressClass}}" role="progressbar" aria-valuenow="{{percentagePlacesFree}}" aria-valuemin="5" aria-valuemax="100" style="width: {{percentagePlacesFree}}%">
+			{{#if isFull}}
+				FULL
+			{{else}}
+				{{numberUsersSignedUp}} / {{details.numberOfSpaces}}
+			{{/if}}
 		</div>
 	</div>
 </template>

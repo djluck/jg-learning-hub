@@ -5,6 +5,9 @@ Template.signUpProgress.helpers({
 	},
 	progressClass : function(){
 		return progressClass.apply(this);
+	},
+	isFull: function(){
+		return Rules.Courses.isCourseFull(this);
 	}
 })
 
@@ -13,6 +16,9 @@ function numberUsersSignedUp(){
 }
 
 var percentagePlacesFree = function(){
+	if (Rules.Courses.isCourseFull(this))
+		return 100; //return a full, red progress bar
+
 	var signedUp = numberUsersSignedUp.apply(this);
 	if (signedUp === 0)
 		return 100;
@@ -21,12 +27,14 @@ var percentagePlacesFree = function(){
 }
 
 var progressClass = function(){
+	if (Rules.Courses.isCourseFull(this))
+		return "progress-bar-danger";
+
 	var percentageFree = percentagePlacesFree.apply(this);
 
 	if (percentageFree > 50)
-		return "progress-bar-success";
-	else if (percentageFree > 0)
-		return "progress-bar-warning";
+		return "progress-bar-success progress-bar-striped";
 	else
-		return "progress-bar-danger";
+		return "progress-bar-warning progress-bar-striped";
+
 }
