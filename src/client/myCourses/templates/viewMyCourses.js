@@ -1,5 +1,7 @@
 Template.viewMyCourses.helpers({
-	courses : UserCourseDataService.getCoursesSignedUpTo,
+	courses : function(){
+		return UserCourseDataService.getCoursesSignedUpTo(Meteor.user())
+	},
 	getNextSessionDateForCourse : function(){
 		var nextSession = _.chain(this.sessions)
 			.sortBy(function(){
@@ -9,7 +11,7 @@ Template.viewMyCourses.helpers({
 				return this.startsAt > new Date();
 			})
 			.first();
-			
+
 		return DateTimeHelpers.dateAndTime(nextSession.startsAt);
 	}
 })

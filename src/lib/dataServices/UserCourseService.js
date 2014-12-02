@@ -2,65 +2,65 @@ UserCourseDataService = {
 	isSignedUp : isSignedUp,
 	signUpToCourse : signUpToCourse,
 	resignFromCourse : resignFromCourse,
-	countCoursesSignedUpTo :  function(){
-		if (!Meteor.user() || !Meteor.user().profile || !Meteor.user().profile.takingCourseIds)
+	countCoursesSignedUpTo :  function(user){
+		if (!user || !user.profile || !user.profile.takingCourseIds)
 			return 0;
 
-		return Meteor.user().profile.takingCourseIds.length;
+		return user.profile.takingCourseIds.length;
 	},
 	getCoursesSignedUpTo : getCoursesSignedUpTo,
 	getSessionsSignedUpTo : getSessionsSignedUpTo
 }
 
-function isSignedUp(courseId){
-	if (Meteor.userId() === null)
+function isSignedUp(user, courseId){
+	if (user === null || user.profile === undefined)
 		return false;
 
-	return _.contains(Meteor.user().profile.takingCourseIds, courseId);
+	return _.contains(user.profile.takingCourseIds, courseId);
 }
 
 
-function signUpToCourse(courseId){
-	if (isSignedUp(courseId)){
+function signUpToCourse(user, courseId){
+	if (isSignedUp(user, courseId)){
 		return Promises.errorPromise("User is already signed up");
 	}
 
 	var userUpdatePromise = Meteor.users.q.update(
-		Meteor.userId(),
+		user._id,
 		{ $push: { "profile.takingCourseIds" : courseId } }
 	);
 	//validate: false, removeEmptyStrings: false, filter: false, autoConvert: false,
 	var updateCoursePromise = Collections.Courses.q.update(
 		courseId,
-		{ $push : { "signedUpUserIds" : Meteor.userId() } }
+		{ $push : { "signedUpUserIds" : user._id } }
 	);
 
 	return Promises.waitAll([userUpdatePromise, updateCoursePromise]);
 }
 
-function resignFromCourse(courseId){
+function resignFromCourse(user, courseId){
 	if (!isSignedUp(courseId)){
 		return Promises.errorPromise("User is not signed up to course");
 	}
 
 	var userUpdatePromise = Meteor.users.q.update(
-		Meteor.userId(),
+		user._id,
 		{ $pull: { "profile.takingCourseIds" : courseId } }
 	);
 
 	var updateCoursePromise = Collections.Courses.q.update(
 		courseId,
-		{ $pull : { "signedUpUserIds" : Meteor.userId() } }
+		{ $pull : { "signedUpUserIds" : user._id } }
 	);
 
 	return Promises.waitAll([userUpdatePromise, updateCoursePromise]);
 }
 
-function getCoursesSignedUpTo(){
-	if (!Meteor.user() || !Meteor.user().profile.takingCourseIds)
+function getCoursesSignedUpTo(user){
+	if (!user || !user.profile.takingCourseIds)
 		return [];
 
-	return Collections.Courses.find({ _id: {$in: Meteor.user().profile.takingCourseIds }});
+	return Collections.Courses.find({ _id: {$in: user.profile.takingCourseIds }});
 }
 
 function getSessionsSignedUpTo(){
@@ -79,6 +79,5 @@ function getSessionsSignedUpTo(){
 		})
 	);
 
-	console.log(sessionsWithCourseName);
 	return _.sortBy(sessionsWithCourseName, "startsAt");
 }

@@ -109,8 +109,6 @@ initCollectionAndSchema("Courses", {
         autoValue: function(){
             if (!this.isSet && this.isInsert)
                 return [];
-            else
-                this.unset();
         }
     },
     sessions: {
@@ -138,8 +136,11 @@ initCollectionAndSchema("Courses", {
     startsAt: {
         type: Date,
         autoValue: function(){
-            var sessions = this.field("sessions").value;
-            var firstSession = _.chain(sessions)
+            var sessionsField = this.field("sessions");
+            if (!sessionsField.isSet)
+                return;
+
+            var firstSession = _.chain(sessionsField.value)
                 .sortBy(function(s){ return s.startsAt})
                 .first()
                 .value();
@@ -150,8 +151,11 @@ initCollectionAndSchema("Courses", {
     expiresAt: {
         type: Date,
         autoValue: function(){
-            var sessions = this.field("sessions").value;
-            var lastSession = _.chain(sessions)
+            var sessionsField = this.field("sessions");
+            if (!sessionsField.isSet)
+                return;
+                
+            var lastSession = _.chain(sessionsField.value)
                 .sortBy(function(s){ return s.startsAt})
                 .last()
                 .value();

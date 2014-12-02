@@ -22,7 +22,7 @@ Router.route("/my-sessions", function(){
 		data: function(){
 			return {
 				showCourseName : true,
-				sessions : UserCourseDataService.getSessionsSignedUpTo()
+				sessions : UserCourseDataService.getSessionsSignedUpTo(Meteor.user())
 			};
 	 	}
  	});

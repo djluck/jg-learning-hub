@@ -2,6 +2,7 @@ Meteor.startup(function(){
     addUsers();
     addData(BaseData);
     addData(TestData);
+    setupSubscriptions();
 })
 
 function addData(source){
@@ -38,4 +39,22 @@ function addIfEmpty(collection, toAdd){
             collection.insert(e, { validate: false }); //turn validation off so we can insert old courses, etc.
         });
     }
+}
+
+function setupSubscriptions(){
+    _.each(
+        Collections.Courses.find().fetch(),
+        function(course){
+            //sign up signed up user to this course
+            _.each(
+                course.signedUpUserIds,
+                function(userId){
+                    console.log("uid: " + userId + ", cid:" + course._id);
+                    var user = Meteor.users.findOne(userId);
+
+                    UserCourseDataService.signUpToCourse(user, course._id);
+                }
+            );
+        }
+    )
 }

@@ -1,6 +1,6 @@
 var links = [
-	{ 
-		name : "Available Courses", 
+	{
+		name : "Available Courses",
 		urls : ["/"],
 		isVisible : function(){
 			return true;
@@ -9,14 +9,14 @@ var links = [
 			return CourseDataService.getCourseCount();
 		}
 	},
-	{ 
-		name : "My Courses", 
+	{
+		name : "My Courses",
 		urls : ["/my-courses", "/my-sessions"], //we accept arrays so that multiple links can have a menu option marked as active
 		isVisible : function(){
 			return Meteor.userId() !== null;
 		},
 		badgeCount : function(){
-			return UserCourseDataService.countCoursesSignedUpTo();
+			return UserCourseDataService.countCoursesSignedUpTo(Meteor.user());
 		}
 	}
 ];
@@ -30,7 +30,7 @@ Template.nav.helpers({
 		return _.map(
 			visibleLinks,
 			function(link){
-				link.isActive = _.contains(link.urls, Router.current().route.path()); 
+				link.isActive = _.contains(link.urls, Router.current().route.path());
 				link.url = link.urls[0]; //render first URL as the main link
 				return link;
 			}
