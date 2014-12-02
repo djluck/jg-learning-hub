@@ -4,6 +4,14 @@
 			<div class="page-header" style="margin-top:0px">
 				<h3 style="margin-top:5px">{{details.title}}</h3>
 			</div>
+			{{#if isInRole "administrator"}}
+				{{#unless approved}}
+					<div class="alert alert-warning" role="alert">
+						<span class="glyphicon glyphicon-warning-sign"></span>
+						This course has not yet been approved. <a href="#" class="alert-link lnk-approve-course"> Approve it now</a>
+					</div>
+				{{/unless}}
+			{{/if}}
 			<div class="row">
 
 				<div class="col-md-9">
@@ -19,26 +27,14 @@
 				</div>
 				<div class="col-md-3">
 					{{> signUpProgress}}
-					{{>label label="Finance Team" icon="briefcase"}}
 					{{>label label=details.formatType icon="bullhorn"}}
-					{{>label label="James Luck" icon="user"}}
+					{{>label label=details.createdByUserName icon="user"}}
 					{{#if isSignedUp}}
 						<span class="label label-success">
 							<span class="glyphicon glyphicon-ok"> </span>
 							Subscribed
-
 						</span>
 					{{/if}}
-
-
-
-
-					<!--
-					<div class="text-right">
-						<small class="small"> James Luck / Ann Other</small>
-						<span class="glyphicon glyphicon-user"></span>
-
-					</div>-->
 				</div>
 			</div>
 			<p>
@@ -60,7 +56,6 @@
 			<div id="sessionDetails_{{_id}}" class="collapse">
 				{{> viewSessions sessions=sessions}}
 			</div>
-
 		</div>
 	</div>
 </template>

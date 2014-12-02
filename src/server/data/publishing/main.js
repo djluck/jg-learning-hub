@@ -26,5 +26,6 @@ function courseQuery(userId){
             { createdByUser : userId }
         ];
     }
+
     return query;
 }
