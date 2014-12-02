@@ -1,11 +1,14 @@
 TestData = {};
 
-//"Marketplace", "Debate"
+TestData.Courses = {
+    data : data,
+    after : setupSubscriptions
+}
 
 var locationName = "Marketplace"; //don't care about this yet,
 var formatType = "Debate";
 
-TestData.Courses = function(){
+function data(){
     var userEmailsToIds = {};
     Meteor.users.find().forEach(function(user){
         userEmailsToIds[user.emails[0].address] = user._id;
@@ -162,4 +165,22 @@ TestData.Courses = function(){
             ]
         }
     ];
+}
+
+function setupSubscriptions(){
+    console.log("Setting up subs");
+    _.each(
+        Collections.Courses.find().fetch(),
+        function(course){
+            //sign up signed up user to this course
+            _.each(
+                course.signedUpUserIds,
+                function(userId){
+                    console.log("uid: " + userId + ", cid:" + course._id);
+                    var user = Meteor.users.findOne(userId);
+                    Meteor.users.signUpUserToCourse(user, course._id);
+                }
+            );
+        }
+    )
 }

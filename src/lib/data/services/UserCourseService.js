@@ -25,11 +25,8 @@ function signUpToCourse(user, courseId){
 		return Promises.errorPromise("User is already signed up");
 	}
 
-	var userUpdatePromise = Meteor.users.q.update(
-		user._id,
-		{ $push: { "profile.takingCourseIds" : courseId } }
-	);
-	//validate: false, removeEmptyStrings: false, filter: false, autoConvert: false,
+	var userUpdatePromise = Meteor.users.signUpUserToCourse(user, courseId);
+
 	var updateCoursePromise = Collections.Courses.q.update(
 		courseId,
 		{ $push : { "signedUpUserIds" : user._id } }
@@ -43,10 +40,7 @@ function resignFromCourse(user, courseId){
 		return Promises.errorPromise("User is not signed up to course");
 	}
 
-	var userUpdatePromise = Meteor.users.q.update(
-		user._id,
-		{ $pull: { "profile.takingCourseIds" : courseId } }
-	);
+	var userUpdatePromise = Meteor.users.resignUserFromCourse(user, courseId);
 
 	var updateCoursePromise = Collections.Courses.q.update(
 		courseId,

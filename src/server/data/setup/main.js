@@ -2,7 +2,6 @@ Meteor.startup(function(){
     addUsers();
     addData(BaseData);
     addData(TestData);
-    setupSubscriptions();
 })
 
 function addData(source){
@@ -31,6 +30,12 @@ function addUsers(){
 
 function addIfEmpty(collection, toAdd){
     if (collection.find().count() === 0){
+        var after;
+
+        if (_.isObject(toAdd)){
+            after = toAdd.after;
+            toAdd = toAdd.data;
+        }
 
         if (_.isFunction(toAdd))
             toAdd = toAdd();
@@ -38,23 +43,8 @@ function addIfEmpty(collection, toAdd){
         _.each(toAdd, function(e){
             collection.insert(e, { validate: false }); //turn validation off so we can insert old courses, etc.
         });
+
+        if (!_.isUndefined(after))
+            after();
     }
-}
-
-function setupSubscriptions(){
-    _.each(
-        Collections.Courses.find().fetch(),
-        function(course){
-            //sign up signed up user to this course
-            _.each(
-                course.signedUpUserIds,
-                function(userId){
-                    console.log("uid: " + userId + ", cid:" + course._id);
-                    var user = Meteor.users.findOne(userId);
-
-                    UserCourseDataService.signUpToCourse(user, course._id);
-                }
-            );
-        }
-    )
 }
