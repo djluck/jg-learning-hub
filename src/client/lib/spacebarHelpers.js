@@ -1,11 +1,7 @@
-Template.time.helpers({
-	time : function(){
-		return DateTimeHelpers.time(this);
-	}
-});
 
-Template.date.helpers({
-	date : function() {
-		return DateTimeHelpers.date(this);
+
+Template.moment.helpers({
+	formattedDate : function() {
+		return moment(this.date).format(this.format);
 	}
 });

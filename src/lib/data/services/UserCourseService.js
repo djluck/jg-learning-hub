@@ -8,8 +8,7 @@ UserCourseDataService = {
 
 		return user.profile.takingCourseIds.length;
 	},
-	getCoursesSignedUpTo : getCoursesSignedUpTo,
-	getSessionsSignedUpTo : getSessionsSignedUpTo
+	getCoursesSignedUpTo : getCoursesSignedUpTo
 }
 
 function isSignedUp(user, courseId){
@@ -54,24 +53,7 @@ function getCoursesSignedUpTo(user){
 	if (!user || !user.profile.takingCourseIds)
 		return [];
 
-	return Collections.Courses.find({ _id: {$in: user.profile.takingCourseIds }});
-}
-
-function getSessionsSignedUpTo(){
-	var coursesSignedUpTo = getCoursesSignedUpTo();
-	if (coursesSignedUpTo instanceof Array)
-		return coursesSignedUpTo;
-
-	var sessionsWithCourseName = _.flatten(
-		coursesSignedUpTo.map(function(course) {
-			var sessions = Collections.Sessions.find({ _id: {$in: course.sessionIds }});
-
-			return sessions.map(function(session){
-				session.courseName = course.details.title;
-				return session;
-			});
-		})
-	);
-
-	return _.sortBy(sessionsWithCourseName, "startsAt");
+	var query = { _id: { $in: user.profile.takingCourseIds } };
+	var options = { sort : { "startsAt" : 1 } }
+	return Collections.Courses.find(query, options);
 }

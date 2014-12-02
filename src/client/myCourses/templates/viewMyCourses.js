@@ -4,14 +4,15 @@ Template.viewMyCourses.helpers({
 	},
 	getNextSessionDateForCourse : function(){
 		var nextSession = _.chain(this.sessions)
-			.sortBy(function(){
-				return this.startsAt;
+		 	.filter(function(e){
+				return e.startsAt > new Date();
 			})
-		 	.filter(function(){
-				return this.startsAt > new Date();
+			.sortBy(function(e){
+				return e.startsAt;
 			})
-			.first();
+			.first()
+			.value();
 
-		return DateTimeHelpers.dateAndTime(nextSession.startsAt);
+		return moment(nextSession.startsAt).calendar();
 	}
 })

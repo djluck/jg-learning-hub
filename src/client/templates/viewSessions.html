@@ -11,14 +11,14 @@
 				<th>Place</th>
 			</tr>
 		</thead>
-		<tbody>	
+		<tbody>
 			{{#each sessions}}
 			<tr>
 				{{#if courseName}}
 				<td>{{courseName}}</td>
 				{{/if}}
-				<td>{{>date startsAt}}</td>
-				<td>{{>time startsAt}}</td>
+				<td>{{>moment date=startsAt format="D MMMM YYYY"}}</td>
+				<td>{{>moment date=startsAt format="HH:mm"}}</td>
 				<td>{{durationMinutes}}</td>
 				<td>{{locationName}}</td>
 			</tr>
@@ -26,4 +26,3 @@
 		</tbody>
 	</table>
 </template>
-
