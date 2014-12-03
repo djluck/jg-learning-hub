@@ -1,0 +1,3 @@
+[submodule "src/packages/reactive-modal"]
+	path = src/packages/reactive-modal
+	url = git@github.com:djluck/reactive-modal.git
