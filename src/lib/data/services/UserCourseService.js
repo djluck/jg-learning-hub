@@ -8,7 +8,8 @@ UserCourseDataService = {
 
 		return user.profile.takingCourseIds.length;
 	},
-	getCoursesSignedUpTo : getCoursesSignedUpTo
+	getCoursesSignedUpTo : getCoursesSignedUpTo,
+	getSessionsSignedUpTo : getSessionsSignedUpTo
 }
 
 function isSignedUp(user, courseId){
@@ -56,4 +57,24 @@ function getCoursesSignedUpTo(user){
 	var query = { _id: { $in: user.profile.takingCourseIds } };
 	var options = { sort : { "startsAt" : 1 } }
 	return Collections.Courses.find(query, options);
+}
+
+function getSessionsSignedUpTo(user){
+	var courses = getCoursesSignedUpTo(user);
+
+	var sessions = courses.map(function(c) {
+		_.each(c.sessions, function(s){
+			s.courseName = c.details.title;
+		});
+
+		return c.sessions;
+	});
+
+	var sortedSessions =
+		_.chain(sessions)
+		.flatten()
+		.sortBy("startsAt")
+		.value();
+
+	return sortedSessions;
 }
