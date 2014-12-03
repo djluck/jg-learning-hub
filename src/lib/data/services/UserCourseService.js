@@ -65,6 +65,7 @@ function getSessionsSignedUpTo(user){
 	var sessions = courses.map(function(c) {
 		_.each(c.sessions, function(s){
 			s.courseName = c.details.title;
+			s.courseId = c._id;
 		});
 
 		return c.sessions;

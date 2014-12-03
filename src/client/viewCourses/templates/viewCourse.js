@@ -5,8 +5,8 @@ Template.viewCourse.helpers({
 	canEdit: function(){
 		return this.createdByUser === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
 	},
-	canCourseBeSignedUpTo: function(){
-		return Rules.Courses.canCourseBeSignedUpTo(this);
+	canSignUptoOrRegignFromCourse: function(){
+		return Rules.Courses.canSignUpToCourse(this) || Rules.Courses.canResignFromCourse(this, Meteor.userId());
 	},
 	courseIsFull: function(){
 		return Rules.Courses.isCourseFull(this);

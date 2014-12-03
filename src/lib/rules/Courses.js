@@ -1,12 +1,18 @@
 Rules = {};
 
 Rules.Courses = {
-    canCourseBeSignedUpTo : canCourseBeSignedUpTo,
+    canSignUpToCourse : canSignUpToCourse,
+    canResignFromCourse : canResignFromCourse,
     isCourseFull :isCourseFull
 }
 
-function canCourseBeSignedUpTo(course){
+function canSignUpToCourse(course){
     return course.approved && !isCourseFull(course) && course.startsAt > new Date();
+}
+
+function canResignFromCourse(course, userId){
+    var result = course.approved && _.contains(course.signedUpUserIds, userId) && course.startsAt > new Date();
+    return result;
 }
 
 function isCourseFull(course){

@@ -16,3 +16,9 @@ Template.viewMyCourses.helpers({
 		return moment(nextSession.startsAt).calendar();
 	}
 })
+
+Template.viewMyCourses.events = {
+	"click .btn-resign" : function(){
+		UserCourseDataService.resignFromCourse(Meteor.user(), this._id);
+	}
+}
