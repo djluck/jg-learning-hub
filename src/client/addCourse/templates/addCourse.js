@@ -62,7 +62,7 @@ function createCourse(){
 	var courseDetails = AutoForm.getFormValues(formId).insertDoc;
 	var sessions = Sessions.getSessionsReadyForStorage();
 
-	CourseDataService
+	Methods.createCourse(courseDetails, sessions)
 		.createCourse(courseDetails, sessions)
 		.then(function(course){
 		 	Router.go('/');

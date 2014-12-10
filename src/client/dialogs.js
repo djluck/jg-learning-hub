@@ -3,7 +3,7 @@ Meteor.startup(function(){
 
     var errorDialogInfo = {
         template: "errorDialog",
-        title : "Error",
+        title : "Oh Dear :(",
         removeOnHide: true,
         buttons: {
             "ok" : {

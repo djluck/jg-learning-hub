@@ -5,6 +5,20 @@ Meteor.publish(
     }
 );
 
+Meteor.publish(
+    null,
+    function(){
+        return Collections.Locations.find();
+    }
+);
+
+Meteor.publish(
+    null,
+    function(){
+        return Collections.CourseFormats.find();
+    }
+);
+
 
 function courseQuery(userId){
     var query = {

@@ -22,32 +22,23 @@ function isSignedUp(user, courseId){
 
 function signUpToCourse(user, courseId){
 	if (isSignedUp(user, courseId)){
-		return Promises.errorPromise("User is already signed up");
+		throw new Meteor.Error("CouldNotSignUpToCourse", "User is already signed up");
 	}
 
-	var userUpdatePromise = Meteor.users.signUpUserToCourse(user, courseId);
-
-	var updateCoursePromise = Collections.Courses.q.update(
-		courseId,
-		{ $push : { "signedUpUserIds" : user._id } }
-	);
-
-	return Promises.waitAll([userUpdatePromise, updateCoursePromise]);
+	Meteor.users.signUpUserToCourse(user, courseId);
+	var modifier = { $push : { "signedUpUserIds" : user._id } };
+	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, courseId, modifier));
 }
 
 function resignFromCourse(user, courseId){
 	if (!isSignedUp(user, courseId)){
-		return Promises.errorPromise("User is not signed up to course");
+		throw new Meteor.Error("CouldNotResignFromCourse", "User is not signed up to course");
 	}
 
-	var userUpdatePromise = Meteor.users.resignUserFromCourse(user, courseId);
+	Meteor.users.resignUserFromCourse(user, courseId);
 
-	var updateCoursePromise = Collections.Courses.q.update(
-		courseId,
-		{ $pull : { "signedUpUserIds" : user._id } }
-	);
-
-	return Promises.waitAll([userUpdatePromise, updateCoursePromise]);
+	var modifier = { $pull : { "signedUpUserIds" : user._id } };
+	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, courseId, modifier));
 }
 
 function getCoursesSignedUpTo(user){

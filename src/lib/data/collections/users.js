@@ -1,13 +1,11 @@
 Meteor.users.signUpUserToCourse = function(user, courseId){
-    return Meteor.users.q.update(
-        user._id,
-        { $push: { "profile.takingCourseIds" : courseId } }
-    );
+    var modifier = { $push: { "profile.takingCourseIds" : courseId } };
+
+    Meteor.wrapAsync(Meteor.users.update.bind(Meteor.users, user._id, modifier));
 };
 
 Meteor.users.resignUserFromCourse = function(user, courseId){
-    return Meteor.users.q.update(
-        user._id,
-        { $pull: { "profile.takingCourseIds" : courseId } }
-    );
+    var modifier = { $pull: { "profile.takingCourseIds" : courseId } };
+
+    Meteor.wrapAsync(Meteor.users.update.bind(Meteor.users, user._id, modifier));
 }

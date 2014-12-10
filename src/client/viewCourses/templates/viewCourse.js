@@ -16,10 +16,10 @@ Template.viewCourse.helpers({
 Template.viewCourse.events = {
 	"click .btn-sign-up" : function(event, template){
 		if (UserCourseDataService.isSignedUp(Meteor.user(), this._id)){
-			UserCourseDataService.resignFromCourse(Meteor.user(), this._id);
+			Methods.resignFromCourse(this._id);
 		}
 		else{
-			UserCourseDataService.signUpToCourse(Meteor.user(), this._id);
+			Methods.signUpToCourse(this._id);
 		}
 	},
 	"click .btn-edit" : function(event, template){

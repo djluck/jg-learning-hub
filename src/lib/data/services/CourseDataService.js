@@ -24,24 +24,21 @@ function getCourses(){
 }
 
 function createCourse(details, sessions){
-	return Collections.Courses.q.insert({
+	var toInsert = {
 		details : details,
 		sessions : sessions
-	});
+	};
+	Meteor.wrapAsync(Collections.Courses.insert.bind(Collections.Courses, toInsert));
 }
 
 function updateCourse(id, details, sessions){
-	return Collections.Courses.q.update(
-		id,
-		{
-			$set: { details : details,  sessions : sessions }
-		}
-	);
+	var modifier = 	{
+		$set: { details : details,  sessions : sessions }
+	};
+	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, id, modifier));
 }
 
 function approveCourse(id){
-	Collections.Courses.q.update(
-		id,
-		{ $set : { "approved" : true }}
-	);
+	var modifier = { $set : { "approved" : true }};
+	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, id, modifier));
 }

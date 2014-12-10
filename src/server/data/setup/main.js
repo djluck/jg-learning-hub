@@ -8,6 +8,7 @@ function addData(source){
     _.chain(source)
         .keys()
         .each(function(collectionName){
+            console.log("Adding to collection: " + collectionName);
             addIfEmpty(Collections[collectionName], source[collectionName]);
         });
 }
@@ -30,9 +31,10 @@ function addUsers(){
 
 function addIfEmpty(collection, toAdd){
     if (collection.find().count() === 0){
+        console.log("Collection is empty, adding base/test data to it...")
         var after;
 
-        if (_.isObject(toAdd)){
+        if (!_.isArray(toAdd) && _.isObject(toAdd)){
             after = toAdd.after;
             toAdd = toAdd.data;
         }
