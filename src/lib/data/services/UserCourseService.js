@@ -13,7 +13,7 @@ UserCourseDataService = {
 }
 
 function isSignedUp(user, courseId){
-	if (user === null || user.profile === undefined)
+	if (!user || !user.profile)
 		return false;
 
 	return _.contains(user.profile.takingCourseIds, courseId);

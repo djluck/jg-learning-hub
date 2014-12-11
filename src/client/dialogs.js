@@ -41,6 +41,6 @@ Meteor.startup(function(){
     Dialogs.approveCourseDialog = ReactiveModal.initDialog(approveCourseDialogInfo);
 
     Dialogs.approveCourseDialog.buttons.approve.on("click", function(e){
-        CourseDataService.approveCourse(e.data);
+        Methods.approveCourse(e.data);
     });
 });

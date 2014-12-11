@@ -63,7 +63,6 @@ function createCourse(){
 	var sessions = Sessions.getSessionsReadyForStorage();
 
 	Methods.createCourse(courseDetails, sessions)
-		.createCourse(courseDetails, sessions)
 		.then(function(course){
 		 	Router.go('/');
 		})
@@ -74,8 +73,8 @@ function updateCourse(course){
 	var courseDetails = AutoForm.getFormValues(formId).insertDoc;
 	var sessions = Sessions.getSessionsReadyForStorage();
 
-	CourseDataService
-		.updateCourse(course._id, courseDetails, sessions)
+	Methods
+		.modifyCourse(course._id, courseDetails, sessions)
 		.then(function(course){
 			Router.go('/');
 		})
