@@ -28,7 +28,6 @@ function promiseBasedMethodCall(methodFn){
 
     var argsArray = _.chain(arguments).toArray().rest().value();
     argsArray.push(callback);
-    console.log(argsArray);
 
     methodFn.apply(this, argsArray);
 

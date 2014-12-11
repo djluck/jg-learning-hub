@@ -28,17 +28,17 @@ function createCourse(details, sessions){
 		details : details,
 		sessions : sessions
 	};
-	Meteor.wrapAsync(Collections.Courses.insert.bind(Collections.Courses, toInsert));
+	Collections.Courses.sync.insert(toInsert);
 }
 
 function updateCourse(id, details, sessions){
 	var modifier = 	{
 		$set: { details : details,  sessions : sessions }
 	};
-	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, id, modifier));
+	Collections.Courses.sync.update(id, modifier);
 }
 
 function approveCourse(id){
 	var modifier = { $set : { "approved" : true }};
-	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, id, modifier));
+	Collections.Courses.sync.update(id, modifier);
 }

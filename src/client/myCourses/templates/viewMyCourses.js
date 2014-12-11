@@ -19,6 +19,6 @@ Template.viewMyCourses.helpers({
 
 Template.viewMyCourses.events = {
 	"click .btn-resign" : function(){
-		UserCourseDataService.resignFromCourse(Meteor.user(), this._id);
+		Methods.resignFromCourse(this._id);
 	}
 }

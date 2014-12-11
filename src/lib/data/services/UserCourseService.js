@@ -24,10 +24,9 @@ function signUpToCourse(user, courseId){
 	if (isSignedUp(user, courseId)){
 		throw new Meteor.Error("CouldNotSignUpToCourse", "User is already signed up");
 	}
-
 	Meteor.users.signUpUserToCourse(user, courseId);
 	var modifier = { $push : { "signedUpUserIds" : user._id } };
-	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, courseId, modifier));
+	Collections.Courses.sync.update(courseId, modifier);
 }
 
 function resignFromCourse(user, courseId){
@@ -38,7 +37,7 @@ function resignFromCourse(user, courseId){
 	Meteor.users.resignUserFromCourse(user, courseId);
 
 	var modifier = { $pull : { "signedUpUserIds" : user._id } };
-	Meteor.wrapAsync(Collections.Courses.update.bind(Collections.Courses, courseId, modifier));
+	Collections.Courses.sync.update(courseId, modifier);
 }
 
 function getCoursesSignedUpTo(user){
