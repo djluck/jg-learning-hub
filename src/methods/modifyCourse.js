@@ -1,4 +1,4 @@
-Methods.registerAsMethod(modifyCourse);
+Methods.registerAsMethod("modifyCourse", modifyCourse);
 
 function modifyCourse(courseId, details, sessions){
     Validation.isMongoId(courseId);

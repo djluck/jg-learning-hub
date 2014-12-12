@@ -2,13 +2,13 @@ Methods = {
     registerAsMethod : registerAsMethod
 };
 
-function registerAsMethod(fn){
+function registerAsMethod(fnName, fn){
     var methodToAdd = {};
-    methodToAdd[fn.name] = fn;
+    methodToAdd[fnName] = fn;
     Meteor.methods(methodToAdd);
 
 
-    Methods[fn.name] = function(){
+    Methods[fnName] = function(){
         var numberOfArguments = fn.length;
         var argsArray =_.toArray(arguments);
         var methodParameters = _.first(argsArray, numberOfArguments);
@@ -19,11 +19,6 @@ function registerAsMethod(fn){
             asyncCallback = argsArray[numberOfArguments];
         }
 
-        console.log(methodParameters);
-        console.log(asyncCallback);
-        console.log(fn.name);
-
-
-        Meteor.apply(fn.name, methodParameters, asyncCallback);
+        Meteor.apply(fnName, methodParameters, asyncCallback);
     }
 }
