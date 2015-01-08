@@ -80,6 +80,6 @@ underscore@1.0.2
 url@1.0.3
 webapp@1.1.5
 webapp-hashing@1.0.2
-wiseguyeh:accounts-azure-active-directory@0.1.7
-wiseguyeh:azure-active-directory@0.1.6
+wiseguyeh:accounts-azure-active-directory@0.2.0
+wiseguyeh:azure-active-directory@0.2.0
 wizonesolutions:underscore-string@1.0.0

@@ -1,7 +1,8 @@
 Meteor.startup(function(){
-    addUsers();
     addData(BaseData);
-    addData(TestData);
+
+    //addUsers();
+    //addData(TestData);
 })
 
 function addData(source){
