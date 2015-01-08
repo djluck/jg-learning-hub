@@ -7,7 +7,6 @@ Accounts.onLogin(function(details) {
     else if (Roles.userIsInRole(user, "administrator")){
         console.log(_.sprintf("User %s is already an administrator", user.profile.name));
     }
-    console.log(user)
 });
 
 

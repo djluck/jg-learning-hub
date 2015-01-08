@@ -1,8 +1,6 @@
 var formId = "addCourseDetails";
 
 Template.addCourse.rendered = function(){
-	console.log(this.data);
-	console.log(isEditing(this.data));
 	if (isEditing(this.data)){
 		Sessions.initSessions(this.data.course.sessions);
 	}
