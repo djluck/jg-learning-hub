@@ -28,7 +28,7 @@ function createCourse(details, sessions){
 		details : details,
 		sessions : sessions
 	};
-	Collections.Courses.sync.insert(toInsert);
+	return Collections.Courses.sync.insert(toInsert);
 }
 
 function updateCourse(id, details, sessions){
