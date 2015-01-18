@@ -1,9 +1,15 @@
-Meteor.publish(
-    null,
-    function(){
+Meteor.publishComposite(null, {
+    find: function(){
         return Collections.Courses.find(courseQuery(this.userId));
-    }
-);
+    },
+    children: [{
+        find: function(course){
+            var userIds = course.signedUpUserIds.slice(0);
+            userIds.push(course.createdByUserId);
+            return Meteor.users.find({_id : { $in : userIds }});
+        }
+    }]
+});
 
 Meteor.publish(
     null,
@@ -37,7 +43,7 @@ function courseQuery(userId){
     else{
         query.$or = [
             { approved : true },
-            { createdByUser : userId }
+            { createdByUserId : userId }
         ];
     }
 

@@ -1,4 +1,4 @@
-Methods.registerAsMethod(signUpToCourse);
+Methods.registerAsMethod("signUpToCourse", signUpToCourse);
 
 function signUpToCourse(courseId){
     Validation.isMongoId(courseId);

@@ -3,13 +3,16 @@ Template.viewCourse.helpers({
 		return UserCourseDataService.isSignedUp(Meteor.user(), this._id);
 	},
 	canEdit: function(){
-		return this.createdByUser === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
+		return this.createdByUserId === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
 	},
 	canSignUptoOrRegignFromCourse: function(){
 		return Rules.Courses.canSignUpToCourse(this) || Rules.Courses.canResignFromCourse(this, Meteor.userId());
 	},
 	courseIsFull: function(){
 		return Rules.Courses.isCourseFull(this);
+	},
+	createdByUserName: function(){
+		return Meteor.users.findOne(this.createdByUserId).profile.name;
 	}
 });
 

@@ -1,4 +1,4 @@
-Methods.registerAsMethod(resignFromCourse);
+Methods.registerAsMethod("resignFromCourse", resignFromCourse);
 
 function resignFromCourse(courseId){
     Validation.isMongoId(courseId);

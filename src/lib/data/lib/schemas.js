@@ -91,7 +91,7 @@ initCollectionAndSchema("Courses", {
     details: {
         type: Schemas.CourseDetails
     },
-    createdByUser: {
+    createdByUserId: {
         type: String,
         autoValue: function(){
             if (this.isInsert){
