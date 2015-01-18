@@ -12,5 +12,5 @@ function modifyCourse(courseId, details, sessions){
 
 function isUserCreatorOfCourse(userId, courseId){
     var course = Collections.Courses.findOne(courseId);
-    return course.createdByUser === userId;
+    return course.createdByUserId === userId;
 }

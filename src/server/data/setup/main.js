@@ -1,8 +1,11 @@
 Meteor.startup(function(){
     addData(BaseData);
-
-    //addUsers();
-    //addData(TestData);
+    var isDebug = process.env.DEBUG;
+    if (isDebug){
+        console.log("DEBUG=true, adding test data..")
+        addUsers();
+        addData(TestData);
+    }
 })
 
 function addData(source){
@@ -21,7 +24,8 @@ function addUsers(){
     _.each(TestUsers, function(details){
         var userId = Accounts.createUser({
             email : details.email,
-            password : details.password
+            password : details.password,
+            profile : { name : details.name }
         });
 
         if ("roles" in details){

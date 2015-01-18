@@ -32,7 +32,7 @@ function data(){
                     startsAt : moment().subtract(3, "days").toDate()
                 }
             ],
-            createdByUser : userEmailsToIds["teacher@test.com"]
+            createdByUserId : userEmailsToIds["teacher@test.com"]
         },
         //has started (cannot sign up for)
         {
@@ -58,7 +58,7 @@ function data(){
                     startsAt : moment().subtract(3, "days").toDate()
                 }
             ],
-            createdByUser : userEmailsToIds["teacher@test.com"],
+            createdByUserId : userEmailsToIds["teacher@test.com"],
             signedUpUserIds : [ //one space still available
                 userEmailsToIds["pupil1@test.com"],
                 userEmailsToIds["pupil2@test.com"]
@@ -81,7 +81,7 @@ function data(){
                     startsAt : moment().add(15, "days").toDate()
                 }
             ],
-            createdByUser : userEmailsToIds["teacher@test.com"]
+            createdByUserId : userEmailsToIds["teacher@test.com"]
         },
         //has not started, no sign ups
         {
@@ -105,7 +105,7 @@ function data(){
                     startsAt : moment().add(5, "days").toDate()
                 }
             ],
-            createdByUser : userEmailsToIds["teacher@test.com"]
+            createdByUserId : userEmailsToIds["teacher@test.com"]
         },
         //not started but no space
         {
@@ -134,7 +134,7 @@ function data(){
                     startsAt : moment().add(5, "days").toDate()
                 }
             ],
-            createdByUser : userEmailsToIds["teacher@test.com"],
+            createdByUserId : userEmailsToIds["teacher@test.com"],
             signedUpUserIds : [ //one space still available
                 userEmailsToIds["pupil1@test.com"],
                 userEmailsToIds["pupil2@test.com"],
@@ -158,7 +158,7 @@ function data(){
                     startsAt : moment().add(2, "days").toDate()
                 }
             ],
-            createdByUser : userEmailsToIds["teacher@test.com"],
+            createdByUserId : userEmailsToIds["teacher@test.com"],
             signedUpUserIds : [ //one space still available
                 userEmailsToIds["pupil1@test.com"],
                 userEmailsToIds["pupil2@test.com"]
