@@ -26,14 +26,14 @@ function getCourses(){
 function createCourse(details, sessions){
 	var toInsert = {
 		details : details,
-		sessions : sessions
+		sessions : sessionsOrderedByStartDate(sessions)
 	};
 	return Collections.Courses.sync.insert(toInsert);
 }
 
 function updateCourse(id, details, sessions){
 	var modifier = 	{
-		$set: { details : details,  sessions : sessions }
+		$set: { details : details,  sessions : sessionsOrderedByStartDate(sessions) }
 	};
 	Collections.Courses.sync.update(id, modifier);
 }
@@ -41,4 +41,8 @@ function updateCourse(id, details, sessions){
 function approveCourse(id){
 	var modifier = { $set : { "approved" : true }};
 	Collections.Courses.sync.update(id, modifier);
+}
+
+function sessionsOrderedByStartDate(sessions){
+	return _.sortBy(sessions, function(s) { return s.startsAt; });
 }

@@ -1,6 +1,8 @@
 Meteor.publishComposite(null, {
     find: function(){
-        return Collections.Courses.find(courseQuery(this.userId));
+        return Collections.Courses.find(
+            courseQuery(this.userId)
+        );
     },
     children: [{
         find: function(course){
