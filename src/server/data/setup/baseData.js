@@ -9,6 +9,15 @@ BaseData.Locations = [
     },
     {
         name : "Secret Room"
+    },
+    {
+        name : "The Big Room"
+    },
+    {
+        name : "The Room FourEight"
+    },
+    {
+        name : "The Kitchen"
     }
 ];
 

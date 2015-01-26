@@ -11,7 +11,7 @@ Accounts.onLogin(function(details) {
 
 
 function isPotentialAdminUser(user){
-    var validUserEmails = ["james.luck@justgiving.com", "emily@justgiving.com"];
+    var validUserEmails = ["james.luck@justgiving.com", "emily@justgiving.com", "andy@justgiving.com", "james.adams@justgiving.com"];
     return _.contains(validUserEmails, user.emails[0].address.toLowerCase()) && !Roles.userIsInRole(user, "administrator");
 }
 
