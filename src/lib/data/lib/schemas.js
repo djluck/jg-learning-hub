@@ -119,6 +119,13 @@ initCollectionAndSchema("Courses", {
             return true;
         }
     },
+    waitingListUserIds: {
+        type: [String],
+        autoValue: function(){
+            if (!this.isSet && this.isInsert)
+                return [];
+        }
+    },
     dateCreated: {
         type: Date,
         autoValue: function(){

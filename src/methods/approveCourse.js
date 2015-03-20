@@ -25,6 +25,6 @@ function notifyUsers(courseId){
         from : Email.fromAddress,
         to : userEmailAddresses,
         subject: "A new course is available!",
-        text : "The course '" + course.details.title + "' is now available @ http://jg-learninghub.cloudapp.net/"
+        text : "The course '" + course.details.title + "' is now available @ https://learninghub.justgiving.com/"
     });
 }

@@ -1,6 +1,9 @@
 Template.viewCourse.helpers({
-	isSignedUp: function(){
-		return UserCourseDataService.isSignedUp(Meteor.user(), this._id);
+	isSignedUpOrOnWaitingList: function(){
+		return UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), this._id);
+	},
+	isOnWaitingList: function(){
+		return UserCourseDataService.isOnWaitingList(Meteor.user(), this._id);
 	},
 	canEdit: function(){
 		return this.createdByUserId === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
@@ -18,7 +21,7 @@ Template.viewCourse.helpers({
 
 Template.viewCourse.events = {
 	"click .btn-sign-up" : function(event, template){
-		if (UserCourseDataService.isSignedUp(Meteor.user(), this._id)){
+		if (UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), this._id) || UserCourseDataService.isOnWaitingList(Meteor.user(), this._id)){
 			Methods.resignFromCourse(this._id);
 		}
 		else{

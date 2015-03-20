@@ -7,7 +7,7 @@ Rules.Courses = {
 }
 
 function canSignUpToCourse(course){
-    return course.approved && !isCourseFull(course) && course.startsAt > new Date();
+    return course.approved && course.startsAt > new Date();
 }
 
 function canResignFromCourse(course, userId){
@@ -16,5 +16,7 @@ function canResignFromCourse(course, userId){
 }
 
 function isCourseFull(course){
-    return course.signedUpUserIds.length === course.details.numberOfSpaces
+    console.log(course.signedUpUserIds.length);
+    console.log(course.details.numberOfSpaces);
+    return course.signedUpUserIds.length === course.details.numberOfSpaces;
 }

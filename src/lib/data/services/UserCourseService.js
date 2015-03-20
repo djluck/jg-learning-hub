@@ -1,7 +1,8 @@
 UserCourseDataService = {
-	isSignedUp : isSignedUp,
-	signUpToCourse : signUpToCourse,
-	resignFromCourse : resignFromCourse,
+	isSignedUpOrOnWaitingList : function(user, courseId){
+		var course = Collections.Courses.findOne(courseId);
+		return this.isSignedUp(user, courseId) || this.isOnWaitingList(user, course);
+	},
 	countCoursesSignedUpTo :  function(user){
 		if (!user || !user.profile || !user.profile.takingCourseIds)
 			return 0;
@@ -9,36 +10,21 @@ UserCourseDataService = {
 		return user.profile.takingCourseIds.length;
 	},
 	getCoursesSignedUpTo : getCoursesSignedUpTo,
-	getSessionsSignedUpTo : getSessionsSignedUpTo
-}
+	getSessionsSignedUpTo : getSessionsSignedUpTo,
+	isSignedUp : function(user, courseId){
+		if (!user || !user.profile)
+			return false;
 
-function isSignedUp(user, courseId){
-	if (!user || !user.profile)
-		return false;
+		return _.contains(user.profile.takingCourseIds, courseId);
+	},
+	isOnWaitingList: function(user, course){
+		if (!user || !user.profile)
+			return false;
 
-	return _.contains(user.profile.takingCourseIds, courseId);
-}
-
-
-function signUpToCourse(user, courseId){
-	if (isSignedUp(user, courseId)){
-		throw new Meteor.Error("CouldNotSignUpToCourse", "User is already signed up");
+		return _.contains(course.waitingListUserIds, user._id);
 	}
-	Meteor.users.signUpUserToCourse(user, courseId);
-	var modifier = { $push : { "signedUpUserIds" : user._id } };
-	Collections.Courses.sync.update(courseId, modifier);
 }
 
-function resignFromCourse(user, courseId){
-	if (!isSignedUp(user, courseId)){
-		throw new Meteor.Error("CouldNotResignFromCourse", "User is not signed up to course");
-	}
-
-	Meteor.users.resignUserFromCourse(user, courseId);
-
-	var modifier = { $pull : { "signedUpUserIds" : user._id } };
-	Collections.Courses.sync.update(courseId, modifier);
-}
 
 function getCoursesSignedUpTo(user){
 	if (!user || !user.profile.takingCourseIds)
