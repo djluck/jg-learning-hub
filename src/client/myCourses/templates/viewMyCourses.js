@@ -2,7 +2,7 @@ Template.viewMyCourses.helpers({
 	courses : function(){
 		return UserCourseDataService.getCoursesSignedUpTo(Meteor.user())
 	},
-	getNextSessionDateForCourse : function(){
+	nextSessionDateForCourse : function(){
 		var nextSession = _.chain(this.sessions)
 		 	.filter(function(e){
 				return e.startsAt > new Date();
@@ -13,7 +13,7 @@ Template.viewMyCourses.helpers({
 			.first()
 			.value();
 
-		return moment(nextSession.startsAt).calendar();
+		return moment(nextSession.startsAt);
 	}
 })
 

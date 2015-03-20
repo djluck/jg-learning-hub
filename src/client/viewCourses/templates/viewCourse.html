@@ -49,7 +49,7 @@
 				{{#if canSignUptoOrRegignFromCourse}}
 				<button class="btn btn-primary btn-sign-up {{#if isSignedUp}}btn-danger{{/if}}" role="button" disabled="{{#unless currentUser}}disabled{{/unless}}" >
 					<span class="glyphicon  {{#if isSignedUp}} glyphicon-remove {{else}} glyphicon-ok {{/if}}"> </span>
-					{{#if isSignedUp}}Resign{{else}}Sign Up{{/if}}
+					{{#if isSignedUp}}Cancel your place{{else}}Sign Up{{/if}}
 				</button>
 				{{/if}}
 				{{#if canEdit}}

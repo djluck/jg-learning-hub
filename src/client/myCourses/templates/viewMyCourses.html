@@ -14,7 +14,7 @@
 					{{details.title}}
 				</td>
 				<td class="col-md-5">
-					{{getNextSessionDateForCourse}}
+					{{>moment date=nextSessionDateForCourse format="D MMMM YYYY"}}
 				</td>
 				<td class="col-md-1 text-center">
 					<a href="#" class="btn btn-xs btn-primary btn-resign btn-danger" role="button">
