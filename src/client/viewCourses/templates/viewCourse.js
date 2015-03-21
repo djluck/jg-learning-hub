@@ -8,7 +8,7 @@ Template.viewCourse.helpers({
 	canEdit: function(){
 		return this.createdByUserId === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
 	},
-	canSignUptoOrRegignFromCourse: function(){
+	canSignUpToOrRegignFromCourse: function(){
 		return Rules.Courses.canSignUpToCourse(this) || Rules.Courses.canResignFromCourse(this, Meteor.userId());
 	},
 	courseIsFull: function(){
@@ -16,16 +16,33 @@ Template.viewCourse.helpers({
 	},
 	createdByUserName: function(){
 		return Meteor.users.findOne(this.createdByUserId).profile.name;
+	},
+	disableUsersAttending: function(){
+		if (this.signedUpUserIds.length == 0)
+			return "disabled";
+		else
+			return "";
 	}
 });
 
 Template.viewCourse.events = {
 	"click .btn-sign-up" : function(event, template){
-		if (UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), this._id) || UserCourseDataService.isOnWaitingList(Meteor.user(), this._id)){
-			Methods.resignFromCourse(this._id);
+		if (UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), this._id)){
+			if (Rules.Courses.isCourseFull(this)){
+				Dialogs.theresAWaitingListDialog.show(this._id);
+			}
+			else {
+				Methods.resignFromCourseOrLeaveWaitingList(this._id);
+			}
 		}
 		else{
-			Methods.signUpToCourse(this._id);
+			var courseId = this._id;
+			Methods.signUpToCourseOrJoinWaitingList(this._id)
+				.then(function(result){
+					if (result.isOnWaitingList) {
+						Dialogs.notifyWaitingListPosition.show({waitingListPosition: result.waitingListPosition});
+					}
+				});
 		}
 	},
 	"click .btn-edit" : function(event, template){

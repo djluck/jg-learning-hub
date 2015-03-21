@@ -17,12 +17,12 @@ Meteor.startup(function(){
 function promiseBasedMethodCall(methodFn){
     var deferred = Q.defer();
 
-    function callback(err){
+    function callback(err, result){
         if (err){
             deferred.reject(new Error(err));
         }
         else{
-            deferred.resolve();
+            deferred.resolve(result);
         }
     };
 

@@ -16,7 +16,5 @@ function canResignFromCourse(course, userId){
 }
 
 function isCourseFull(course){
-    console.log(course.signedUpUserIds.length);
-    console.log(course.details.numberOfSpaces);
     return course.signedUpUserIds.length === course.details.numberOfSpaces;
 }

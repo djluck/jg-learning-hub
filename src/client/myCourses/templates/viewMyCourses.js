@@ -19,6 +19,6 @@ Template.viewMyCourses.helpers({
 
 Template.viewMyCourses.events = {
 	"click .btn-resign" : function(){
-		Methods.resignFromCourse(this._id);
+		Methods.resignFromCourseOrLeaveWaitingList(this._id);
 	}
 }

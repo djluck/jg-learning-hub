@@ -14,16 +14,11 @@ function notifyAdmins(details){
     if (Meteor.isClient)
         return;
 
-    var adminEmailAddresses = Meteor.users.find({ roles : {$in : ["administrator"]}}).map(function(u){
-        return u.emails[0].address;
-    });
+    var admins = Meteor.users.find({ roles : {$in : ["administrator"]}});
 
-    console.log("Course created, emailing the admins: " + adminEmailAddresses);
-
-    Email.send({
-        from : Email.fromAddress,
-        to : adminEmailAddresses,
-        subject: "A course is awaiting approval",
-        text : "The course '" + details.title + "' has been created. Please review it for approval."
-    });
+    Email.sendLearningHubNotification(
+        admins,
+        "A course is awaiting approval",
+        "The course '" + details.title + "' has been created. Please review it for approval."
+    );
 }

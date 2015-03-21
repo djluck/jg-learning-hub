@@ -1,16 +1,16 @@
 <template name="usersAttending">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each attendants}}
-            <tr>
-                <td>{{profile.name}}</td>
-            </tr>
+    <div class="well well-sm">
+        {{#each signedUpUsers}}
+            <span class="label label-success">{{profile.name}}</span>
         {{/each}}
-        </tbody>
-    </table>
+    </div>
+
+    {{#if hasWaitingList}}
+        <h5>Waiting List</h5>
+        <div class="well well-sm">
+            {{#each usersOnWaitingList}}
+                <span class="label label-warning">#{{position}} - {{user.profile.name}}</span>
+            {{/each}}
+        </div>
+    {{/if}}
 </template>

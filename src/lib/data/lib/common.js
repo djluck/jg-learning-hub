@@ -7,16 +7,6 @@ initCollectionAndSchema = function (collectionName, schema){
 	Collections[collectionName].attachSchema(Schemas[collectionName]);
 }
 
-handleError = function(err){
-	if (err){
-		console.log(err);
-		throw "Failed to sync";
-	}
-	else{
-		console.log("Sync'd");
-	}
-};
-
 requireUser = function(){
 	if (Meteor.userId() === null)
 		throw "User is not authenticated";

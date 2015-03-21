@@ -19,12 +19,9 @@ function notifyUsers(courseId){
         return u.emails[0].address;
     });
 
-    console.log("Course approved, emailing all users: " + userEmailAddresses);
-
-    Email.send({
-        from : Email.fromAddress,
-        to : userEmailAddresses,
-        subject: "A new course is available!",
-        text : "The course '" + course.details.title + "' is now available @ https://learninghub.justgiving.com/"
-    });
+    Email.sendLearningHubNotification(
+        Meteor.users.find().fetch(),
+        "A new course is available",
+        "The course '" + course.details.title + "' is now available @ https://learninghub.justgiving.com/"
+    );
 }
