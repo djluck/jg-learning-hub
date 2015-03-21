@@ -2,6 +2,9 @@ Template.viewCourse.helpers({
 	isSignedUpOrOnWaitingList: function(){
 		return UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), this._id);
 	},
+	isSignedUp: function(){
+		return UserCourseDataService.isSignedUp(Meteor.user(), this._id);
+	},
 	isOnWaitingList: function(){
 		return UserCourseDataService.isOnWaitingList(Meteor.user(), this._id);
 	},

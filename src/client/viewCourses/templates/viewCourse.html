@@ -35,6 +35,12 @@
 							Subscribed
 						</span>
 					{{/if}}
+					{{#if isOnWaitingList}}
+                        <span class="label label-warning">
+							<span class="glyphicon glyphicon-hourglass"> </span>
+							Waiting
+						</span>
+					{{/if}}
 				</div>
 			</div>
 			<p>
@@ -53,7 +59,7 @@
 							glyphicon-remove
 						{{else}}
 							{{#if courseIsFull}}
-								glyphicon-ok
+								glyphicon-hourglass
 							{{else}}
 								glyphicon-ok
 							{{/if}}
