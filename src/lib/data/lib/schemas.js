@@ -43,6 +43,14 @@ Schemas.Sessions = new SimpleSchema({
 
             return startsAt;
         }
+    },
+    notifiedStartingSoon: {
+        type: Boolean,
+        autoValue: function(){
+            if (!this.isSet){
+                return false;
+            }
+        }
     }
 });
 

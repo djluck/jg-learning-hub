@@ -1,9 +1,10 @@
 Collections = {};
 Schemas = {};
 
-initCollectionAndSchema = function (collectionName, schema){
+initCollectionAndSchema = function (collectionName, schema, mongoCollectionName){
+	mongoCollectionName = mongoCollectionName || collectionName;
 	Schemas[collectionName] = new SimpleSchema(schema);
-	Collections[collectionName] = new Meteor.Collection(collectionName);
+	Collections[collectionName] = new Meteor.Collection(mongoCollectionName);
 	Collections[collectionName].attachSchema(Schemas[collectionName]);
 }
 

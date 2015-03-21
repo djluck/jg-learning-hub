@@ -22,3 +22,5 @@ wiseguyeh:accounts-azure-active-directory
 ian:accounts-ui-bootstrap-3
 reywood:publish-composite
 accounts-password
+percolate:synced-cron
+mike:mocha
