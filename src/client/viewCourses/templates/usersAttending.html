@@ -1,16 +1,11 @@
 <template name="usersAttending">
     <div class="well well-sm">
         {{#each signedUpUsers}}
-            <span class="label label-success">{{profile.name}}</span>
+            <span class="label label-success"><span class="glyphicon glyphicon-ok"> </span> {{profile.name}}</span>
+        {{/each}}
+        {{#each usersOnWaitingList}}
+            <span class="label label-warning"><span class="glyphicon glyphicon-hourglass"> </span> #{{position}} - {{user.profile.name}}</span>
         {{/each}}
     </div>
 
-    {{#if hasWaitingList}}
-        <h5>Waiting List</h5>
-        <div class="well well-sm">
-            {{#each usersOnWaitingList}}
-                <span class="label label-warning">#{{position}} - {{user.profile.name}}</span>
-            {{/each}}
-        </div>
-    {{/if}}
 </template>
