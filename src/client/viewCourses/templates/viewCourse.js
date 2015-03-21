@@ -27,28 +27,33 @@ Template.viewCourse.helpers({
 
 Template.viewCourse.events = {
 	"click .btn-sign-up" : function(event, template){
-		if (UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), this._id)){
-			if (Rules.Courses.isCourseFull(this)){
-				Dialogs.theresAWaitingListDialog.show(this._id);
-			}
-			else {
-				Methods.resignFromCourseOrLeaveWaitingList(this._id);
-			}
-		}
-		else{
-			var courseId = this._id;
-			Methods.signUpToCourseOrJoinWaitingList(this._id)
-				.then(function(result){
-					if (result.isOnWaitingList) {
-						Dialogs.notifyWaitingListPosition.show({waitingListPosition: result.waitingListPosition});
-					}
-				});
-		}
+		subscribeOrUnsubscribeUser(this);
 	},
 	"click .btn-edit" : function(event, template){
 		Router.go("/edit-course/" + this._id);
 	},
 	"click .lnk-approve-course" : function(){
 		Dialogs.approveCourseDialog.show(this._id);
+	}
+}
+
+function subscribeOrUnsubscribeUser(course){
+	var user = Meteor.user();
+	var courseId = course._id;
+
+	if (Rules.Courses.isCourseFull(course) && Rules.Courses.courseHasWaitingList(course) && UserCourseDataService.isSignedUp(user, courseId)) {
+		Dialogs.theresAWaitingListDialog.show(courseId);
+	}
+	else if (UserCourseDataService.isSignedUpOrOnWaitingList(user, courseId)){
+		Methods.resignFromCourseOrLeaveWaitingList(courseId);
+	}
+	else{
+		Methods.signUpToCourseOrJoinWaitingList(courseId)
+			.then(function(result){
+				if (!result.isOnWaitingList)
+					return;
+
+				Dialogs.notifyWaitingListPosition.show({waitingListPosition: result.waitingListPosition});
+			});
 	}
 }

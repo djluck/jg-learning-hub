@@ -3,7 +3,10 @@ Rules = {};
 Rules.Courses = {
     canSignUpToCourse : canSignUpToCourse,
     canResignFromCourse : canResignFromCourse,
-    isCourseFull :isCourseFull
+    isCourseFull :isCourseFull,
+    courseHasWaitingList : function(course){
+        return course.waitingListUserIds.length > 0;
+    }
 }
 
 function canSignUpToCourse(course){
