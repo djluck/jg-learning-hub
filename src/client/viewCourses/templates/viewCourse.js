@@ -9,7 +9,7 @@ Template.viewCourse.helpers({
 		return UserCourseDataService.isOnWaitingList(Meteor.user(), this._id);
 	},
 	canEdit: function(){
-		return this.createdByUserId === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
+		return this.createdByUserId === Meteor.userId() || this.details.runByUserId === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
 	},
 	canSignUpToOrRegignFromCourse: function(){
 		return Rules.Courses.canSignUpToCourse(this) || Rules.Courses.canResignFromCourse(this, Meteor.userId());
@@ -18,7 +18,7 @@ Template.viewCourse.helpers({
 		return Rules.Courses.isCourseFull(this);
 	},
 	createdByUserName: function(){
-		return Meteor.users.findOne(this.createdByUserId).profile.name;
+		return Meteor.users.findOne(this.details.runByUserId).profile.name;
 	},
 	disableUsersAttending: function(){
 		if (this.signedUpUserIds.length == 0)

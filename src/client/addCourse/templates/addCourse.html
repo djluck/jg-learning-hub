@@ -8,6 +8,9 @@
 			{{>afQuickField name='suitableFor'}}
 			{{>afQuickField name='numberOfSpaces' }}
 			{{>afQuickField name='formatType' options=courseFormats firstOption="Please Select.." }}
+			{{#if isInRole "administrator"}}
+				{{>afQuickField name='runByUserId' options=users}}
+			{{/if}}
 		{{/autoForm}}
 		<h2>Session details <small>When will it happen?</small></h2>
 		<div class="container">

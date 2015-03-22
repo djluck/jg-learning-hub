@@ -2,21 +2,31 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="page-header" style="margin-top:0px">
-				<h3 style="margin-top:5px">
-					{{details.title}}
-					{{#if isSignedUp}}
-                        <span class="label label-success">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 style="margin-top:5px" class="clearfix">
+							{{details.title}}
+                            <small>With {{createdByUserName}}</small>
+                        </h3>
+                    </div>
+                    <div class="col-md-2">
+						<h3 style="margin-top:5px" class="text-right">
+						{{#if isSignedUp}}
+							<span class="label label-success ">
 							<span class="glyphicon glyphicon-ok"> </span>
-							Subscribed
-						</span>
-					{{/if}}
-					{{#if isOnWaitingList}}
-                        <span class="label label-warning">
+								Subscribed
+							</span>
+							{{/if}}
+							{{#if isOnWaitingList}}
+								<span class="label label-warning ">
 							<span class="glyphicon glyphicon-hourglass"> </span>
-							Waiting
-						</span>
-					{{/if}}
-				</h3>
+								Waiting
+							</span>
+						{{/if}}
+						</h3>
+                    </div>
+                </div>
+
 			</div>
 			{{#if isInRole "administrator"}}
 				{{#unless approved}}
@@ -27,8 +37,7 @@
 				{{/unless}}
 			{{/if}}
 			<div class="row">
-
-				<div class="col-md-10">
+				<div class="col-md-12">
 					<p>
 						<strong>Objectives:</strong>
 						{{details.objectives}}
@@ -38,17 +47,6 @@
 						{{details.intendedLearnings}}
 
 					</p>
-				</div>
-				<div class="col-md-2">
-
-					<p>
-						<strong>Run by:</strong> {{createdByUserName}}
-					</p>
-					<p>
-						<strong>Format:</strong> {{details.formatType}}
-					</p>
-
-
 				</div>
 			</div>
 			<p>

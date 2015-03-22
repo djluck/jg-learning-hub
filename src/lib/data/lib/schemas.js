@@ -79,6 +79,14 @@ Schemas.CourseDetails = new SimpleSchema({
     formatType: {
         type: String,
         min: 1
+    },
+    runByUserId: {
+        type: String,
+        autoValue: function(){
+            if (this.isInsert && !this.isSet){
+                return Meteor.userId();
+            }
+        }
     }
 });
 

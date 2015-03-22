@@ -10,7 +10,7 @@ Meteor.publishComposite(null, {
             if (course.waitingListUserIds)
                 userIds.push(course.waitingListUserIds.slice(0));
 
-            userIds.push(course.createdByUserId);
+            userIds.push(course.details.runByUserId);
             return Meteor.users.find({_id : { $in : userIds }});
         }
     }]
@@ -30,6 +30,20 @@ Meteor.publish(
     }
 );
 
+Meteor.publish(
+    null,
+    function(){
+        //all admins should be able to see all users on the site
+        if (Roles.userIsInRole(this.userId, 'administrator')) {
+            return Meteor.users.find();
+        }
+        else {
+            this.stop();
+            return;
+        }
+    }
+)
+
 
 function courseQuery(userId){
     var query = {
@@ -48,7 +62,8 @@ function courseQuery(userId){
     else{
         query.$or = [
             { approved : true },
-            { createdByUserId : userId }
+            { createdByUserId : userId },
+            { "details.runByUserId" : userId }
         ];
     }
 
