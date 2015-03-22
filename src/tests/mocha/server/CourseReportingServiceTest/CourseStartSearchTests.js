@@ -1,27 +1,18 @@
 MochaWeb.testOnly(function(){
-    describe("When searching for courses that start today", function(){
+    describe("Given we are searching for courses that start in a variable number of days", function(){
         before(function(){
             chai.should();
             setupTestCourses();
         });
 
-        it("only approved courses that start today should be returned", function(){
+        it("when searching for today only approved courses that start today should be returned", function(){
             var coursesThatStartToday = CourseReportingService.findCoursesThatStartToday().fetch();
             coursesThatStartToday.should.have.length(1);
             coursesThatStartToday[0]._id.should.equal(startsTodayApproved._id);
         });
-    });
-});
 
-MochaWeb.testOnly(function(){
-    describe("When searching for courses that start in 3 days time", function(){
-        before(function(){
-            chai.should();
-            setupTestCourses();
-        });
-
-        it("only approved courses that start in 3 days time should be returned", function(){
-            var coursesThatStartToday = CourseReportingService.findCoursesThatStartIn3DaysTime().fetch();
+        it("when searching for 3 days away only approved courses that start today should be returned", function(){
+            var coursesThatStartToday = CourseReportingService.findCoursesThatStartInDaysTime(3).fetch();
             coursesThatStartToday.should.have.length(1);
             coursesThatStartToday[0]._id.should.equal(startsIn3DaysApproved._id);
         });

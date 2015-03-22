@@ -1,31 +1,27 @@
 CourseReportingService = {
     findCoursesThatStartToday : function(){
+        return this.findCoursesThatStartInDaysTime(0);
+    },
+    findCoursesThatStartInDaysTime: function(numberOfDays){
         var query = {
             startsAt : {
-                $gte : moment().startOf("day").toDate(),
-                $lt  : moment().endOf("day").toDate()
+                $gte : moment().add(numberOfDays, "days").startOf("day").toDate(),
+                $lt  : moment().add(numberOfDays, "days").endOf("day").toDate()
             },
             approved : true
         };
         return Collections.Courses.find(query);
     },
-    findCoursesThatStartIn3DaysTime: function(){
-        var query = {
-            startsAt : {
-                $gte : moment().add(3, "days").startOf("day").toDate(),
-                $lt  : moment().add(3, "days").endOf("day").toDate()
-            },
-            approved : true
-        };
-        return Collections.Courses.find(query);
-    },
-    findCoursesThatHaveSessionsThatStartSoon: function(){
+    findCoursesWithUnnotifiedSessions : function(thatStartsWithinMinutes){
+
+        var now = moment().toDate();
+        var searchCutoff =  moment().add(thatStartsWithinMinutes, "minutes").toDate();
         var query = {
             "sessions" :{
                 $elemMatch:{
                     startsAt : {
-                        $gte: moment().toDate(),
-                        $lt: moment().add(1, "hour").toDate()
+                        $gte: now,
+                        $lte: searchCutoff
                     },
                     $or : [
                         { notifiedStartingSoon : false},
@@ -35,6 +31,16 @@ CourseReportingService = {
             },
             approved : true
         };
-        return Collections.Courses.find(query);
+
+        return Collections.Courses.find(query).map(function(c){
+            return {
+                course : c,
+                unnotifiedSessions : _.filter(
+                    c.sessions,
+                    function(s){
+                        return !s.notifiedStartingSoon && s.startsAt >= now && s.startsAt < searchCutoff;
+                    })
+            };
+        });
     }
 }
