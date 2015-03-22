@@ -25,6 +25,9 @@ Template.viewCourse.helpers({
 			return "disabled";
 		else
 			return "";
+	},
+	numUsersSignedUpOrOnWaitingList : function() {
+		return this.waitingListUserIds.length + this.signedUpUserIds.length;
 	}
 });
 

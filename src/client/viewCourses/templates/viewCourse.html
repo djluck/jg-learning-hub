@@ -2,7 +2,21 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="page-header" style="margin-top:0px">
-				<h3 style="margin-top:5px">{{details.title}}</h3>
+				<h3 style="margin-top:5px">
+					{{details.title}}
+					{{#if isSignedUp}}
+                        <span class="label label-success">
+							<span class="glyphicon glyphicon-ok"> </span>
+							Subscribed
+						</span>
+					{{/if}}
+					{{#if isOnWaitingList}}
+                        <span class="label label-warning">
+							<span class="glyphicon glyphicon-hourglass"> </span>
+							Waiting
+						</span>
+					{{/if}}
+				</h3>
 			</div>
 			{{#if isInRole "administrator"}}
 				{{#unless approved}}
@@ -14,7 +28,7 @@
 			{{/if}}
 			<div class="row">
 
-				<div class="col-md-9">
+				<div class="col-md-10">
 					<p>
 						<strong>Objectives:</strong>
 						{{details.objectives}}
@@ -25,22 +39,16 @@
 
 					</p>
 				</div>
-				<div class="col-md-3">
-					{{> signUpProgress}}
-					{{>label label=details.formatType icon="bullhorn"}}
-					{{>label label=createdByUserName icon="user"}}
-					{{#if isSignedUp}}
-						<span class="label label-success">
-							<span class="glyphicon glyphicon-ok"> </span>
-							Subscribed
-						</span>
-					{{/if}}
-					{{#if isOnWaitingList}}
-                        <span class="label label-warning">
-							<span class="glyphicon glyphicon-hourglass"> </span>
-							Waiting
-						</span>
-					{{/if}}
+				<div class="col-md-2">
+
+					<p>
+						<strong>Run by:</strong> {{createdByUserName}}
+					</p>
+					<p>
+						<strong>Format:</strong> {{details.formatType}}
+					</p>
+
+
 				</div>
 			</div>
 			<p>
@@ -51,6 +59,7 @@
                 <a href="#" class="btn btn-default" role="button" {{disableUsersAttending}} data-toggle="collapse" data-target="#usersAttending_{{_id}}" aria-expanded="false" aria-controls="usersAttending_{{_id}}">
                     <span class="glyphicon glyphicon-user"> </span>
                     Attendants
+					<span class="badge">{{numUsersSignedUpOrOnWaitingList}} / {{details.numberOfSpaces}}</span>
                 </a>
 				{{#if canSignUpToOrRegignFromCourse}}
 				<button class="btn btn-primary btn-sign-up {{#if isSignedUpOrOnWaitingList}}btn-danger{{/if}}" role="button" disabled="{{#unless currentUser}}disabled{{/unless}}" >
