@@ -7,7 +7,9 @@ Meteor.publishComposite(null, {
     children: [{
         find: function(course){
             var userIds = course.signedUpUserIds.slice(0);
-            userIds.push(course.waitingListUserIds.slice(0));
+            if (course.waitingListUserIds)
+                userIds.push(course.waitingListUserIds.slice(0));
+
             userIds.push(course.createdByUserId);
             return Meteor.users.find({_id : { $in : userIds }});
         }

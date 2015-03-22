@@ -27,7 +27,7 @@ Template.viewCourse.helpers({
 			return "";
 	},
 	numUsersSignedUpOrOnWaitingList : function() {
-		return this.waitingListUserIds.length + this.signedUpUserIds.length;
+		return (this.waitingListUserIds || []).length + this.signedUpUserIds.length;
 	}
 });
 

@@ -5,7 +5,7 @@ Rules.Courses = {
     canResignFromCourse : canResignFromCourse,
     isCourseFull :isCourseFull,
     courseHasWaitingList : function(course){
-        return course.waitingListUserIds.length > 0;
+        return course.waitingListUserIds && course.waitingListUserIds.length > 0;
     }
 }
 

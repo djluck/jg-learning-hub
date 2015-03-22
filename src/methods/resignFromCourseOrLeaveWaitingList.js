@@ -35,7 +35,7 @@ function resignFromWaitingList(user, courseId){
 }
 
 function admitOneFromWaitingList(course){
-    if (course.waitingListUserIds.length === 0)
+    if (!Rules.Courses.courseHasWaitingList(course))
         return;
 
     var nextUserInLine = popNextUserFromWaitingList(course);
