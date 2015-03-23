@@ -24,12 +24,12 @@ Template.addCourse.helpers({
 	formId : formId,
 	sessions : Sessions.getSessions,
 	users : function(){
-		return Meteor.users.find().map(function(u){
+		return _.sortBy(Meteor.users.find().map(function(u){
 			return {
 				value : u._id,
 				label : u.profile.name
 			};
-		});
+		}), "label");
 	}
 });
 
