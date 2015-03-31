@@ -7,13 +7,15 @@ SyncedCron.add({
     job: function() {
         Log.info("Running cron job {0}", dailyName);
 
-        var coursesThatStartSoon =  CourseReportingService.findCoursesThatStartInDaysTime(5);
+        var coursesThatStartSoon = CourseReportingService.findCoursesThatStartInDaysTime(5).fetch();
         Log.info("There are {0} courses that start soon", coursesThatStartSoon.length);
 
-        var coursesThatStartToday = CourseReportingService.findCoursesThatStartToday();
+        var coursesThatStartToday = CourseReportingService.findCoursesThatStartToday().fetch();
         Log.info("There are {0} courses that start today", coursesThatStartToday.length);
     }
 });
+
+SyncedCron.start();
 
 function getAllUsersOnCourse(course){
     var usersOnCourse = course.signedUpUserIds.slice(0);

@@ -1,14 +1,5 @@
 var formId = "addCourseDetails";
 
-Template.addCourse.rendered = function(){
-	if (isEditing(this.data)){
-		Sessions.initSessions(this.data.course.sessions);
-	}
-	else{
-		Sessions.initSessions();
-	}
-}
-
 Template.addCourse.helpers({
 	courseFormats : function(){
 		return _.map(
@@ -39,7 +30,7 @@ Template.addCourse.events = {
 			return false;
 		}
 
-		if (isEditing(this)){
+		if (this.isEditing){
 			updateCourse(this.course);
 		}
 		else{
@@ -85,8 +76,4 @@ function updateCourse(course){
 			Router.go('/');
 		})
 		.done();
-}
-
-function isEditing(data){
-	return data && data.course;
 }

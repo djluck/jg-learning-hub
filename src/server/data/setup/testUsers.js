@@ -29,5 +29,10 @@ TestUsers = [
         "email" : "pupil3@test.com",
         "password" : "secret",
         name : "Third Pupil"
+    },
+    {
+        "email" : "pupil4@test.com",
+        "password" : "secret",
+        name : "Fourth Pupil"
     }
 ];

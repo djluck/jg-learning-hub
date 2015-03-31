@@ -32,7 +32,7 @@ function promiseBasedMethodCall(methodFn){
     methodFn.apply(this, argsArray);
 
     return deferred.promise
-        .catch(function(err){
+        .fail(function(err){
             var message = _.sprintf("We encountered an issue trying to phone home: %s", err.message);
             Dialogs.errorDialog.show({ message : message });
         });

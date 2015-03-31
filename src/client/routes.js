@@ -6,10 +6,6 @@ Router.route("/", function(){
 	this.render("viewCourses");
 });
 
-Router.route("/add-course", function(){
-	this.render("addCourse");
-});
-
 Router.route("/my-courses", function(){
 	this.render("myCourses");
 	this.render('viewMyCourses', {to: 'courseView'});
@@ -31,13 +27,36 @@ Router.route("/my-sessions", function(){
 Router.route("/edit-course/:_id", function(){
 	this.render("addCourse",  {
 		data: function(){
+			var course = CourseDataService.getCourse(this.params._id);
+			if (!course)
+				return {};
+
+			Deps.nonreactive(function(){
+				Sessions.initSessions(course.sessions);
+			});
 			return {
-				course : CourseDataService.getCourse(this.params._id)
-			}
-		},
-		waitOn: function () {
-			// return one handle, a function, or an array
-			return Meteor.subscribe('Courses', this.params._id);
-		},
+				course : course,
+				isEditing: true
+			};
+		}
 	});
+});
+
+Router.route("/add-course", {
+	name : "addCourse",
+	data : function(){
+		Deps.nonreactive(function(){
+			Sessions.initSessions();
+		});
+
+		return {
+			course : {
+				details : {
+					title : "", //return a dummy title to clear out previous data
+					runByUserId : Meteor.userId()
+				}
+			},
+			isEditing: false
+		}
+	}
 });

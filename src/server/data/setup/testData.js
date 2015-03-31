@@ -23,7 +23,8 @@ function data(){
                 title:  "Shouldn't see this",
                 suitableFor:  "Shouldn't see this",
                 numberOfSpaces: 3,
-                formatType : formatType
+                formatType : formatType,
+                runByUserId: userEmailsToIds["teacher@test.com"]
             },
             sessions : [
                 {
@@ -42,7 +43,8 @@ function data(){
                 title:  "Has started",
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
-                formatType : formatType
+                formatType : formatType,
+                runByUserId: userEmailsToIds["teacher@test.com"]
             },
             sessions : [
                 {
@@ -72,7 +74,8 @@ function data(){
                 title:  "Course not yet approved",
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
-                formatType : formatType
+                formatType : formatType,
+                runByUserId: userEmailsToIds["teacher@test.com"]
             },
             sessions : [
                 {
@@ -91,7 +94,8 @@ function data(){
                 title:  "Approved but not yet signed up to",
                 suitableFor: "Anyone",
                 numberOfSpaces: 3,
-                formatType : formatType
+                formatType : formatType,
+                runByUserId: userEmailsToIds["teacher@test.com"]
             },
             sessions : [
                 {
@@ -115,7 +119,8 @@ function data(){
                 title:  "Not yet started but full",
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
-                formatType : formatType
+                formatType : formatType,
+                runByUserId: userEmailsToIds["teacher@test.com"]
             },
             sessions : [
                 {
@@ -149,7 +154,8 @@ function data(){
                 title:  "Not started but room for one more!",
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
-                formatType : formatType
+                formatType : formatType,
+                runByUserId: userEmailsToIds["teacher@test.com"]
             },
             sessions : [
                 {

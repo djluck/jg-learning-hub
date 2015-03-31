@@ -1,6 +1,6 @@
 <template name="addCourse">
 
-		<h2>Course Details <small>Sell it to us!</small></h2>
+		<h2>Course details <small>Sell it to us!</small></h2>
 		{{#autoForm schema="Schemas.CourseDetails" id=formId role="form" doc=course.details}}
 			{{>afQuickField name='title'}}
 			{{>afQuickField name='objectives' rows=3}}
@@ -12,7 +12,7 @@
 				{{>afQuickField name='runByUserId' options=users}}
 			{{/if}}
 		{{/autoForm}}
-		<h2>Session details <small>When will it happen?</small></h2>
+		<h2>Session details <small>When will it happen and where?</small></h2>
 		<div class="container">
 			{{#each sessions}}
 				{{> sessionDetails}}
@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-md-2">
 					<p class="text-right">
-						<button id="btnAddSession" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Session</button>
+						<button id="btnAddSession" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add a session</button>
 					</p>
 				</div>
 				<div class="col-md-1"></div>
@@ -31,7 +31,7 @@
 		</div>
 
 		<p>
-			<button id="btnAddCourse" class="center-block btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"> </span> Submit Course</button>
+			<button id="btnAddCourse" class="center-block btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"> </span> Submit your course</button>
 		</p>
 
 </template>

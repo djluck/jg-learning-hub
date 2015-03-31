@@ -1,6 +1,6 @@
 var links = [
 	{
-		name : "Available Courses",
+		name : "Available courses",
 		urls : ["/"],
 		isVisible : function(){
 			return true;
@@ -10,7 +10,7 @@ var links = [
 		}
 	},
 	{
-		name : "My Courses",
+		name : "My courses",
 		urls : ["/my-courses", "/my-sessions"], //we accept arrays so that multiple links can have a menu option marked as active
 		isVisible : function(){
 			return Meteor.userId() !== null;

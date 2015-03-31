@@ -23,7 +23,7 @@ Template.sessionDetails.events = {
 		var sessionId = template.data.tempId;
 		var session = Sessions.getSession(sessionId);
 		var fieldName = this.name;
-		session[fieldName] = AutoForm.getFieldValue(template.data.formId, fieldName);
+		session[fieldName] = AutoForm.getFieldValue(fieldName, template.data.formId);
 		Sessions.updateSession(session);
 	}
 }

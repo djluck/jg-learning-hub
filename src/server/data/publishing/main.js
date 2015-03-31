@@ -1,3 +1,7 @@
+var userOptions = { fields : {
+    profile : 1
+}};
+
 Meteor.publishComposite(null, {
     find: function(){
         return Collections.Courses.find(
@@ -6,12 +10,13 @@ Meteor.publishComposite(null, {
     },
     children: [{
         find: function(course){
-            var userIds = course.signedUpUserIds.slice(0);
-            if (course.waitingListUserIds)
-                userIds.push(course.waitingListUserIds.slice(0));
+            var userIds = _.union(
+                course.signedUpUserIds,
+                course.waitingListUserIds || [],
+                [course.details.runByUserId]
+            );
 
-            userIds.push(course.details.runByUserId);
-            return Meteor.users.find({_id : { $in : userIds }});
+            return Meteor.users.find({_id : { $in : userIds }}, userOptions);
         }
     }]
 });
@@ -35,7 +40,7 @@ Meteor.publish(
     function(){
         //all admins should be able to see all users on the site
         if (Roles.userIsInRole(this.userId, 'administrator')) {
-            return Meteor.users.find();
+            return Meteor.users.find({}, userOptions);
         }
         else {
             this.stop();
