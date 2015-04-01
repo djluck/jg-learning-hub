@@ -4,7 +4,7 @@ Methods = {
 
 function registerAsMethod(fnName, fn){
     var methodToAdd = {};
-    methodToAdd[fnName] = fn;
+    methodToAdd[fnName] = getLoggingMethod(fnName, fn);
     Meteor.methods(methodToAdd);
 
 
@@ -21,4 +21,12 @@ function registerAsMethod(fnName, fn){
 
         Meteor.apply(fnName, methodParameters, asyncCallback);
     }
+}
+
+function getLoggingMethod(fnName, fnToWrap){
+    return function(){
+        Log.info("User {0} is calling method {1} with parameters: {2}", this.userId, fnName, _.toArray(arguments));
+
+        fnToWrap.apply(this, arguments);
+    };
 }

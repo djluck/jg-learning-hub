@@ -26,4 +26,10 @@ if (Meteor.isServer) {
         });
     };
 }
+else{
+    Email = {};
+    Email.sendLearningHubNotification = function(){
+        //no-op
+    };
+}
 

@@ -11,6 +11,9 @@ Template.viewCourse.helpers({
 	canEdit: function(){
 		return this.createdByUserId === Meteor.userId() || this.details.runByUserId === Meteor.userId() || Roles.userIsInRole(Meteor.user(), "administrator");
 	},
+	canDelete: function(){
+		return Roles.userIsInRole(Meteor.user(), "administrator");
+	},
 	canSignUpToOrRegignFromCourse: function(){
 		return Rules.Courses.canSignUpToCourse(this) || Rules.Courses.canResignFromCourse(this, Meteor.userId());
 	},
@@ -40,6 +43,9 @@ Template.viewCourse.events = {
 	},
 	"click .lnk-approve-course" : function(){
 		Dialogs.approveCourseDialog.show(this._id);
+	},
+	"click .btn-delete" : function(event, template){
+		Dialogs.deleteCourseDialog.show(this._id);
 	}
 }
 

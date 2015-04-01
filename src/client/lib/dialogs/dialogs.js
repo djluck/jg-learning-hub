@@ -44,6 +44,29 @@ Meteor.startup(function(){
         Methods.approveCourse(e.data);
     });
 
+    var deleteCourseDialogInfo = {
+        template: "deleteCourseDialog",
+        title: "Delete this course",
+        removeOnHide: true,
+        buttons: {
+            deleteCourse : {
+                closeModalOnClick: true,
+                class: "btn-danger",
+                label: "Delete course"
+            },
+            cancel : {
+                closeModalOnClick: true,
+                label: "Keep course"
+            }
+        }
+    };
+
+    Dialogs.deleteCourseDialog = ReactiveModal.initDialog(deleteCourseDialogInfo);
+
+    Dialogs.deleteCourseDialog.buttons.deleteCourse.on("click", function(e){
+        Methods.deleteCourse(e.data);
+    });
+
     Dialogs.errorDialog = ReactiveModal.initDialog(errorDialogInfo);
 
     var notifyWaitingListPosition = {

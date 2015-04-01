@@ -49,47 +49,58 @@
 					</p>
 				</div>
 			</div>
-			<p>
-				<a href="#" class="btn btn-default" role="button" data-toggle="collapse" data-target="#sessionDetails_{{_id}}" aria-expanded="false" aria-controls="sessionDetails_{{_id}}">
-					<span class="glyphicon glyphicon-calendar"> </span>
-					Where and when
-				</a>
-                <a href="#" class="btn btn-default" role="button" {{disableUsersAttending}} data-toggle="collapse" data-target="#usersAttending_{{_id}}" aria-expanded="false" aria-controls="usersAttending_{{_id}}">
-                    <span class="glyphicon glyphicon-user"> </span>
-                    Who's going?
-					<span class="badge">{{numUsersSignedUpOrOnWaitingList}} / {{details.numberOfSpaces}}</span>
-                </a>
-				{{#if canSignUpToOrRegignFromCourse}}
-				<button class="btn btn-primary btn-sign-up {{#if isSignedUpOrOnWaitingList}}btn-danger{{/if}}" role="button" disabled="{{#unless currentUser}}disabled{{/unless}}" >
+            <div class="row">
+                <div class="col-md-9">
+                    <a href="#" class="btn btn-default" role="button" data-toggle="collapse" data-target="#sessionDetails_{{_id}}" aria-expanded="false" aria-controls="sessionDetails_{{_id}}">
+                        <span class="glyphicon glyphicon-calendar"> </span>
+                        Where and when
+                    </a>
+                    <a href="#" class="btn btn-default" role="button" {{disableUsersAttending}} data-toggle="collapse" data-target="#usersAttending_{{_id}}" aria-expanded="false" aria-controls="usersAttending_{{_id}}">
+                        <span class="glyphicon glyphicon-user"> </span>
+                        Who's going?
+                        <span class="badge">{{numUsersSignedUpOrOnWaitingList}} / {{details.numberOfSpaces}}</span>
+                    </a>
+					{{#if canSignUpToOrRegignFromCourse}}
+                        <button class="btn btn-primary btn-sign-up {{#if isSignedUpOrOnWaitingList}}btn-danger{{/if}}" role="button" disabled="{{#unless currentUser}}disabled{{/unless}}" >
 					<span class="glyphicon
 						{{#if isSignedUpOrOnWaitingList}}
 							glyphicon-remove
 						{{else}}
-							{{#if courseIsFull}}
+						{{#if courseIsFull}}
 								glyphicon-hourglass
 							{{else}}
 								glyphicon-ok
 							{{/if}}
-						{{/if}}
-					"> </span>
-					{{#if isSignedUpOrOnWaitingList}}
-						Cancel your place
-					{{else}}
-						{{#if courseIsFull}}
-							Join waiting list
-						{{else}}
-							Sign Up
-						{{/if}}
 					{{/if}}
-				</button>
-				{{/if}}
-				{{#if canEdit}}
-				<button class="btn btn-warning btn-edit" role="button">
-					<span class="glyphicon glyphicon-edit"> </span>
-					Edit
-				</button>
-				{{/if}}
-			</p>
+					"> </span>
+							{{#if isSignedUpOrOnWaitingList}}
+                                Cancel your place
+							{{else}}
+								{{#if courseIsFull}}
+                                    Join waiting list
+								{{else}}
+                                    Sign Up
+								{{/if}}
+							{{/if}}
+                        </button>
+					{{/if}}
+                </div>
+                <div class="col-md-3 text-right">
+					{{#if canEdit}}
+                        <button class="btn btn-warning btn-edit" role="button">
+                            <span class="glyphicon glyphicon-edit"> </span>
+                            Edit
+                        </button>
+					{{/if}}
+					{{#if canDelete}}
+                        <button class="btn btn-danger btn-delete" role="button">
+                            <span class="glyphicon glyphicon-trash"> </span>
+                            Delete
+                        </button>
+					{{/if}}
+                </div>
+            </div>
+
 			<div id="sessionDetails_{{_id}}" class="collapse">
 				{{> viewSessions sessions=sessions}}
 			</div>
