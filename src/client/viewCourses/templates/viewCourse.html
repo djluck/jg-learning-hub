@@ -86,6 +86,7 @@
 					{{/if}}
                 </div>
                 <div class="col-md-3 text-right">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
 					{{#if canEdit}}
                         <button class="btn btn-warning btn-edit" role="button">
                             <span class="glyphicon glyphicon-edit"> </span>
@@ -98,14 +99,22 @@
                             Delete
                         </button>
 					{{/if}}
+					</div>
                 </div>
             </div>
-
-			<div id="sessionDetails_{{_id}}" class="collapse">
-				{{> viewSessions sessions=sessions}}
+			<div class="row">
+                <div class="col-md-12">
+                    <div id="sessionDetails_{{_id}}" class="collapse">
+						{{> viewSessions sessions=sessions}}
+                    </div>
+				</div>
 			</div>
-            <div id="usersAttending_{{_id}}" class="collapse">
-				{{> usersAttending }}
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="usersAttending_{{_id}}" class="collapse" style="margin-top:5px">
+						{{> usersAttending }}
+                    </div>
+                </div>
             </div>
 		</div>
 	</div>
