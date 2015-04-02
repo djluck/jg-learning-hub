@@ -1,6 +1,5 @@
 if (Meteor.isServer) {
     Email.sendLearningHubNotification = function(to, subject, message){
-
         var toAddresses;
         if (_.isArray(to)){
             toAddresses =
@@ -15,6 +14,7 @@ if (Meteor.isServer) {
 
         if (!toAddresses || toAddresses.length === 0){
             Log.info("Couldn't find anyone to email. Not sending notification {0}", subject);
+            return;
         }
 
         Log.info("Sending the notification '{0}' to {1}", subject, toAddresses);

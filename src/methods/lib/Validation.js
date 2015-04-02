@@ -5,13 +5,14 @@ Validation = {
 };
 
 function requireUser(userId){
-    if (userId === null)
-        Meteor.Error("NotAuthenticated", "Requires an authenticated user");
+    if (!userId) {
+        throw new Meteor.Error("NotAuthenticated", "Requires an authenticated user");
     }
+}
 
 function requireAdministrator(userId){
     if (!Roles.userIsInRole(userId, "administrator"))
-        Meteor.Error("NotAuthorized", "Must be an administrator to carry out this action");
+        throw new Meteor.Error("NotAuthorized", "Must be an administrator to carry out this action");
 }
 
 function isMongoId(id){

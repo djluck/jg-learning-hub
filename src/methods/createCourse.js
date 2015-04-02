@@ -14,7 +14,7 @@ function notifyAdmins(details){
     if (Meteor.isClient)
         return;
 
-    var admins = Meteor.users.find({ roles : {$in : ["administrator"]}});
+    var admins = Meteor.users.find({ roles : {$in : ["administrator"]}}).fetch();
 
     Email.sendLearningHubNotification(
         admins,

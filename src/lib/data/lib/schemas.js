@@ -105,7 +105,6 @@ initCollectionAndSchema("Courses", {
         type: Boolean,
         autoValue: function(){
             if (!this.isSet && this.isInsert){
-                console.log("Setting default for approved");
                 return false;
             }
         }

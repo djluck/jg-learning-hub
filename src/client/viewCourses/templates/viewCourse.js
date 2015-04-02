@@ -31,6 +31,16 @@ Template.viewCourse.helpers({
 	},
 	numUsersSignedUpOrOnWaitingList : function() {
 		return (this.waitingListUserIds || []).length + this.signedUpUserIds.length;
+	},
+	signUpTooltip : function(){
+		if (Meteor.user())
+			return {};
+
+		return {
+			"data-toggle" : "tooltip",
+			"data-placement" : "top",
+			"title" : "You must be logged in to sign up for a course"
+		}
 	}
 });
 
@@ -51,6 +61,12 @@ Template.viewCourse.events = {
 
 function subscribeOrUnsubscribeUser(course){
 	var user = Meteor.user();
+
+	//handle case where user is not yet logged in
+	if (!user) {
+		return handleUserNotLoggedIn(course);
+	}
+
 	var courseId = course._id;
 
 	if (Rules.Courses.isCourseFull(course) && Rules.Courses.courseHasWaitingList(course) && UserCourseDataService.isSignedUp(user, courseId)) {
@@ -60,12 +76,29 @@ function subscribeOrUnsubscribeUser(course){
 		Methods.resignFromCourseOrLeaveWaitingList(courseId);
 	}
 	else{
-		Methods.signUpToCourseOrJoinWaitingList(courseId)
-			.then(function(result){
-				if (!result.isOnWaitingList)
-					return;
-
-				Dialogs.notifyWaitingListPosition.show({waitingListPosition: result.waitingListPosition});
-			});
+		signUserUpToCourseOrJoinWaitingList(course);
 	}
+}
+
+function handleUserNotLoggedIn(course){
+	Meteor.loginWithAzureAd(function(err){
+		if (err){
+			return;
+		}
+
+		//only sign up a user, otherwise we might confuse users!
+		if (!UserCourseDataService.isSignedUpOrOnWaitingList(Meteor.user(), course._id)){
+			signUserUpToCourseOrJoinWaitingList(course);
+		}
+	});
+}
+
+function signUserUpToCourseOrJoinWaitingList(course){
+	Methods.signUpToCourseOrJoinWaitingList(course._id)
+		.then(function(result){
+			if (!result.isOnWaitingList)
+				return;
+
+			Dialogs.notifyWaitingListPosition.show({waitingListPosition: result.waitingListPosition});
+		});
 }

@@ -11,7 +11,6 @@ Template.usersAttending.helpers({
         return _.map(
             this.waitingListUserIds,
             function(userId, index){
-                console.log(Meteor.users.findOne(userId));
                 return { user : Meteor.users.findOne(userId), position : index + 1 };
             }
         );

@@ -18,7 +18,7 @@ SyncedCron.add({
 SyncedCron.start();
 
 function getAllUsersOnCourse(course){
-    var usersOnCourse = course.signedUpUserIds.slice(0);
-    usersOnCourse.push(course.details.runByUserId);
+    var usersOnCourse = _.union(course.signedUpUserIds, [course.details.runByUserId]);
+
     return usersOnCourse;
 }
