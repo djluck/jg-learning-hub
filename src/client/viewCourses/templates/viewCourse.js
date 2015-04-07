@@ -96,8 +96,9 @@ function handleUserNotLoggedIn(course){
 function signUserUpToCourseOrJoinWaitingList(course){
 	Methods.signUpToCourseOrJoinWaitingList(course._id)
 		.then(function(result){
-			if (!result.isOnWaitingList)
+			if (!result.isOnWaitingList) {
 				return;
+			}
 
 			Dialogs.notifyWaitingListPosition.show({waitingListPosition: result.waitingListPosition});
 		});
