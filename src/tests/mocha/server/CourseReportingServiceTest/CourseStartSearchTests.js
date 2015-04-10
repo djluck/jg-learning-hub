@@ -6,20 +6,20 @@ MochaWeb.testOnly(function(){
         });
 
         it("when searching for today only approved courses that start today should be returned", function(){
-            var coursesThatStartToday = CourseReportingService.findCoursesThatStartToday().fetch();
+            var coursesThatStartToday = Collections.Courses.queries.coursesThatStartToday().fetch();
             coursesThatStartToday.should.have.length(1);
             coursesThatStartToday[0]._id.should.equal(startsTodayApproved._id);
         });
 
         it("when searching for 3 days away only approved courses that start today should be returned", function(){
-            var coursesThatStartToday = CourseReportingService.findCoursesThatStartInDaysTime(3).fetch();
+            var coursesThatStartToday = Collections.Courses.queries.coursesThatStartInDaysTime(3).fetch();
             coursesThatStartToday.should.have.length(1);
             coursesThatStartToday[0]._id.should.equal(startsIn3DaysApproved._id);
         });
     });
 });
 
-//test data
+//data data
 var startsTodayApproved =  {
     approved : true,
     startsAt : moment().toDate()

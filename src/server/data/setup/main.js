@@ -2,7 +2,7 @@ Meteor.startup(function(){
     addData(BaseData);
     var isDebug = process.env.DEBUG;
     if (isDebug){
-        console.log("DEBUG=true, adding test data..")
+        console.log("DEBUG=true, adding data data..")
         addUsers();
         addData(TestData);
     }
@@ -36,7 +36,7 @@ function addUsers(){
 
 function addIfEmpty(collection, toAdd){
     if (collection.find().count() === 0){
-        console.log("Collection is empty, adding base/test data to it...")
+        console.log("Collection is empty, adding base/data data to it...")
         var after;
 
         if (!_.isArray(toAdd) && _.isObject(toAdd)){

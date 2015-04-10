@@ -5,15 +5,16 @@ function resignFromCourseOrLeaveWaitingList(courseId){
     Validation.requireUser(this.userId);
 
     var user = Meteor.users.findOne(this.userId);
+    var course = Collections.Courses.findOne(this.courseId);
 
     Log.info("A user ({0}) is attempting to resign from the course {1}", user._id, courseId);
 
-    if (!UserCourseDataService.isSignedUpOrOnWaitingList(user, courseId)){
+    if (!course.isUserSignedUpOrOnWaitingList(user)){
         throw new Meteor.Error("CouldNotResignFromCourse", "User is not signed up to course or on waiting list");
     }
 
     var course = Collections.Courses.findOne(courseId);
-    if (UserCourseDataService.isOnWaitingList(user, course)){
+    if (course.isUserOnWaitingList(user)){
         resignFromWaitingList(user, course);
     }
     else{
@@ -35,12 +36,12 @@ function resignFromWaitingList(user, courseId){
 }
 
 function admitOneFromWaitingList(course){
-    if (!Rules.Courses.courseHasWaitingList(course))
+    if (!course.hasWaitingList())
         return;
 
     var nextUserInLine = popNextUserFromWaitingList(course);
 
-    UserCourseDataService.signUpToCourse(nextUserInLine, course._id);
+    nextUserInLine.signUpToCourse(course._id);
 
     Email.sendLearningHubNotification(
         nextUserInLine,

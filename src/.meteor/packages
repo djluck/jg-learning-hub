@@ -15,7 +15,6 @@ wizonesolutions:underscore-string
 meteorhacks:kadira
 mrt:q
 service-configuration
-email
 
 wiseguyeh:accounts-azure-active-directory
 ian:accounts-ui-bootstrap-3
@@ -24,3 +23,5 @@ percolate:synced-cron
 mike:mocha
 twbs:bootstrap
 wiseguyeh:azure-resource-office-365
+jg-learninghub-common
+jg-learninghub-data

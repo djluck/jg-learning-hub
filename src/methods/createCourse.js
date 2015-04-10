@@ -3,8 +3,7 @@ Methods.registerAsMethod("createCourse", createCourse);
 function createCourse(details, sessions){
     Validation.requireUser(this.userId);
 
-    CourseDataService
-        .createCourse(details, sessions);
+    Collections.Courses.commands.create(details, sessions);
 
     notifyAdmins(details);
 }

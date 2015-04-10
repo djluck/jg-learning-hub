@@ -6,12 +6,12 @@ MochaWeb.testOnly(function(){
         });
 
         it("When search we sessions that start within 15 minutes then nothing is returned", function(){
-            var coursesThatStartToday = CourseReportingService.findCoursesWithUnnotifiedSessions(15);
+            var coursesThatStartToday = Collections.Courses.queries.coursesWithUnnotifiedSessions(15);
             coursesThatStartToday.should.have.length(0);
         });
 
         it("When search we sessions that start within 30 minutes then only unnotified sessions that belong to approved courses are returned", function(){
-            var coursesThatStartToday = CourseReportingService.findCoursesWithUnnotifiedSessions(30);
+            var coursesThatStartToday = Collections.Courses.queries.coursesWithUnnotifiedSessions(30);
             coursesThatStartToday.should.have.length(2);
 
             coursesThatStartToday[0].unnotifiedSessions.should.have.length(1);
@@ -32,7 +32,7 @@ MochaWeb.testOnly(function(){
         });
 
         it("When search we sessions that start within 60 minutes then only unnotified sessions that belong to approved courses are returned", function(){
-            var coursesThatStartToday = CourseReportingService.findCoursesWithUnnotifiedSessions(60);
+            var coursesThatStartToday = Collections.Courses.queries.coursesWithUnnotifiedSessions(60);
             coursesThatStartToday.should.have.length(2);
 
             coursesThatStartToday[0].unnotifiedSessions.should.have.length(1);
@@ -57,7 +57,7 @@ MochaWeb.testOnly(function(){
     });
 });
 
-//test data
+//data data
 var sessionsStartedUnnotified = {
     startsAt: moment().subtract(1, "minutes").toDate()
 }

@@ -24,7 +24,7 @@ function data(){
                 suitableFor:  "Shouldn't see this",
                 numberOfSpaces: 3,
                 formatType : formatType,
-                runByUserId: userEmailsToIds["teacher@test.com"]
+                runByUserId: userEmailsToIds["teacher@data.com"]
             },
             sessions : [
                 {
@@ -33,7 +33,7 @@ function data(){
                     startsAt : moment().subtract(3, "days").toDate()
                 }
             ],
-            createdByUserId : userEmailsToIds["teacher@test.com"]
+            createdByUserId : userEmailsToIds["teacher@data.com"]
         },
         //has started (cannot sign up for)
         {
@@ -44,7 +44,7 @@ function data(){
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
                 formatType : formatType,
-                runByUserId: userEmailsToIds["teacher@test.com"]
+                runByUserId: userEmailsToIds["teacher@data.com"]
             },
             sessions : [
                 {
@@ -60,10 +60,10 @@ function data(){
                     startsAt : moment().subtract(3, "days").toDate()
                 }
             ],
-            createdByUserId : userEmailsToIds["teacher@test.com"],
+            createdByUserId : userEmailsToIds["teacher@data.com"],
             signedUpUserIds : [ //one space still available
-                userEmailsToIds["pupil1@test.com"],
-                userEmailsToIds["pupil2@test.com"]
+                userEmailsToIds["pupil1@data.com"],
+                userEmailsToIds["pupil2@data.com"]
             ]
         },
         //has not started but not approved
@@ -75,7 +75,7 @@ function data(){
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
                 formatType : formatType,
-                runByUserId: userEmailsToIds["teacher@test.com"]
+                runByUserId: userEmailsToIds["teacher@data.com"]
             },
             sessions : [
                 {
@@ -84,7 +84,7 @@ function data(){
                     startsAt : moment().add(15, "days").toDate()
                 }
             ],
-            createdByUserId : userEmailsToIds["teacher@test.com"]
+            createdByUserId : userEmailsToIds["teacher@data.com"]
         },
         //has not started, no sign ups
         {
@@ -95,7 +95,7 @@ function data(){
                 suitableFor: "Anyone",
                 numberOfSpaces: 3,
                 formatType : formatType,
-                runByUserId: userEmailsToIds["teacher@test.com"]
+                runByUserId: userEmailsToIds["teacher@data.com"]
             },
             sessions : [
                 {
@@ -109,7 +109,7 @@ function data(){
                     startsAt : moment().add(5, "days").toDate()
                 }
             ],
-            createdByUserId : userEmailsToIds["teacher@test.com"]
+            createdByUserId : userEmailsToIds["teacher@data.com"]
         },
         //not started but no space
         {
@@ -120,7 +120,7 @@ function data(){
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
                 formatType : formatType,
-                runByUserId: userEmailsToIds["teacher@test.com"]
+                runByUserId: userEmailsToIds["teacher@data.com"]
             },
             sessions : [
                 {
@@ -139,11 +139,11 @@ function data(){
                     startsAt : moment().add(5, "days").toDate()
                 }
             ],
-            createdByUserId : userEmailsToIds["teacher@test.com"],
+            createdByUserId : userEmailsToIds["teacher@data.com"],
             signedUpUserIds : [ //one space still available
-                userEmailsToIds["pupil1@test.com"],
-                userEmailsToIds["pupil2@test.com"],
-                userEmailsToIds["pupil3@test.com"]
+                userEmailsToIds["pupil1@data.com"],
+                userEmailsToIds["pupil2@data.com"],
+                userEmailsToIds["pupil3@data.com"]
             ]
         },
         //not started and one space
@@ -155,7 +155,7 @@ function data(){
                 suitableFor:  "Anyone",
                 numberOfSpaces: 3,
                 formatType : formatType,
-                runByUserId: userEmailsToIds["teacher@test.com"]
+                runByUserId: userEmailsToIds["teacher@data.com"]
             },
             sessions : [
                 {
@@ -164,10 +164,10 @@ function data(){
                     startsAt : moment().add(2, "days").toDate()
                 }
             ],
-            createdByUserId : userEmailsToIds["teacher@test.com"],
+            createdByUserId : userEmailsToIds["teacher@data.com"],
             signedUpUserIds : [ //one space still available
-                userEmailsToIds["pupil1@test.com"],
-                userEmailsToIds["pupil2@test.com"]
+                userEmailsToIds["pupil1@data.com"],
+                userEmailsToIds["pupil2@data.com"]
             ]
         }
     ];

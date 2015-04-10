@@ -5,8 +5,7 @@ function approveCourse(courseId){
     Validation.requireUser(this.userId);
     Validation.requireAdministrator(this.userId);
 
-    CourseDataService.approveCourse(courseId);
-
+    Collections.Courses.commands.approve(courseId);
     notifyUsers(courseId);
 }
 
@@ -25,3 +24,4 @@ function notifyUsers(courseId){
         "The course '" + course.details.title + "' is now available @ https://learninghub.justgiving.com/"
     );
 }
+

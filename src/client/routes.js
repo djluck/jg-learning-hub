@@ -18,7 +18,7 @@ Router.route("/my-sessions", function(){
 		data: function(){
 			return {
 				showCourseName : true,
-				sessions : UserCourseDataService.getSessionsSignedUpTo(Meteor.user())
+				sessions : Meteor.user().getSessionsSignedUpTo()
 			};
 	 	}
  	});
@@ -27,7 +27,7 @@ Router.route("/my-sessions", function(){
 Router.route("/edit-course/:_id", function(){
 	this.render("addCourse",  {
 		data: function(){
-			var course = CourseDataService.getCourse(this.params._id);
+			var course = Collections.Courses.findOne(courseId);
 			if (!course)
 				return {};
 
