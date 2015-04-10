@@ -13,27 +13,15 @@ function resignFromCourseOrLeaveWaitingList(courseId){
         throw new Meteor.Error("CouldNotResignFromCourse", "User is not signed up to course or on waiting list");
     }
 
-    var course = Collections.Courses.findOne(courseId);
     if (course.isUserOnWaitingList(user)){
-        resignFromWaitingList(user, course);
+        Collections.Courses.commands.resignUserFromWaitingList(courseId, user);
     }
     else{
-        resignFromCourse(user, courseId);
+        Collections.Courses.commands.resignUserFromCourse(courseId, user);
         admitOneFromWaitingList(course);
     }
 }
 
-function resignFromCourse(user, courseId){
-    Meteor.users.resignUserFromCourse(user, courseId);
-
-    var modifier = { $pull : { "signedUpUserIds" : user._id } };
-    Collections.Courses.sync.update(courseId, modifier);
-}
-
-function resignFromWaitingList(user, courseId){
-    var modifier = { $pull : { "waitingListUserIds" : user._id } };
-    Collections.Courses.sync.update(courseId, modifier);
-}
 
 function admitOneFromWaitingList(course){
     if (!course.hasWaitingList())
@@ -55,5 +43,6 @@ function popNextUserFromWaitingList(course){
     var modifier = { $pop : { "waitingListUserIds" : -1 } };
     Collections.Courses.sync.update(course._id, modifier);
 
+    return nextUserInLine;
     return nextUserInLine;
 }

@@ -33,6 +33,19 @@ Collections.Courses.commands.addUserToWaitingList = function(courseId, userId){
     Collections.Courses.sync.update(courseId, modifier);
 }
 
+Collections.Courses.commands.resignUserFromWaitingList = function(courseId, user){
+    var modifier = { $pull : { "waitingListUserIds" : user._id } };
+    Collections.Courses.sync.update(courseId, modifier);
+}
+
+Collections.Courses.commands.resignUserFromCourse = function(courseId, user){
+    var modifier = { $pull: { "profile.takingCourseIds" : courseId } };
+    Meteor.users.sync.update(user._id, modifier);
+
+    var modifier = { $pull : { "signedUpUserIds" : user._id } };
+    Collections.Courses.sync.update(courseId, modifier);
+}
+
 
 function sessionsOrderedByStartDate(sessions){
     return _.sortBy(sessions, function(s) { return s.startsAt; });
