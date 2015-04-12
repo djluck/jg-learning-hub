@@ -5,42 +5,31 @@ function resignFromCourseOrLeaveWaitingList(courseId){
     Validation.requireUser(this.userId);
 
     var user = Meteor.users.findOne(this.userId);
+    var course = Collections.Courses.findOne(courseId);
 
-    Log.info("A user ({0}) is attempting to resign from the course {1}", user._id, courseId);
+    MyLog.format("A user ({0}) is attempting to resign from the course {1}", user._id, courseId);
 
-    if (!UserCourseDataService.isSignedUpOrOnWaitingList(user, courseId)){
+    if (!course.userIsSignedUpOrOnWaitingList(user)){
         throw new Meteor.Error("CouldNotResignFromCourse", "User is not signed up to course or on waiting list");
     }
 
-    var course = Collections.Courses.findOne(courseId);
-    if (UserCourseDataService.isOnWaitingList(user, course)){
-        resignFromWaitingList(user, course);
+    if (course.userIsOnWaitingList(user)){
+        Collections.Courses.commands.removeUserFromWaitingList(courseId, user);
     }
     else{
-        resignFromCourse(user, courseId);
+        Collections.Courses.commands.resignUserFromCourse(courseId, user);
         admitOneFromWaitingList(course);
     }
 }
 
-function resignFromCourse(user, courseId){
-    Meteor.users.resignUserFromCourse(user, courseId);
-
-    var modifier = { $pull : { "signedUpUserIds" : user._id } };
-    Collections.Courses.sync.update(courseId, modifier);
-}
-
-function resignFromWaitingList(user, courseId){
-    var modifier = { $pull : { "waitingListUserIds" : user._id } };
-    Collections.Courses.sync.update(courseId, modifier);
-}
 
 function admitOneFromWaitingList(course){
-    if (!Rules.Courses.courseHasWaitingList(course))
+    if (!course.hasWaitingList())
         return;
 
     var nextUserInLine = popNextUserFromWaitingList(course);
 
-    UserCourseDataService.signUpToCourse(nextUserInLine, course._id);
+    nextUserInLine.signUpToCourse(course._id);
 
     Email.sendLearningHubNotification(
         nextUserInLine,

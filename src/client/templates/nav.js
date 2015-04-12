@@ -6,7 +6,7 @@ var links = [
 			return true;
 		},
 		badgeCount : function(){
-			return CourseDataService.getCourseCount();
+			return Collections.Courses.find().count();
 		}
 	},
 	{
@@ -16,7 +16,11 @@ var links = [
 			return Meteor.userId() !== null;
 		},
 		badgeCount : function(){
-			return UserCourseDataService.countCoursesSignedUpTo(Meteor.user());
+            var user = Meteor.user();
+            if (!user)
+                return 0;
+
+			return user.countCoursesSignedUpTo();
 		}
 	}
 ];

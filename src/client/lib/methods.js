@@ -22,6 +22,7 @@ function promiseBasedMethodCall(methodFn){
             deferred.reject(new Error(err));
         }
         else{
+
             deferred.resolve(result);
         }
     };

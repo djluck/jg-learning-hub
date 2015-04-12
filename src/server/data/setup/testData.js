@@ -5,7 +5,7 @@ TestData.Courses = {
     after : setupSubscriptions
 }
 
-var locationName = "Marketplace"; //don't care about this yet,
+
 var formatType = "Debate";
 
 function data(){
@@ -13,6 +13,8 @@ function data(){
     Meteor.users.find().forEach(function(user){
         userEmailsToIds[user.emails[0].address] = user._id;
     });
+
+    var locationId = Collections.Locations.find().fetch()[0]._id //don't care about this yet,
 
     return [
         //finished (should not be visible)
@@ -28,7 +30,7 @@ function data(){
             },
             sessions : [
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 90,
                     startsAt : moment().subtract(3, "days").toDate()
                 }
@@ -49,13 +51,13 @@ function data(){
             sessions : [
                 {
                     //this session has finished
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().add(1, "days").toDate()
                 },
                 {
                     //this session has yet to occur
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().subtract(3, "days").toDate()
                 }
@@ -79,7 +81,7 @@ function data(){
             },
             sessions : [
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().add(15, "days").toDate()
                 }
@@ -99,12 +101,12 @@ function data(){
             },
             sessions : [
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().add(6, "days").toDate()
                 },
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().add(5, "days").toDate()
                 }
@@ -124,17 +126,17 @@ function data(){
             },
             sessions : [
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().add(3, "days").toDate()
                 },
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 30,
                     startsAt : moment().add(10, "days").toDate()
                 },
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 30,
                     startsAt : moment().add(5, "days").toDate()
                 }
@@ -159,7 +161,7 @@ function data(){
             },
             sessions : [
                 {
-                    locationName : locationName,
+                    locationId : locationId,
                     durationMinutes : 60,
                     startsAt : moment().add(2, "days").toDate()
                 }
@@ -184,7 +186,7 @@ function setupSubscriptions(){
                 function(userId){
                     console.log("uid: " + userId + ", cid:" + course._id);
                     var user = Meteor.users.findOne(userId);
-                    Meteor.users.signUpUserToCourse(user, course._id);
+                    Collections.Courses.commands.signUserUpToCourse(user, course._id);
                 }
             );
         }

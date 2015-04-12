@@ -1,17 +1,17 @@
-var dailyName = "Send out daily notifications"
+var dailyName = "Send out daily email"
 SyncedCron.add({
     name: dailyName,
     schedule: function(parser) {
         return parser.text('at 8:50 am');
     },
     job: function() {
-        Log.info("Running cron job {0}", dailyName);
+        MyLog.format("Running cron job {0}", dailyName);
 
-        var coursesThatStartSoon = CourseReportingService.findCoursesThatStartInDaysTime(5).fetch();
-        Log.info("There are {0} courses that start soon", coursesThatStartSoon.length);
+        var coursesThatStartSoon = Collections.Courses.queries.coursesThatStartInDaysTime(5).fetch();
+        MyLog.format("There are {0} courses that start soon", coursesThatStartSoon.length);
 
-        var coursesThatStartToday = CourseReportingService.findCoursesThatStartToday().fetch();
-        Log.info("There are {0} courses that start today", coursesThatStartToday.length);
+        var coursesThatStartToday = Collections.Courses.queries.coursesThatStartToday().fetch();
+        MyLog.format("There are {0} courses that start today", coursesThatStartToday.length);
     }
 });
 

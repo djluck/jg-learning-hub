@@ -1,3 +1,3 @@
 Template.viewCourses.helpers({
-	courses : CourseDataService.getCourses
+	courses : Collections.Courses.queries.orderedByStartDate
 });
