@@ -1,41 +1,31 @@
 OutlookEvents = {
-    createEvents : function(courseOrId){
-        var course = getCourse(courseOrId);
-        _.each(course.session, function(session){
+    createEvents : function(course){
+        _.each(course.sessions, function(session){
             session.outlookEventId = createEventForSession(course, session).Id;
         })
-
+        //TODO change this
         Collections.Courses.commands.saveOutlookEventIds(course._id, sessions);
     },
-    deleteEvents : function(courseOrId){
-        var course = getCourse(courseOrId);
-
-        _.each(course.session, function(session){
+    deleteEvents : function(course){
+        _.each(course.sessions, function(session){
             deleteEvent(course, session);
             session.outlookEventId = null;
         });
-
-        Collections.Courses.commands.saveOutlookEventIds(course._id, sessions);
     },
-    updateEvents : function(courseOrId, updatedCourseDetails){
-        var course = getCourse(courseOrId);
-
-        if (course.runByUserId !== updatedCourseDetails.runByUserId){
+    updateEvents : function(oldCourse, newCourse){
+        if (newCourse.details.runByUserId !== oldCourse.details.runByUserId){
             this.deleteEvents(course);
-            
-            //delete, re-create
+            this.createEvents(course);
         }
         else{
-            //update, create
+            //update
         }
     },
-    updateDetailsForEvents : function(courseOrId){
-        _.each(course.session, updateEvent.bind(this, course));
+    updateDetailsForEvents : function(course){
+        _.each(course.sessions, updateEvent.bind(this, course));
     },
-    updateAttendees : function(courseOrId){
-        var course = getCourse(courseOrId);
-
-        _.each(course.session, updateAttendees.bind(this, course));
+    updateEventAttendees : function(course){
+        _.each(course.sessions, updateAttendees.bind(this, course));
     }
 }
 
@@ -84,11 +74,4 @@ function getAttendees(course, location){
     }
 
     return _.union(course.signedUpUserIds || [], course.runByUserId, roomAddress);
-}
-
-function getCourse(courseOrId){
-    if (_.isString(courseId)){
-        return Collections.Courses.findOne(courseOrId);
-    }
-    return courseOrId;
 }

@@ -21,7 +21,7 @@ function resignFromCourseOrLeaveWaitingList(courseId){
         admitOneFromWaitingList(course);
     }
 
-    OutlookEvents.updateAttendees(course);
+    OutlookEvents.updateEventAttendees(Collections.Courses.findOne(courseId));
 }
 
 

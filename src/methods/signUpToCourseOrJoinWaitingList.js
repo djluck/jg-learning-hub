@@ -26,7 +26,7 @@ function signUpToCourseOrJoinWaitingList(courseId){
         };
     }
 
-    OutlookEvents.updateAttendees(course);
+    OutlookEvents.updateEventAttendees(course);
 
     return result;
 }
