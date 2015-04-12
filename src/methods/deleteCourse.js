@@ -6,4 +6,5 @@ function deleteCourse(courseId){
     Validation.requireAdministrator(this.userId);
 
     Collections.Courses.sync.remove(courseId);
+    OutlookEvents.deleteEvents(courseId);
 }

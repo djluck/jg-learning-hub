@@ -23,6 +23,10 @@ Schemas.Sessions = new SimpleSchema({
             return startsAt;
         }
     },
+    outlookEventId:{
+        type: String,
+        required: false
+    },
     notifiedStartingSoon: {
         type: Boolean,
         autoValue: function(){

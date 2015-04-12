@@ -13,17 +13,22 @@ function signUpToCourseOrJoinWaitingList(courseId){
         throw new Meteor.Error("CouldNotSignUpToCourse", "User is already signed up or on waiting list");
     }
 
+    var result = null;
     if (course.isFull()){
-        return joinWaitingList(user, courseId);
+        result = joinWaitingList(user, courseId);
     }
     else{
         Collections.Courses.commands.signUserUpToCourse(courseId, user._id);
 
-        return {
+        result = {
             isSignedUp : true,
             isOnWaitingList : false
         };
     }
+
+    OutlookEvents.updateAttendees(course);
+
+    return result;
 }
 
 

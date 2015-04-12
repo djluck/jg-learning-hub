@@ -6,6 +6,7 @@ function approveCourse(courseId){
     Validation.requireAdministrator(this.userId);
 
     Collections.Courses.commands.approve(courseId);
+    OutlookEvents.createEvents(courseId);
     notifyUsers(courseId);
 }
 
@@ -24,4 +25,3 @@ function notifyUsers(courseId){
         "The course '" + course.details.title + "' is now available @ https://learninghub.justgiving.com/"
     );
 }
-

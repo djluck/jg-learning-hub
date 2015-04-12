@@ -46,6 +46,13 @@ Collections.Courses.commands.resignUserFromCourse = function(courseId, user){
     Collections.Courses.sync.update(courseId, modifier);
 }
 
+Collections.Courses.commands.saveOutlookEventIds = function(id, sessions){
+    var modifier = 	{
+        $set: { sessions : sessionsOrderedByStartDate(sessions) }
+    };
+    Collections.Courses.sync.update(id, modifier);
+}
+
 
 function sessionsOrderedByStartDate(sessions){
     return _.sortBy(sessions, function(s) { return s.startsAt; });

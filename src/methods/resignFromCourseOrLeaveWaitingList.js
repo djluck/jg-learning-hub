@@ -20,6 +20,8 @@ function resignFromCourseOrLeaveWaitingList(courseId){
         Collections.Courses.commands.resignUserFromCourse(courseId, user);
         admitOneFromWaitingList(course);
     }
+
+    OutlookEvents.updateAttendees(course);
 }
 
 
@@ -29,7 +31,7 @@ function admitOneFromWaitingList(course){
 
     var nextUserInLine = popNextUserFromWaitingList(course);
 
-    nextUserInLine.signUpToCourse(course._id);
+    Collections.Courses.commands.signUserUpToCourse(course._id, nextUserInLine._id);
 
     Email.sendLearningHubNotification(
         nextUserInLine,
