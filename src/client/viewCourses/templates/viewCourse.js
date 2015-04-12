@@ -5,9 +5,6 @@ Template.viewCourse.helpers({
 	canDelete: function(){
 		return Roles.userIsInRole(Meteor.user(), "administrator");
 	},
-	createdByUserName: function(){
-		return Meteor.users.findOne(this.details.runByUserId).profile.name;
-	},
 	disableUsersAttending: function(){
 		if (this.signedUpUserIds.length == 0)
 			return "disabled";
@@ -16,16 +13,6 @@ Template.viewCourse.helpers({
 	},
 	numUsersSignedUpOrOnWaitingList : function() {
 		return (this.waitingListUserIds || []).length + this.signedUpUserIds.length;
-	},
-	signUpTooltip : function(){
-		if (Meteor.user())
-			return {};
-
-		return {
-			"data-toggle" : "tooltip",
-			"data-placement" : "top",
-			"title" : "You must be logged in to sign up for a course"
-		}
 	}
 });
 
@@ -54,10 +41,10 @@ function subscribeOrUnsubscribeUser(course){
 
 	var courseId = course._id;
 
-	if (course.isFull() && course.hasWaitingList() && course.isUserSignedUp()) {
+	if (course.isFull() && course.hasWaitingList() && course.userIsSignedUp()) {
 		Dialogs.theresAWaitingListDialog.show(courseId);
 	}
-	else if (course.isUserSignedUpOrOnWaitingList()){
+	else if (course.userIsSignedUpOrOnWaitingList()){
 		Methods.resignFromCourseOrLeaveWaitingList(courseId);
 	}
 	else{
@@ -72,7 +59,7 @@ function handleUserNotLoggedIn(course){
 		}
 
 		//only sign up a user, otherwise we might confuse users!
-		if (!course.isUserSignedUpOrOnWaitingList()){
+		if (!course.userIsSignedUpOrOnWaitingList()){
 			signUserUpToCourseOrJoinWaitingList(course);
 		}
 	});

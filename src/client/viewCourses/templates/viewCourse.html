@@ -60,20 +60,21 @@
                         Who's going?
                         <span class="badge">{{numUsersSignedUpOrOnWaitingList}} / {{details.numberOfSpaces}}</span>
                     </a>
-					{{#if canSignUpToOrRegignFromCourse}}
-                        <button class="btn btn-primary btn-sign-up {{#if isSignedUpOrOnWaitingList}}btn-danger{{/if}}" role="button">
+					{{#if userCanSignUpToOrResignFrom}}
+                        <button class="btn btn-primary btn-sign-up {{#if userIsSignedUpOrOnWaitingList}}btn-danger{{/if}}" role="button">
 					<span class="glyphicon
-						{{#if isSignedUpOrOnWaitingList}}
+
+						{{#if userIsSignedUpOrOnWaitingList}}
 							glyphicon-remove
 						{{else}}
-						{{#if courseIsFull}}
-								glyphicon-hourglass
-							{{else}}
-								glyphicon-ok
+                            {{#if courseIsFull}}
+                                    glyphicon-hourglass
+                                {{else}}
+                                    glyphicon-ok
 							{{/if}}
-					{{/if}}
+					    {{/if}}
 					"> </span>
-							{{#if isSignedUpOrOnWaitingList}}
+							{{#if userIsSignedUpOrOnWaitingList}}
                                 Cancel your place
 							{{else}}
 								{{#if isFull}}

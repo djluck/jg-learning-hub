@@ -24,3 +24,6 @@ twbs:bootstrap
 wiseguyeh:azure-resource-office-365
 jg-learninghub-common
 jg-learninghub-data
+jg-learninghub-email
+jg-learninghub-data-commands
+accounts-password

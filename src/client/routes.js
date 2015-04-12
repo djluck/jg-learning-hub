@@ -27,7 +27,7 @@ Router.route("/my-sessions", function(){
 Router.route("/edit-course/:_id", function(){
 	this.render("addCourse",  {
 		data: function(){
-			var course = Collections.Courses.findOne(courseId);
+			var course = Collections.Courses.findOne(this.params._id);
 			if (!course)
 				return {};
 

@@ -1,37 +1,37 @@
 TestUsers = [
     {
-        "email" : "admin@data.com",
+        "email" : "admin@test.com",
         "password" : "secret",
         "name" : "Mr. Admin",
         roles : ["administrator"]
     },
     {
-        "email" : "teacher@data.com",
+        "email" : "teacher@test.com",
         "password" : "secret",
         "name" : "Mrs Teacher"
     },
     {
-        "email" : "teacherAndPupil@data.com",
+        "email" : "teacherAndPupil@test.com",
         "password" : "secret",
         "name" : "Mr T. A. Pupil"
     },
     {
-        "email" : "pupil1@data.com",
+        "email" : "pupil1@test.com",
         "password" : "secret",
         name : "First Pupil"
     },
     {
-        "email" : "pupil2@data.com",
+        "email" : "pupil2@test.com",
         "password" : "secret",
         name : "Second Pupil"
     },
     {
-        "email" : "pupil3@data.com",
+        "email" : "pupil3@test.com",
         "password" : "secret",
         name : "Third Pupil"
     },
     {
-        "email" : "pupil4@data.com",
+        "email" : "pupil4@test.com",
         "password" : "secret",
         name : "Fourth Pupil"
     }

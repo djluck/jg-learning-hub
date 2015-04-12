@@ -16,7 +16,11 @@ var links = [
 			return Meteor.userId() !== null;
 		},
 		badgeCount : function(){
-			return Meteor.user().countCoursesSignedUpTo();
+            var user = Meteor.user();
+            if (!user)
+                return 0;
+
+			return user.countCoursesSignedUpTo();
 		}
 	}
 ];

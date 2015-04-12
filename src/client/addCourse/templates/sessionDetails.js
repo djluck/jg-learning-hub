@@ -8,7 +8,7 @@ Template.sessionDetails.helpers({
 			function(e){
 				return {
 					label : e.name,
-					value : e.name
+					value : e._id
 				};
 			}
 		);

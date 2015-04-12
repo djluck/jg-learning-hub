@@ -7,5 +7,5 @@ Package.onUse(function(api) {
     api.versionsFrom('1.1.0.2');
     api.use('underscore', { weak: false });
     api.imply('underscore');
-    api.export("Log");
+    api.export("MyLog");
 });

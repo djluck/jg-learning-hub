@@ -1,6 +1,7 @@
 Meteor.startup(function(){
     addData(BaseData);
-    var isDebug = process.env.DEBUG;
+    var isDebug = 1;
+    console.log(process.env.DEBUG); //cant set params via windows SET it seems...
     if (isDebug){
         console.log("DEBUG=true, adding data data..")
         addUsers();

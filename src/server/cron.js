@@ -5,13 +5,13 @@ SyncedCron.add({
         return parser.text('at 8:50 am');
     },
     job: function() {
-        Log.info("Running cron job {0}", dailyName);
+        MyLog.format("Running cron job {0}", dailyName);
 
         var coursesThatStartSoon = Collections.Courses.queries.coursesThatStartInDaysTime(5).fetch();
-        Log.info("There are {0} courses that start soon", coursesThatStartSoon.length);
+        MyLog.format("There are {0} courses that start soon", coursesThatStartSoon.length);
 
         var coursesThatStartToday = Collections.Courses.queries.coursesThatStartToday().fetch();
-        Log.info("There are {0} courses that start today", coursesThatStartToday.length);
+        MyLog.format("There are {0} courses that start today", coursesThatStartToday.length);
     }
 });
 

@@ -68,6 +68,7 @@ function createCourse(){
 
 function updateCourse(course){
 	var courseDetails = AutoForm.getFormValues(formId).insertDoc;
+    courseDetails.runByUserId = courseDetails.runByUserId || Meteor.userId();
 	var sessions = Sessions.getSessionsReadyForStorage();
 
 	Methods

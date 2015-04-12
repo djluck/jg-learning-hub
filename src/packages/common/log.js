@@ -1,5 +1,5 @@
-Log = {
-    info : function(){
+MyLog = {
+    format : function(){
         var argumentsArray = _.toArray(arguments)
         var msg = argumentsArray.slice(0, 1)[0];
 

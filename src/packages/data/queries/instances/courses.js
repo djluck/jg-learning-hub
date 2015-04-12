@@ -1,34 +1,23 @@
 Collections.Courses.helpers({
-    isUserSignedUp : function(user){
-        user = user || Meteor.user();
-        if (!user.profile)
-            return false;
-
+    userIsSignedUp : safelyFetchUser(false, function(user){
         return _.contains(user.profile.takingCourseIds, this._id);
-    },
-    isUserOnWaitingList: function(user){
-        user = user || Meteor.user();
-        if (!user.profile)
-            return false;
-
+    }),
+    userIsOnWaitingList: safelyFetchUser(false, function(user){
         return _.contains(this.waitingListUserIds, user._id);
-    },
-    isUserSignedUpOrOnWaitingList : function(user){
-        user = user || Meteor.user();
-
-        return this.isUserSignedUp(user) || this.isUserOnWaitingList(user);
-    },
-    canUserSignUp : function(){
+    }),
+    userIsSignedUpOrOnWaitingList : safelyFetchUser(false, function(user){
+        return this.userIsSignedUp(user) || this.userIsOnWaitingList(user);
+    }),
+    userCanSignUp : function(){
         return this.approved && this.startsAt > new Date();
     },
-    canUserResign : function(user){
-        user = user || Meteor.user();
+    userCanResign : safelyFetchUser(false, function(user){
         return this.approved && _.contains(this.signedUpUserIds, user._id) && this.startsAt > new Date();
-    },
-    canSignUpToOrResignFrom : function(){
-        return this.canUserSignUp() || this.canUserResign();
-    },
-    isFull :function(){
+    }),
+    userCanSignUpToOrResignFrom : safelyFetchUser(false, function(){
+        return this.userCanSignUp() || this.userCanResign();
+    }),
+    isFull : function(){
         return this.signedUpUserIds.length === this.details.numberOfSpaces;
     },
     hasWaitingList : function(){
@@ -37,5 +26,19 @@ Collections.Courses.helpers({
     usersPositionInWaitingList : function(user){
         user = user || Meteor.user();
         return _.indexOf(this.waitingListUserIds, user._id) + 1;
+    },
+    createdByUsername : function(user){
+        var user = Meteor.users.findOne(this.details.runByUserId);
+        return user ? user.profile.name : "";
     }
 });
+
+function safelyFetchUser(defaultValue, fn){
+    return function(user){
+        user = user || Meteor.user();
+        if (!user || !user.profile)
+            return defaultValue;
+
+        return fn.call(this, user);
+    }
+}

@@ -13,11 +13,11 @@ if (Meteor.isServer) {
         }
 
         if (!toAddresses || toAddresses.length === 0){
-            Log.info("Couldn't find anyone to email. Not sending notification {0}", subject);
+            MyLog.format("Couldn't find anyone to email. Not sending notification {0}", subject);
             return;
         }
 
-        Log.info("Sending the notification '{0}' to {1}", subject, toAddresses);
+        MyLog.format("Sending the notification '{0}' to {1}", subject, toAddresses);
         Email.send({
             from : "learninghub@justgiving.com",
             to : toAddresses,

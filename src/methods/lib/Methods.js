@@ -25,8 +25,8 @@ function registerAsMethod(fnName, fn){
 
 function getLoggingMethod(fnName, fnToWrap){
     return function(){
-        Log.info("User {0} is calling method {1} with parameters: {2}", this.userId, fnName, _.toArray(arguments));
+        MyLog.format("User {0} is calling method {1} with parameters: {2}", this.userId, fnName, _.toArray(arguments));
 
-        fnToWrap.apply(this, arguments);
+        return fnToWrap.apply(this, arguments);
     };
 }
