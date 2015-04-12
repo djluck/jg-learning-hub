@@ -5,7 +5,7 @@ initCollectionAndSchema = function (collectionName, schema, mongoCollectionName)
 	mongoCollectionName = mongoCollectionName || collectionName;
 	Schemas[collectionName] = new SimpleSchema(schema);
 	Collections[collectionName] = new Meteor.Collection(mongoCollectionName);
-	Collections[collectionName].attachSchema(Schemas[collectionName]);
+	Collections[collectionName].attachSchema(Schemas[collectionName], {transform: true});
 }
 
 requireUser = function(){

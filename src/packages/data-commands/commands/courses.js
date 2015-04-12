@@ -20,8 +20,8 @@ Collections.Courses.commands.approve = function(id){
     Collections.Courses.sync.update(id, modifier);
 }
 
-Collections.Courses.commands.subscribeUserToCourse = function(courseId, userId){
-    var modifier = { $push : { "waitingListUserIds" : userId } };
+Collections.Courses.commands.signUserUpToCourse = function(courseId, userId){
+    var modifier = { $push : { "signedUpUserIds" : userId } };
     Collections.Courses.sync.update(courseId, modifier);
 
     var modifier = { $push: { "profile.takingCourseIds" : courseId } };
@@ -33,7 +33,7 @@ Collections.Courses.commands.addUserToWaitingList = function(courseId, userId){
     Collections.Courses.sync.update(courseId, modifier);
 }
 
-Collections.Courses.commands.resignUserFromWaitingList = function(courseId, user){
+Collections.Courses.commands.removeUserFromWaitingList = function(courseId, user){
     var modifier = { $pull : { "waitingListUserIds" : user._id } };
     Collections.Courses.sync.update(courseId, modifier);
 }

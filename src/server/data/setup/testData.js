@@ -184,7 +184,7 @@ function setupSubscriptions(){
                 function(userId){
                     console.log("uid: " + userId + ", cid:" + course._id);
                     var user = Meteor.users.findOne(userId);
-                    Meteor.users.signUpUserToCourse(user, course._id);
+                    Collections.Courses.commands.signUserUpToCourse(user, course._id);
                 }
             );
         }

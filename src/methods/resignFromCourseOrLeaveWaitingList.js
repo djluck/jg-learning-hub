@@ -14,7 +14,7 @@ function resignFromCourseOrLeaveWaitingList(courseId){
     }
 
     if (course.isUserOnWaitingList(user)){
-        Collections.Courses.commands.resignUserFromWaitingList(courseId, user);
+        Collections.Courses.commands.removeUserFromWaitingList(courseId, user);
     }
     else{
         Collections.Courses.commands.resignUserFromCourse(courseId, user);
