@@ -23,7 +23,7 @@ Tinytest.addWithSinon("deleteEvents deletes every event defined for a session", 
             runByUserId : "runByUserId"
         }
     };
-    
+
     var firstEvent = Office365.event.mocks.arrangeRunByUser(courseToDelete.details.runByUserId);
 
     //Act

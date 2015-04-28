@@ -10,7 +10,7 @@ Package.onUse(function(api) {
 Package.onTest(function (api) {
     setupCommon(api);
     api.imply(["meteor-platform"])
-    api.use(["tinytest", "accounts-password", "underscore@1.0.3", "check"]);
+    api.use(["tinytest", "accounts-password", "underscore@1.0.3", "check", "practicalmeteor:sinon@1.10.3_2"]);
     api.addFiles([
             "tests/eventsMock.js",
             "tests/util.js",
@@ -25,6 +25,6 @@ Package.onTest(function (api) {
 
 function setupCommon(api){
     api.versionsFrom('1.1.0.2');
-    api.use(['jg-learninghub-common', 'jg-learninghub-data', 'email', 'wiseguyeh:office-365-events@0.1.2', 'practicalmeteor:sinon@1.10.3_2']);
+    api.use(['jg-learninghub-common', 'jg-learninghub-data', 'email', 'wiseguyeh:office-365-events@0.1.2']);
     api.addFiles('outlookEvents.js');
 }

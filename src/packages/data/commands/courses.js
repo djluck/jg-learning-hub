@@ -46,11 +46,19 @@ Collections.Courses.commands.resignUserFromCourse = function(courseId, user){
     Collections.Courses.sync.update(courseId, modifier);
 }
 
-Collections.Courses.commands.saveOutlookEventIds = function(id, sessions){
+Collections.Courses.commands.updateSessions = function(id, sessions){
     var modifier = 	{
         $set: { sessions : sessionsOrderedByStartDate(sessions) }
     };
     Collections.Courses.sync.update(id, modifier);
+}
+
+Collections.Courses.commands.popNextUserFromWaitingList = function(course){
+    var nextUserInLine = Meteor.users.findOne(course.waitingListUserIds[0]);
+    var modifier = { $pop : { "waitingListUserIds" : -1 } };
+    Collections.Courses.sync.update(course._id, modifier);
+
+    return nextUserInLine;
 }
 
 

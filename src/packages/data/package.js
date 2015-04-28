@@ -9,6 +9,12 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api){
     api.use("meteor-platform");
+    api.use(["tinytest", "accounts-password", "alanning:roles@1.2.13"]);
+    api.addFiles([
+            "tests/queries/collections/users.js"
+        ],
+        "server"
+    );
     setupCommon(api);
 });
 
@@ -27,8 +33,13 @@ function setupCommon(api){
     ]);
     api.addFiles([
         'queries/collections/courses.js',
+        'queries/collections/users.js',
         'queries/instances/courses.js',
     ]);
+
+    api.addFiles('lib/syncOperations.js');
+    api.addFiles('commands/courses.js');
+
     api.export("Collections");
     api.export("Schemas");
 }
