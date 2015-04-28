@@ -26,7 +26,7 @@ geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
-ian:accounts-ui-bootstrap-3@1.2.42
+ian:accounts-ui-bootstrap-3@1.2.46
 id-map@1.0.3
 iron:controller@1.0.7
 iron:core@1.0.7
@@ -73,6 +73,7 @@ pahans:reactive-modal@1.0.0
 percolate:synced-cron@1.2.0
 practicalmeteor:chai@1.9.2_3
 practicalmeteor:loglevel@1.1.0_3
+practicalmeteor:sinon@1.10.3_2
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
@@ -103,5 +104,5 @@ webapp-hashing@1.0.3
 wiseguyeh:accounts-azure-active-directory@0.3.1
 wiseguyeh:azure-active-directory@0.3.1
 wiseguyeh:azure-resource-office-365@0.1.1
-wiseguyeh:office-365-events@0.1.0
+wiseguyeh:office-365-events@0.1.2
 wizonesolutions:underscore-string@1.0.0

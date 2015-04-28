@@ -25,7 +25,7 @@ Schemas.Sessions = new SimpleSchema({
     },
     outlookEventId:{
         type: String,
-        required: false
+        optional: true
     },
     notifiedStartingSoon: {
         type: Boolean,
